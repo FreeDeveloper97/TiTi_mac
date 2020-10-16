@@ -34,10 +34,13 @@ class ViewController: UIViewController {
     @IBOutlet var RESETButton: UIButton!
     @IBOutlet var TimeSETButton: UIButton!
     @IBOutlet var persentLabel: UILabel!
-
-    @IBOutlet var CircleView: CircularProgressView!
-    var audioPlayer = AVAudioPlayer()
+    @IBOutlet var LogButton: UIButton!
+    //종료예정시간 추가
+    @IBOutlet var Label_to: UILabel!
+    @IBOutlet var Label_toTime: UILabel!
     
+    @IBOutlet var CircleView: CircularProgressView!
+    var audioPlayer : AVPlayer!
     
     var timeTrigger = true
     var realTime = Timer()
@@ -46,11 +49,11 @@ class ViewController: UIViewController {
     var sum : Int = 0
     var allTime : Int = 0
     
-    let BROWN = UIColor(named: "Brown")
+    let BACKGROUND = UIColor(named: "Background")
+    let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
-    let STOP = UIColor(named: "Stop")
+    let CLICK = UIColor(named: "Click")
     let TEXT = UIColor(named: "Text")
-    let BABYRED = UIColor(named: "Text")
     
     var diffHrs = 0
     var diffMins = 0
@@ -67,7 +70,16 @@ class ViewController: UIViewController {
     var fixedSecond: Int = 0
     var fromSecond: Float = 0.0
     
+    //빡공률 보이기 설정
+    var showPersent: Int = 0
+    //날짜 저장
+    var array_day = [String](repeating: "", count: 7)
+    var array_time = [String](repeating: "", count: 7)
+    //스탑회수 저장
+    var stopCount: Int = 0
+    
     override func viewDidLoad() {
+        
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
@@ -75,14 +87,15 @@ class ViewController: UIViewController {
         sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
         allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
         second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
+        showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
+        stopCount = UserDefaults.standard.value(forKey: "stopCount") as? Int ?? 0
 
         AllTimeLabel.text = printTime(temp: allTime)
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
         
-        self.view.backgroundColor = STOP
-        StartButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BUTTON
+        stopColor()
+        stopEnable()
         
         super.viewDidLoad()
         
@@ -93,17 +106,26 @@ class ViewController: UIViewController {
         {
             isRESET = true
         }
-        checkPersent()
-        persentLabel.textColor = UIColor.white
+        if(showPersent == 0)
+        {
+            persentLabel.alpha = 1
+            checkPersent()
+            persentLabel.textColor = UIColor.white
+        }
+        else
+        {
+            persentLabel.alpha = 0
+        }
         
         //프로그래스 추가
         CircleView.trackColor = UIColor.darkGray
-        CircleView.progressColor = BABYRED!
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         
         progressPer = Float(fixedSecond - second) / Float(fixedSecond)
         fromSecond = progressPer
         CircleView.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
+        //종료예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
@@ -115,8 +137,10 @@ class ViewController: UIViewController {
             print("startTime SAVE")
             isRESET = false
             fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+            //log 추가
+            setLogData()
         }
-        
+        startColor()
         startAction()
         isStop = false
     }
@@ -124,40 +148,37 @@ class ViewController: UIViewController {
     @IBAction func StopButtonAction(_ sender: UIButton) {
         isStop = true
         endGame()
-        StopButton.backgroundColor = BROWN
-        StartButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BUTTON
-        
-        StartButton.isUserInteractionEnabled = true
-        ResetButton.isUserInteractionEnabled = true
-        StopButton.isUserInteractionEnabled = false
-        
-        RESETButton.isUserInteractionEnabled = true
-        TimeSETButton.isUserInteractionEnabled = true
+        stopColor()
+        stopEnable()
     }
     
     @IBAction func ResetButtonAction(_ sender: UIButton) {
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
         isStop = true
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         print("reset Button complite")
-        StartButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BROWN
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
         print("print Time complite")
-        StartButton.isUserInteractionEnabled = true
-        ResetButton.isUserInteractionEnabled = false
-        StopButton.isUserInteractionEnabled = false
+        
         //프로그래스 추가!
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
+        //종료예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     @IBAction func Reset(_ sender: UIButton) {
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
         isStop = true
         endGame()
         getTimeData()
         sum = 0
-        ResetButton.backgroundColor = BROWN
         timeTrigger = true
         realTime = Timer()
         print("reset Button complite")
@@ -165,15 +186,13 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(second, forKey: "second2")
         UserDefaults.standard.set(allTime, forKey: "allTime2")
         UserDefaults.standard.set(sum, forKey: "sum2")
+        //정지 회수 저장
+        stopCount = 0
+        UserDefaults.standard.set(0, forKey: "stopCount")
         
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
         CountTimeLabel.text = printTime(temp: second)
-        
-        StartButton.backgroundColor = BUTTON
-        StartButton.isUserInteractionEnabled = true
-        ResetButton.backgroundColor = BROWN
-        ResetButton.isUserInteractionEnabled = false
         
         //persent 추가! RESET 여부 추가
         persentReset()
@@ -183,57 +202,23 @@ class ViewController: UIViewController {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
             setVC.setViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
-        persentReset()
     }
     
     
     @objc func updateCounter(){
-        if second < 1 {
-            self.view.backgroundColor = STOP
-            endGame()
-            CountTimeLabel.text = "종료"
-            StopButton.backgroundColor = BROWN
-            StartButton.backgroundColor = BROWN
-            ResetButton.backgroundColor = BUTTON
-            
-            StartButton.isUserInteractionEnabled = false
-            ResetButton.isUserInteractionEnabled = true
-            StopButton.isUserInteractionEnabled = false
-            
-            RESETButton.isUserInteractionEnabled = true
-            TimeSETButton.isUserInteractionEnabled = true
-            
-            AudioServicesPlaySystemSound(1254)
-            AudioServicesPlaySystemSound(4095)
-//            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
-//            do {
-//                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
-//            } catch {
-//
-//            }
+        if second < 61 {
+            CountTimeLabel.textColor = TEXT
+            CircleView.progressColor = TEXT!
         }
-        else if allTime < 1 {
+        if second < 1 {
             endGame()
+            stopColor()
+            stopEnable()
             CountTimeLabel.text = "종료"
-            StopButton.backgroundColor = BROWN
-            StartButton.backgroundColor = BROWN
-            ResetButton.backgroundColor = BUTTON
-            
-            StartButton.isUserInteractionEnabled = false
-            ResetButton.isUserInteractionEnabled = true
-            StopButton.isUserInteractionEnabled = false
-            
-            RESETButton.isUserInteractionEnabled = true
-            TimeSETButton.isUserInteractionEnabled = true
-            
-            AudioServicesPlaySystemSound(1254)
+//            AudioServicesPlaySystemSound(1254)
+            //오디오 재생 추가
+            playAudioFromProject()
             AudioServicesPlaySystemSound(4095)
-//            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
-//            do {
-//                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
-//            } catch {
-//
-//            }
         }
         else {
             second = second - 1
@@ -251,21 +236,36 @@ class ViewController: UIViewController {
     
     func endGame() {
         isStop = true
-        self.view.backgroundColor = STOP
         realTime.invalidate()
         timeTrigger = true
+        //log 저장
+        saveLogData()
+        //stopCount 증가
+        stopCount+=1
+        UserDefaults.standard.set(stopCount, forKey: "stopCount")
+        //종료카운트 보이기 테스트
+        persentLabel.text = "STOP : " + String(stopCount) + "번"
+        //종료예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     func printTime(temp : Int) -> String
     {
-        let S = temp%60
-        let H = temp/3600
-        let M = temp/60 - H*60
+        var returnString = "";
+        var num = temp;
+        if(num < 0)
+        {
+            num = -num;
+            returnString += "+";
+        }
+        let S = num%60
+        let H = num/3600
+        let M = num/60 - H*60
         
         let stringS = S<10 ? "0"+String(S) : String(S)
         let stringM = M<10 ? "0"+String(M) : String(M)
         
-        let returnString  = String(H) + ":" + stringM + ":" + stringS
+        returnString += String(H) + ":" + stringM + ":" + stringS
         return returnString
     }
     
@@ -275,41 +275,63 @@ class ViewController: UIViewController {
         print("second set complite")
         allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
         print("allTime set complite")
+        //빡공률 보이기 설정
+        showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
     }
+    
     
 }
 
 extension ViewController : ChangeViewController {
     
     func updateViewController() {
-         endGame()
-         getTimeData()
-         sum = 0
-         ResetButton.backgroundColor = BROWN
-         timeTrigger = true
-         realTime = Timer()
-         print("reset Button complite")
-         
-         UserDefaults.standard.set(second, forKey: "second2")
-         UserDefaults.standard.set(allTime, forKey: "allTime2")
-         UserDefaults.standard.set(sum, forKey: "sum2")
-         
-         AllTimeLabel.text = printTime(temp: allTime)
-         SumTimeLabel.text = printTime(temp: sum)
-         CountTimeLabel.text = printTime(temp: second)
+        stopColor()
+        stopEnable()
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
+        endGame()
+        getTimeData()
+        sum = 0
+        timeTrigger = true
+        realTime = Timer()
+        print("reset Button complite")
+        
+        UserDefaults.standard.set(second, forKey: "second2")
+        UserDefaults.standard.set(allTime, forKey: "allTime2")
+        UserDefaults.standard.set(sum, forKey: "sum2")
+        //정지 회수 저장
+        stopCount = 0
+        UserDefaults.standard.set(0, forKey: "stopCount")
+        
+        AllTimeLabel.text = printTime(temp: allTime)
+        SumTimeLabel.text = printTime(temp: sum)
+        CountTimeLabel.text = printTime(temp: second)
+        
+        persentReset()
+        //빡공률 보이기 설정
+        if(showPersent == 0)
+        {
+            persentLabel.alpha = 1
+        }
+        else
+        {
+            persentLabel.alpha = 0
+        }
     }
     
     // Selected for Lifecycle Methods
-    @objc func pauseWhenBackground(noti: Notification) {
-        print("background")
-        if(!isStop)
-        {
-            realTime.invalidate()
-            timeTrigger = true
-            let shared = UserDefaults.standard
-            shared.set(Date(), forKey: "savedTime")
+        @objc func pauseWhenBackground(noti: Notification) {
+            print("background")
+            if(!isStop)
+            {
+                realTime.invalidate()
+                timeTrigger = true
+                let shared = UserDefaults.standard
+                shared.set(Date(), forKey: "savedTime")
+            }
         }
-    }
     
     @objc func willEnterForeground(noti: Notification) {
         print("Enter")
@@ -321,6 +343,11 @@ extension ViewController : ChangeViewController {
                 removeSavedDate()
             }
         }
+        else
+        {
+            //종료예상시간 보이기
+            Label_toTime.text = getFutureTime()
+        }
     }
     
     static func getTimeDifference(startDate: Date) -> (Int, Int, Int) {
@@ -331,17 +358,13 @@ extension ViewController : ChangeViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int) {
         let tempSeconds = hours*3600 + mins*60 + secs
+        let temp = second-tempSeconds;
+        
         if(second - tempSeconds < 0)
         {
-            allTime = allTime - second
-            sum = sum + second
+            allTime = allTime - tempSeconds
+            sum = sum + tempSeconds
             second = 0
-        }
-        else if(allTime - tempSeconds < 0)
-        {
-            allTime = 0
-            sum = sum + allTime
-            second = second - allTime
         }
         else
         {
@@ -351,6 +374,10 @@ extension ViewController : ChangeViewController {
         }
         setPerSeconds()
         startAction()
+        if(second - tempSeconds < 0)
+        {
+            CountTimeLabel.text = printTime(temp: temp)
+        }
     }
     
     func removeSavedDate() {
@@ -362,18 +389,8 @@ extension ViewController : ChangeViewController {
     func startAction()
     {
         if timeTrigger { checkTimeTrigger() }
+        startEnable()
         print("Start")
-        StartButton.backgroundColor = BROWN
-        StopButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BROWN
-        
-        StartButton.isUserInteractionEnabled = false
-        ResetButton.isUserInteractionEnabled = false
-        StopButton.isUserInteractionEnabled = true
-        
-        RESETButton.isUserInteractionEnabled = false
-        TimeSETButton.isUserInteractionEnabled = false
-        self.view.backgroundColor = UIColor.black
     }
     
     func setPerSeconds()
@@ -399,12 +416,14 @@ extension ViewController : ChangeViewController {
     func persentReset()
     {
         isRESET = true
-        persentLabel.text = "빡공률 : 0.0%"
+//        persentLabel.text = "빡공률 : 0.0%"
         persentLabel.textColor = UIColor.white
         //프로그래스 추가!
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
+        //정지회수 보이기
+        persentLabel.text = "STOP : " + String(stopCount) + "번"
     }
     
     func checkPersent()
@@ -413,26 +432,130 @@ extension ViewController : ChangeViewController {
             (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
             timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
             print("timeForPersent : " + String(timeForPersent))
-            
+
             //계산부분
             let per : Double = Double(sum)/Double(timeForPersent)*100
-            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
-            
-            if (per>50.0)
-            {
-                persentLabel.textColor = UIColor.white
-            }
-            else
-            {
-                persentLabel.textColor = TEXT
-            }
+//            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
+//
+//            if (per>50.0)
+//            {
+//                persentLabel.textColor = UIColor.white
+//            }
+//            else
+//            {
+//                persentLabel.textColor = TEXT
+//            }
         }
+        //정지회수 보이기
+        persentLabel.text = "STOP : " + String(stopCount) + "번"
     }
     
-//    @objc func animateProgress() {
-//        let cP = self.view.viewWithTag(101) as! CircularProgressView
-//        cP.setProgressWithAnimation(duration: 1.0, value: 0.7)
-//    }
+    func stopColor()
+    {
+        self.view.backgroundColor = BACKGROUND
+        CircleView.progressColor = UIColor.white
+        StartButton.backgroundColor = BUTTON
+        StopButton.backgroundColor = CLICK
+        ResetButton.backgroundColor = BUTTON
+        StartButton.setTitleColor(BLUE, for: .normal)
+        StopButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.setTitleColor(BLUE, for: .normal)
+        CountTimeLabel.textColor = UIColor.white
+        //예상종료시간 보이기
+        Label_to.alpha = 1
+        Label_toTime.alpha = 1
+    }
+    
+    func startColor()
+    {
+        self.view.backgroundColor = UIColor.black
+        CircleView.progressColor = BLUE!
+        StartButton.backgroundColor = CLICK
+        StopButton.backgroundColor = BLUE
+        ResetButton.backgroundColor = CLICK
+        StartButton.setTitleColor(UIColor.white, for: .normal)
+        StopButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        CountTimeLabel.textColor = BLUE
+        //예상종료시간 숨기기
+        Label_to.alpha = 0
+        Label_toTime.alpha = 0
+    }
+    
+    func stopEnable()
+    {
+        StartButton.isUserInteractionEnabled = true
+        ResetButton.isUserInteractionEnabled = true
+        StopButton.isUserInteractionEnabled = false
+        RESETButton.isUserInteractionEnabled = true
+        TimeSETButton.isUserInteractionEnabled = true
+        LogButton.isUserInteractionEnabled = true
+    }
+    
+    func startEnable()
+    {
+        StartButton.isUserInteractionEnabled = false
+        ResetButton.isUserInteractionEnabled = false
+        StopButton.isUserInteractionEnabled = true
+        RESETButton.isUserInteractionEnabled = false
+        TimeSETButton.isUserInteractionEnabled = false
+        LogButton.isUserInteractionEnabled = false
+    }
+    
+    func saveLogData()
+    {
+        //log 시간 저장
+        UserDefaults.standard.set(printTime(temp: sum), forKey: "time1")
+    }
+    
+    func setLogData()
+    {
+        //값 불러오기
+        for i in stride(from: 0, to: 7, by: 1)
+        {
+            array_day[i] = UserDefaults.standard.value(forKey: "day"+String(i+1)) as? String ?? "NO DATA"
+            array_time[i] = UserDefaults.standard.value(forKey: "time"+String(i+1)) as? String ?? "NO DATA"
+        }
+        //값 옮기기, 값 저장하기
+        for i in stride(from: 6, to: 0, by: -1)
+        {
+            array_day[i] = array_day[i-1]
+            UserDefaults.standard.set(array_day[i], forKey: "day"+String(i+1))
+            array_time[i] = array_time[i-1]
+            UserDefaults.standard.set(array_time[i], forKey: "time"+String(i+1))
+        }
+        
+        //log 날짜 설정
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월 d일"
+        let today = dateFormatter.string(from: now)
+        UserDefaults.standard.set(today, forKey: "day1")
+    }
+    private func playAudioFromProject() {
+        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
+            print("error to get the mp3 file")
+            return
+        }
+        do {
+            audioPlayer = try AVPlayer(url: url)
+        } catch {
+            print("audio file error")
+        }
+        audioPlayer?.play()
+    }
+    
+    //예정종료시간 구하기
+    func getFutureTime() -> String
+    {
+        //log 날짜 설정
+        let now = Date()
+        let future = now.addingTimeInterval(TimeInterval(second))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        let today = dateFormatter.string(from: future)
+        return today
+    }
 
 }
 
