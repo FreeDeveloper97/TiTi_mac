@@ -38,6 +38,9 @@ class ViewController: UIViewController {
     //종료예정시간 추가
     @IBOutlet var Label_to: UILabel!
     @IBOutlet var Label_toTime: UILabel!
+    //사라지기 애니메이션 추가
+    @IBOutlet var View_labels: UIView!
+    
     
     @IBOutlet var CircleView: CircularProgressView!
     var audioPlayer : AVPlayer!
@@ -85,8 +88,8 @@ class ViewController: UIViewController {
         ResetButton.layer.cornerRadius = 10
 
         sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
-        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
-        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
+        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
+        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 2400
         showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         stopCount = UserDefaults.standard.value(forKey: "stopCount") as? Int ?? 0
 
@@ -109,7 +112,14 @@ class ViewController: UIViewController {
         if(showPersent == 0)
         {
             persentLabel.alpha = 1
-            checkPersent()
+            if(stopCount != 0)
+            {
+                checkPersent()
+            }
+            else
+            {
+                persentLabel.text = "STOP : " + String(stopCount) + "\nAVER : 0:00:00"
+            }
             persentLabel.textColor = UIColor.white
         }
         else
@@ -119,7 +129,7 @@ class ViewController: UIViewController {
         
         //프로그래스 추가
         CircleView.trackColor = UIColor.darkGray
-        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         
         progressPer = Float(fixedSecond - second) / Float(fixedSecond)
         fromSecond = progressPer
@@ -136,7 +146,7 @@ class ViewController: UIViewController {
             startTime.set(Date(), forKey: "startTime")
             print("startTime SAVE")
             isRESET = false
-            fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+            fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
             //log 추가
             setLogData()
         }
@@ -158,7 +168,7 @@ class ViewController: UIViewController {
         ResetButton.isUserInteractionEnabled = false
         
         isStop = true
-        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         print("reset Button complite")
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
@@ -171,31 +181,17 @@ class ViewController: UIViewController {
         Label_toTime.text = getFutureTime()
     }
     @IBAction func Reset(_ sender: UIButton) {
-        ResetButton.backgroundColor = CLICK
-        ResetButton.setTitleColor(UIColor.white, for: .normal)
-        ResetButton.isUserInteractionEnabled = false
-        
-        isStop = true
-        endGame()
-        getTimeData()
-        sum = 0
-        timeTrigger = true
-        realTime = Timer()
-        print("reset Button complite")
-        
-        UserDefaults.standard.set(second, forKey: "second2")
-        UserDefaults.standard.set(allTime, forKey: "allTime2")
-        UserDefaults.standard.set(sum, forKey: "sum2")
-        //정지 회수 저장
-        stopCount = 0
-        UserDefaults.standard.set(0, forKey: "stopCount")
-        
-        AllTimeLabel.text = printTime(temp: allTime)
-        SumTimeLabel.text = printTime(temp: sum)
-        CountTimeLabel.text = printTime(temp: second)
-        
-        //persent 추가! RESET 여부 추가
-        persentReset()
+        //경고창 추가
+        let alert = UIAlertController(title:"RESET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
+        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "RESET", style: .default, handler:
+                                        {
+                                            action in
+                                            self.RESET_action()
+                                        })
+        alert.addAction(cancel)
+        alert.addAction(okAction)
+        present(alert,animated: true,completion: nil)
     }
     
     @IBAction func TimeSetButton(_ sender: UIButton) {
@@ -243,8 +239,7 @@ class ViewController: UIViewController {
         //stopCount 증가
         stopCount+=1
         UserDefaults.standard.set(stopCount, forKey: "stopCount")
-        //종료카운트 보이기 테스트
-        persentLabel.text = "STOP : " + String(stopCount) + "번"
+        checkPersent()
         //종료예상시간 보이기
         Label_toTime.text = getFutureTime()
     }
@@ -271,9 +266,9 @@ class ViewController: UIViewController {
     
     //클래스 불러오는 메소드 영역
     func getTimeData(){
-        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         print("second set complite")
-        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
+        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         print("allTime set complite")
         //빡공률 보이기 설정
         showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
@@ -304,6 +299,7 @@ extension ViewController : ChangeViewController {
         //정지 회수 저장
         stopCount = 0
         UserDefaults.standard.set(0, forKey: "stopCount")
+        persentLabel.text = "STOP : " + String(stopCount) + "\nAVER : 0:00:00"
         
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
@@ -319,6 +315,8 @@ extension ViewController : ChangeViewController {
         {
             persentLabel.alpha = 0
         }
+        //종료 예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     // Selected for Lifecycle Methods
@@ -343,11 +341,8 @@ extension ViewController : ChangeViewController {
                 removeSavedDate()
             }
         }
-        else
-        {
-            //종료예상시간 보이기
-            Label_toTime.text = getFutureTime()
-        }
+        //백그라운드 진입시 다시 최신화 설정
+        Label_toTime.text = getFutureTime()
     }
     
     static func getTimeDifference(startDate: Date) -> (Int, Int, Int) {
@@ -404,7 +399,7 @@ extension ViewController : ChangeViewController {
         UserDefaults.standard.set(allTime, forKey: "allTime2")
         
         //persent 추가!
-        checkPersent()
+//        checkPersent()
         //프로그래스 추가!
         progressPer = Float(fixedSecond - second) / Float(fixedSecond)
         print("fixedSecond : " + String(fixedSecond))
@@ -419,22 +414,21 @@ extension ViewController : ChangeViewController {
 //        persentLabel.text = "빡공률 : 0.0%"
         persentLabel.textColor = UIColor.white
         //프로그래스 추가!
-        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
-        //정지회수 보이기
-        persentLabel.text = "STOP : " + String(stopCount) + "번"
     }
     
+    //빡공률 -> 종료회수, 평균시간 보이기로 변경
     func checkPersent()
     {
-        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
-            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
-            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
-            print("timeForPersent : " + String(timeForPersent))
-
-            //계산부분
-            let per : Double = Double(sum)/Double(timeForPersent)*100
+//        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
+//            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
+//            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
+//            print("timeForPersent : " + String(timeForPersent))
+//
+//            //계산부분
+//            let per : Double = Double(sum)/Double(timeForPersent)*100
 //            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
 //
 //            if (per>50.0)
@@ -445,9 +439,13 @@ extension ViewController : ChangeViewController {
 //            {
 //                persentLabel.textColor = TEXT
 //            }
-        }
+//        }
         //정지회수 보이기
-        persentLabel.text = "STOP : " + String(stopCount) + "번"
+        var print = "STOP : " + String(stopCount)
+        let aver = (Int)(sum/stopCount)
+        print += "\nAVER : " + printTime(temp: aver)
+        //정지회수, 평균 시간 보이기
+        persentLabel.text = print
     }
     
     func stopColor()
@@ -461,9 +459,27 @@ extension ViewController : ChangeViewController {
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(BLUE, for: .normal)
         CountTimeLabel.textColor = UIColor.white
-        //예상종료시간 보이기
-        Label_to.alpha = 1
-        Label_toTime.alpha = 1
+        //예상종료시간 보이기, stop 버튼 제자리로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.Label_to.alpha = 1
+            self.Label_toTime.transform = CGAffineTransform(translationX: 0, y: 0)
+        })
+        //animation test
+        UIView.animate(withDuration: 0.5, animations: {
+            self.StartButton.alpha = 1
+            self.ResetButton.alpha = 1
+            self.RESETButton.alpha = 1
+            self.TimeSETButton.alpha = 1
+            self.LogButton.alpha = 1
+            self.View_labels.alpha = 1
+        })
+        //보이기 숨기기 설정
+        if(showPersent == 0)
+        {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.persentLabel.alpha = 1
+            })
+        }
     }
     
     func startColor()
@@ -471,15 +487,24 @@ extension ViewController : ChangeViewController {
         self.view.backgroundColor = UIColor.black
         CircleView.progressColor = BLUE!
         StartButton.backgroundColor = CLICK
-        StopButton.backgroundColor = BLUE
+        StopButton.backgroundColor = UIColor.clear
         ResetButton.backgroundColor = CLICK
         StartButton.setTitleColor(UIColor.white, for: .normal)
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(UIColor.white, for: .normal)
         CountTimeLabel.textColor = BLUE
-        //예상종료시간 숨기기
-        Label_to.alpha = 0
-        Label_toTime.alpha = 0
+        //예상종료시간 숨기기, stop 버튼 센터로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.Label_to.alpha = 0
+            self.Label_toTime.transform = CGAffineTransform(translationX: 0, y: -15)
+            self.StartButton.alpha = 0
+            self.ResetButton.alpha = 0
+            self.RESETButton.alpha = 0
+            self.TimeSETButton.alpha = 0
+            self.LogButton.alpha = 0
+            self.View_labels.alpha = 0
+            self.persentLabel.alpha = 0
+        })
     }
     
     func stopEnable()
@@ -552,9 +577,41 @@ extension ViewController : ChangeViewController {
         let now = Date()
         let future = now.addingTimeInterval(TimeInterval(second))
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.dateFormat = "hh:mm a"
         let today = dateFormatter.string(from: future)
         return today
+    }
+    
+    func RESET_action()
+    {
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
+        isStop = true
+        endGame()
+        getTimeData()
+        sum = 0
+        timeTrigger = true
+        realTime = Timer()
+        print("reset Button complite")
+        
+        UserDefaults.standard.set(second, forKey: "second2")
+        UserDefaults.standard.set(allTime, forKey: "allTime2")
+        UserDefaults.standard.set(sum, forKey: "sum2")
+        //정지 회수 저장
+        stopCount = 0
+        UserDefaults.standard.set(0, forKey: "stopCount")
+        persentLabel.text = "STOP : " + String(stopCount) + "\nAVER : 0:00:00"
+        
+        AllTimeLabel.text = printTime(temp: allTime)
+        SumTimeLabel.text = printTime(temp: sum)
+        CountTimeLabel.text = printTime(temp: second)
+        
+        //persent 추가! RESET 여부 추가
+        persentReset()
+        //예상종료시간 보이기
+        Label_toTime.text = getFutureTime()
     }
 
 }

@@ -33,8 +33,8 @@ class SetViewController: UIViewController {
     @IBOutlet var Control_persent: UISegmentedControl!
     
     var setViewControllerDelegate : ChangeViewController!
-    var allTime : Int = 28800
-    var second : Int = 3000
+    var allTime : Int = 21600
+    var second : Int = 2400
     //빡공률 보이기
     var showPersent: Int = 0
     
@@ -44,10 +44,10 @@ class SetViewController: UIViewController {
     var M2 = ""
     var S1 = ""
     var S2 = ""
-    var h1 = 8
+    var h1 = 6
     var h2 = 0
     var m1 = 0
-    var m2 = 50
+    var m2 = 40
     var s1 = 0
     var s2 = 0
     
@@ -95,13 +95,17 @@ class SetViewController: UIViewController {
     }
     
     @IBAction func SetButton(_ sender: UIButton) {
-        
-        UserDefaults.standard.set(second, forKey: "second")
-        UserDefaults.standard.set(allTime, forKey: "allTime")
-        UserDefaults.standard.set(showPersent, forKey: "showPersent")
-        print("set complite")
-        setViewControllerDelegate.updateViewController()
-        self.dismiss(animated: true, completion: nil)
+        //경고창 추가
+        let alert = UIAlertController(title:"SET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
+        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "SET", style: .default, handler:
+                                        {
+                                            action in
+                                            self.SET_action()
+                                        })
+        alert.addAction(cancel)
+        alert.addAction(okAction)
+        present(alert,animated: true,completion: nil)
     }
     
     @IBAction func set_persent(_ sender: UISegmentedControl) {
@@ -184,6 +188,16 @@ class SetViewController: UIViewController {
         
         let returnString  = String(H) + ":" + stringM + ":" + stringS
         return returnString
+    }
+    
+    func SET_action()
+    {
+        UserDefaults.standard.set(second, forKey: "second")
+        UserDefaults.standard.set(allTime, forKey: "allTime")
+        UserDefaults.standard.set(showPersent, forKey: "showPersent")
+        print("set complite")
+        setViewControllerDelegate.updateViewController()
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
