@@ -20,6 +20,7 @@ class SetViewController: UIViewController {
 //    @IBOutlet var InputView1: UIView!
 //    @IBOutlet var InputView2: UIView!
     @IBOutlet var SetButton: UIButton!
+    @IBOutlet var BackButton: UIButton!
     
     @IBOutlet var H1TextField: UITextField!
     @IBOutlet var M1TextField: UITextField!
@@ -52,6 +53,8 @@ class SetViewController: UIViewController {
     var s1 = 0
     var s2 = 0
     
+    let BLUE = UIColor(named: "Blue")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
@@ -71,6 +74,12 @@ class SetViewController: UIViewController {
         S2TextField.keyboardType = .numberPad
         
         SetButton.layer.cornerRadius = 10
+        SetButton.layer.borderWidth = 3
+        SetButton.layer.borderColor = BLUE?.cgColor
+        
+        BackButton.layer.cornerRadius = 10
+        BackButton.layer.borderWidth = 3
+        BackButton.layer.borderColor = UIColor.white.cgColor
         
         H1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         M1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
@@ -111,6 +120,11 @@ class SetViewController: UIViewController {
         alert.addAction(cancel)
         alert.addAction(okAction)
         present(alert,animated: true,completion: nil)
+    }
+    
+    
+    @IBAction func Backbutton_action(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func set_persent(_ sender: UISegmentedControl) {

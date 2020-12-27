@@ -26,6 +26,8 @@ class LogViewController: UIViewController {
     @IBOutlet var Label_time6: UILabel!
     @IBOutlet var Label_time7: UILabel!
     
+    @IBOutlet var Button_back: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +61,10 @@ class LogViewController: UIViewController {
         Label_time6.text = time6
         Label_time7.text = time7
         
+        Button_back.layer.borderWidth = 3
+        Button_back.layer.borderColor = UIColor.white.cgColor
+        Button_back.layer.cornerRadius = 10
+        
 //        Label_day1.text = day1
 //        Label_day2.text = "10월 7일"
 //        Label_day3.text = "10월 6일"
@@ -74,4 +80,9 @@ class LogViewController: UIViewController {
 //        Label_time6.text = "4:58:23"
 //        Label_time7.text = "3:37:20"
     }
+    
+    @IBAction func Button_Back_action(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
