@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9312E4CC252231E600025C81 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9312E4CB252231E600025C81 /* LogViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
+		935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935411AA25402D89008CB6DD /* SetTimerViewController.swift */; };
 		93544DA82524BFDE009368C1 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93544DA22524BFDE009368C1 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		93544DA92524BFDE009368C1 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93544DA32524BFDE009368C1 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		93544DAA2524BFDE009368C1 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93544DA42524BFDE009368C1 /* HGGGOTHICSSI_PRO_00G.otf */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		9312E4CB252231E600025C81 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		935411AA25402D89008CB6DD /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		93544DA22524BFDE009368C1 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_99G.otf; path = fonts/HGGGOTHICSSI_PRO_99G.otf; sourceTree = SOURCE_ROOT; };
 		93544DA32524BFDE009368C1 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_40G.otf; path = fonts/HGGGOTHICSSI_PRO_40G.otf; sourceTree = SOURCE_ROOT; };
 		93544DA42524BFDE009368C1 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_00G.otf; path = fonts/HGGGOTHICSSI_PRO_00G.otf; sourceTree = SOURCE_ROOT; };
@@ -99,6 +101,7 @@
 				93B08524248DDF2F00E215BD /* ViewController.swift */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
 				9312E4CB252231E600025C81 /* LogViewController.swift */,
+				935411AA25402D89008CB6DD /* SetTimerViewController.swift */,
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
 				93A892B224C1544A00F89180 /* Test.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
@@ -191,6 +194,7 @@
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
+				935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
