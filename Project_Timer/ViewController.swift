@@ -153,6 +153,7 @@ class ViewController: UIViewController {
         startColor()
         startAction()
         isStop = false
+        Label_toTime.text = getFutureTime()
     }
     
     @IBAction func StopButtonAction(_ sender: UIButton) {
@@ -181,19 +182,6 @@ class ViewController: UIViewController {
         //종료예상시간 보이기
         Label_toTime.text = getFutureTime()
     }
-//    @IBAction func Reset(_ sender: UIButton) {
-//        //경고창 추가
-//        let alert = UIAlertController(title:"RESET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
-//        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
-//        let okAction = UIAlertAction(title: "RESET", style: .default, handler:
-//                                        {
-//                                            action in
-//                                            self.RESET_action()
-//                                        })
-//        alert.addAction(cancel)
-//        alert.addAction(okAction)
-//        present(alert,animated: true,completion: nil)
-//    }
     
     @IBAction func SETTINGButton(_ sender: UIButton) {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
@@ -439,24 +427,6 @@ extension ViewController : ChangeViewController {
     //빡공률 -> 종료회수, 평균시간 보이기로 변경
     func checkPersent()
     {
-//        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
-//            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
-//            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
-//            print("timeForPersent : " + String(timeForPersent))
-//
-//            //계산부분
-//            let per : Double = Double(sum)/Double(timeForPersent)*100
-//            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
-//
-//            if (per>50.0)
-//            {
-//                persentLabel.textColor = UIColor.white
-//            }
-//            else
-//            {
-//                persentLabel.textColor = TEXT
-//            }
-//        }
         //정지회수 보이기
         var print = "STOP : " + String(stopCount)
         let aver = (Int)(sum/stopCount)

@@ -15,10 +15,6 @@ protocol ChangeViewController {
 
 class SetViewController: UIViewController {
 
-//    @IBOutlet var View1: UIView!
-//    @IBOutlet var View2: UIView!
-//    @IBOutlet var InputView1: UIView!
-//    @IBOutlet var InputView2: UIView!
     @IBOutlet var SetButton: UIButton!
     @IBOutlet var BackButton: UIButton!
     
@@ -63,6 +59,8 @@ class SetViewController: UIViewController {
         AllTimeLabel.text = printTime(temp: allTime)
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         SecondLabel.text = printTime(temp: second)
+        getHMS1()
+        getHMS2()
         
         showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         
@@ -194,6 +192,20 @@ class SetViewController: UIViewController {
             }
             s2 = Int(S2)!
         }
+    }
+    
+    func getHMS1()
+    {
+        s1 = allTime%60
+        h1 = allTime/3600
+        m1 = allTime/60 - h1*60
+    }
+    
+    func getHMS2()
+    {
+        s2 = second%60
+        h2 = second/3600
+        m2 = second/60 - h2*60
     }
     
     func printTime(temp : Int) -> String
