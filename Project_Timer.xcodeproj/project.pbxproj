@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		873C760825E79105009374E1 /* SetTimerViewController2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C760725E79105009374E1 /* SetTimerViewController2ViewController.swift */; };
 		8787DFDA25B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		8787DFDB25B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		8787DFDC25B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD625B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		873C760725E79105009374E1 /* SetTimerViewController2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2ViewController.swift; sourceTree = "<group>"; };
 		8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		8787DFD625B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				93544DA12524BFC8009368C1 /* fonts */,
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
+				873C760725E79105009374E1 /* SetTimerViewController2ViewController.swift */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				93B08524248DDF2F00E215BD /* ViewController.swift */,
@@ -211,6 +214,7 @@
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
+				873C760825E79105009374E1 /* SetTimerViewController2ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
