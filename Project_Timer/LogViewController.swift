@@ -26,59 +26,24 @@ class LogViewController: UIViewController {
     @IBOutlet var Label_time6: UILabel!
     @IBOutlet var Label_time7: UILabel!
     
+    @IBOutlet var Label_break1: UILabel!
+    @IBOutlet var Label_break2: UILabel!
+    @IBOutlet var Label_break3: UILabel!
+    @IBOutlet var Label_break4: UILabel!
+    @IBOutlet var Label_break5: UILabel!
+    @IBOutlet var Label_break6: UILabel!
+    @IBOutlet var Label_break7: UILabel!
+    
     @IBOutlet var Button_back: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let day1 = UserDefaults.standard.value(forKey: "day1") as? String ?? "NO DATA"
-        let day2 = UserDefaults.standard.value(forKey: "day2") as? String ?? "NO DATA"
-        let day3 = UserDefaults.standard.value(forKey: "day3") as? String ?? "NO DATA"
-        let day4 = UserDefaults.standard.value(forKey: "day4") as? String ?? "NO DATA"
-        let day5 = UserDefaults.standard.value(forKey: "day5") as? String ?? "NO DATA"
-        let day6 = UserDefaults.standard.value(forKey: "day6") as? String ?? "NO DATA"
-        let day7 = UserDefaults.standard.value(forKey: "day7") as? String ?? "NO DATA"
-        let time1 = UserDefaults.standard.value(forKey: "time1") as? String ?? "NO DATA"
-        let time2 = UserDefaults.standard.value(forKey: "time2") as? String ?? "NO DATA"
-        let time3 = UserDefaults.standard.value(forKey: "time3") as? String ?? "NO DATA"
-        let time4 = UserDefaults.standard.value(forKey: "time4") as? String ?? "NO DATA"
-        let time5 = UserDefaults.standard.value(forKey: "time5") as? String ?? "NO DATA"
-        let time6 = UserDefaults.standard.value(forKey: "time6") as? String ?? "NO DATA"
-        let time7 = UserDefaults.standard.value(forKey: "time7") as? String ?? "NO DATA"
-        
-        Label_day1.text = day1
-        Label_day2.text = day2
-        Label_day3.text = day3
-        Label_day4.text = day4
-        Label_day5.text = day5
-        Label_day6.text = day6
-        Label_day7.text = day7
-        Label_time1.text = time1
-        Label_time2.text = time2
-        Label_time3.text = time3
-        Label_time4.text = time4
-        Label_time5.text = time5
-        Label_time6.text = time6
-        Label_time7.text = time7
+//        setDummyData()
+        setData()
         
         Button_back.layer.borderWidth = 3
         Button_back.layer.borderColor = UIColor.white.cgColor
         Button_back.layer.cornerRadius = 10
-        
-//        Label_day1.text = day1
-//        Label_day2.text = "10월 7일"
-//        Label_day3.text = "10월 6일"
-//        Label_day4.text = "10월 5일"
-//        Label_day5.text = "10월 4일"
-//        Label_day6.text = "10월 3일"
-//        Label_day7.text = "10월 2일"
-//        Label_time1.text = time1
-//        Label_time2.text = "4:03:41"
-//        Label_time3.text = "6:08:14"
-//        Label_time4.text = "4:03:39"
-//        Label_time5.text = "5:44:07"
-//        Label_time6.text = "4:58:23"
-//        Label_time7.text = "3:37:20"
     }
     
     @IBAction func Button_Back_action(_ sender: Any) {
@@ -86,3 +51,74 @@ class LogViewController: UIViewController {
     }
     
 }
+
+
+extension LogViewController {
+    
+    func setData() {
+        Label_day1.text = translate(input: UserDefaults.standard.value(forKey: "day1") as? String ?? "NO DATA")
+        Label_day2.text = translate(input: UserDefaults.standard.value(forKey: "day2") as? String ?? "NO DATA")
+        Label_day3.text = translate(input: UserDefaults.standard.value(forKey: "day3") as? String ?? "NO DATA")
+        Label_day4.text = translate(input: UserDefaults.standard.value(forKey: "day4") as? String ?? "NO DATA")
+        Label_day5.text = translate(input: UserDefaults.standard.value(forKey: "day5") as? String ?? "NO DATA")
+        Label_day6.text = translate(input: UserDefaults.standard.value(forKey: "day6") as? String ?? "NO DATA")
+        Label_day7.text = translate(input: UserDefaults.standard.value(forKey: "day7") as? String ?? "NO DATA")
+        
+        Label_time1.text = UserDefaults.standard.value(forKey: "time1") as? String ?? "NO DATA"
+        Label_time2.text = UserDefaults.standard.value(forKey: "time2") as? String ?? "NO DATA"
+        Label_time3.text = UserDefaults.standard.value(forKey: "time3") as? String ?? "NO DATA"
+        Label_time4.text = UserDefaults.standard.value(forKey: "time4") as? String ?? "NO DATA"
+        Label_time5.text = UserDefaults.standard.value(forKey: "time5") as? String ?? "NO DATA"
+        Label_time6.text = UserDefaults.standard.value(forKey: "time6") as? String ?? "NO DATA"
+        Label_time7.text = UserDefaults.standard.value(forKey: "time7") as? String ?? "NO DATA"
+        
+        Label_break1.text = UserDefaults.standard.value(forKey: "break1") as? String ?? "NO DATA"
+        Label_break2.text = UserDefaults.standard.value(forKey: "break2") as? String ?? "NO DATA"
+        Label_break3.text = UserDefaults.standard.value(forKey: "break3") as? String ?? "NO DATA"
+        Label_break4.text = UserDefaults.standard.value(forKey: "break4") as? String ?? "NO DATA"
+        Label_break5.text = UserDefaults.standard.value(forKey: "break5") as? String ?? "NO DATA"
+        Label_break6.text = UserDefaults.standard.value(forKey: "break6") as? String ?? "NO DATA"
+        Label_break7.text = UserDefaults.standard.value(forKey: "break7") as? String ?? "NO DATA"
+    }
+    
+    func setDummyData() {
+        Label_day1.text = "2/24"
+        Label_day2.text = "2/23"
+        Label_day3.text = "2/22"
+        Label_day4.text = "2/21"
+        Label_day5.text = "2/20"
+        Label_day6.text = "2/19"
+        Label_day7.text = "2/18"
+
+        Label_time1.text = "2:35:20"
+        Label_time2.text = "4:03:41"
+        Label_time3.text = "6:08:14"
+        Label_time4.text = "4:03:39"
+        Label_time5.text = "5:44:07"
+        Label_time6.text = "4:58:23"
+        Label_time7.text = "3:37:20"
+        
+        Label_break1.text = "0:35:20"
+        Label_break2.text = "2:01:00"
+        Label_break3.text = "2:32:56"
+        Label_break4.text = "1:05:00"
+        Label_break5.text = "1:40:08"
+        Label_break6.text = "2:02:15"
+        Label_break7.text = "0:37:50"
+    }
+    
+    func translate(input: String) -> String {
+        if(input == "NO DATA") {
+            return "-/-"
+        } else {
+            print(input)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "M월 d일"
+            let exported = dateFormatter.date(from: input)!
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "M/d"
+            return newDateFormatter.string(from: exported)
+        }
+    }
+}
+
