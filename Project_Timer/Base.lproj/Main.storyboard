@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y4Z-eW-hHu">
-    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -25,7 +23,7 @@
             <objects>
                 <viewController storyboardIdentifier="SetViewController" id="ZOa-8O-R8V" customClass="SetViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GEg-xe-ZGb">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyn-gR-M47">
@@ -324,7 +322,7 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" wantsFullScreenLayout="YES" id="Y4Z-eW-hHu" customClass="ViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VzW-nX-Swv">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0K-zv-PIN" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
@@ -627,7 +625,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController storyboardIdentifier="SetTimerViewController" id="mBZ-WW-u2z" customClass="SetTimerViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nig-9k-JHR">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov4-hG-Mco">
@@ -823,7 +821,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController storyboardIdentifier="ViewController2" wantsFullScreenLayout="YES" id="USW-Yb-Z30" customClass="ViewController2" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0D-kL-2nG">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yxj-PU-hg5" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
@@ -1084,13 +1082,13 @@ AVER : 0:00:00</string>
                         <outlet property="BreakButton" destination="4aR-m2-zCd" id="Cmd-yo-eR3"/>
                         <outlet property="BreakTimeLabel" destination="lgQ-63-Ifn" id="4dm-Ll-otp"/>
                         <outlet property="CircleView" destination="Yxj-PU-hg5" id="XGP-6F-PLI"/>
-                        <outlet property="CountTimeLabel" destination="D1z-t7-DSR" id="grM-ao-Jeh"/>
                         <outlet property="GoalTimeLabel" destination="c8U-ec-Qdv" id="NQ0-ad-oxj"/>
                         <outlet property="LogButton" destination="Ewo-N5-ElV" id="j55-z7-HvH"/>
                         <outlet property="ModeButton" destination="oPI-kR-WB7" id="OLV-FG-mfB"/>
                         <outlet property="SettingButton" destination="cE2-hA-3DG" id="CYp-5R-zIR"/>
                         <outlet property="StartButton" destination="vHj-jd-hin" id="hRJ-Yn-uPT"/>
                         <outlet property="StopButton" destination="LhG-Ml-JNe" id="hI7-4m-2Jz"/>
+                        <outlet property="SumTimeLabel" destination="D1z-t7-DSR" id="grM-ao-Jeh"/>
                         <outlet property="avarageLabel" destination="594-rf-dmW" id="kuJ-mX-DgH"/>
                         <outlet property="finishTimeLabel" destination="MOY-ol-4fo" id="f9a-c6-Hlz"/>
                         <outlet property="finishTimeLabel_show" destination="3oB-u2-JXI" id="fO5-ZN-JIJ"/>
@@ -1107,7 +1105,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController storyboardIdentifier="SetTimerViewController2" id="jZ3-04-sAe" customClass="SetTimerViewController2" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5A9-fd-Rlv">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-9S-Lzv">
@@ -1457,7 +1455,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController id="6DW-kE-C14" customClass="LogViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="re6-9u-CsG">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obh-89-7kn">
@@ -2205,7 +2203,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController id="czR-HM-5aj" customClass="GraphViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s7g-Bo-Crn">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mik-r1-m5Q">

@@ -24,7 +24,7 @@ class ViewController2: UIViewController {
     
     @IBOutlet var GoalTimeLabel: UILabel!
     @IBOutlet var BreakTimeLabel: UILabel!
-    @IBOutlet var CountTimeLabel: UILabel!
+    @IBOutlet var SumTimeLabel: UILabel!
     @IBOutlet var StartButton: UIButton!
     @IBOutlet var StopButton: UIButton!
     @IBOutlet var BreakButton: UIButton!
@@ -68,6 +68,8 @@ class ViewController2: UIViewController {
     var array_break = [String](repeating: "", count: 7)
     var stopCount: Int = 0
     var VCNum: Int = 2
+    //맥용을 위한 구조
+    var time = Time()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,31 +92,41 @@ class ViewController2: UIViewController {
     }
     
     func checkTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 1, target: self,
-            selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        timeTrigger = false
+        DispatchQueue.main.async {
+            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerTest), userInfo: nil, repeats: true)
+            self.timeTrigger = false
+        }
     }
     
     func breakTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 1, target: self,
-            selector: #selector(updateBreaker), userInfo: nil, repeats: true)
-        timeTrigger = false
+        DispatchQueue.main.async {
+            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.brekrTest), userInfo: nil, repeats: true)
+            self.timeTrigger = false
+        }
     }
     
-    @objc func updateCounter(){
-        sumTime += 1
-        goalTime -= 1
+    @objc func timerTest() {
+        //맥용 코드
+        let seconds = time.getSeconds()
+        goalTime = time.startGoalTime - seconds
+        sumTime = time.startSumTime + seconds
         sumTime2 = sumTime%fixedSecond
+        //updateTimeLabels()
+        GoalTimeLabel.text = printTime(temp: goalTime)
+        SumTimeLabel.text = printTime(temp: sumTime)
+        //saveTimes()
+        UserDefaults.standard.set(sumTime, forKey: "sum2")
+        UserDefaults.standard.set(goalTime, forKey: "allTime2")
         
-        updateTimeLabels()
-        updateProgress()
         printLogs()
-        saveTimes()
+        updateProgress()
         showNowTime()
     }
     
-    @objc func updateBreaker() {
-        breakTime += 1
+    @objc func brekrTest() {
+        //맥용 코드
+        let seconds = time.getSeconds()
+        breakTime = time.startBreakTime + seconds
         breakTime2 = breakTime%fixedBreak
         
         updateBreakTimeLabels()
@@ -278,7 +290,7 @@ extension ViewController2 {
     
     func setTimes() {
         GoalTimeLabel.text = printTime(temp: goalTime)
-        CountTimeLabel.text = printTime(temp: sumTime)
+        SumTimeLabel.text = printTime(temp: sumTime)
         BreakTimeLabel.text = printTime(temp: breakTime)
         finishTimeLabel.text = getFutureTime()
     }
@@ -365,7 +377,7 @@ extension ViewController2 {
     func updateTimeLabels() {
         GoalTimeLabel.text = printTime(temp: goalTime)
         BreakTimeLabel.text = printTime(temp: breakTime)
-        CountTimeLabel.text = printTime(temp: sumTime)
+        SumTimeLabel.text = printTime(temp: sumTime)
     }
     
     func updateBreakTimeLabels() {
@@ -485,7 +497,7 @@ extension ViewController2 {
         StartButton.setTitleColor(COLOR, for: .normal)
         StopButton.setTitleColor(UIColor.white, for: .normal)
         BreakButton.setTitleColor(COLOR, for: .normal)
-        CountTimeLabel.textColor = UIColor.white
+        SumTimeLabel.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.finishTimeLabel_show.alpha = 1
@@ -523,7 +535,7 @@ extension ViewController2 {
         StartButton.setTitleColor(UIColor.white, for: .normal)
         StopButton.setTitleColor(UIColor.white, for: .normal)
         BreakButton.setTitleColor(UIColor.white, for: .normal)
-        CountTimeLabel.textColor = COLOR
+        SumTimeLabel.textColor = COLOR
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.finishTimeLabel_show.alpha = 0
@@ -599,6 +611,8 @@ extension ViewController2 {
         isStop = false
         startColor()
         updateProgress()
+        //맥용 코드 추가
+        time.setTimes(goal: goalTime, sum: sumTime, timer: 0)
         startAction()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
@@ -627,6 +641,8 @@ extension ViewController2 {
         isBreak = true
         breakStartColor()
         updateBreakProgress()
+        //맥용 코드 추가
+        time.setBreakTime(breakTime: breakTime)
         breakStartAction()
     }
     
@@ -637,4 +653,3 @@ extension ViewController2 {
         breakStopColor()
     }
 }
-

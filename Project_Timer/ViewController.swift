@@ -65,6 +65,9 @@ class ViewController: UIViewController {
     var array_break = [String](repeating: "", count: 7)
     var stopCount: Int = 0
     var VCNum: Int = 1
+    var startTime: Date? = nil
+    //맥용을 위한 구조
+    var time = Time()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +81,7 @@ class ViewController: UIViewController {
         stopEnable()
         
         setBackground()
-        setIsFirst()
+        checkStartTime()
         checkAverage()
         setProgress()
     }
@@ -91,29 +94,36 @@ class ViewController: UIViewController {
     }
     
     func checkTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        timeTrigger = false
+        DispatchQueue.main.async {
+            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerTest), userInfo: nil, repeats: true)
+            self.timeTrigger = false
+        }
     }
-    
-    @objc func updateCounter(){
+    @objc func timerTest() {
         if timerTime < 1 {
             algoOfStop()
             TimerLabel.text = "종료"
-//            AudioServicesPlaySystemSound(1254)
-            //오디오 재생 추가
             playAudioFromProject()
-//            AudioServicesPlaySystemSound(4095)
+            saveTimes()
         } else {
             if timerTime < 61 {
                 TimerLabel.textColor = RED
                 CircleView.progressColor = RED!
             }
-            timerTime -= 1
-            sumTime += 1
-            goalTime -= 1
+            //맥용 코드
+            let seconds = time.getSeconds()
+            goalTime = time.startGoalTime - seconds
+            sumTime = time.startSumTime + seconds
+            timerTime = time.startTimerTime - seconds
+            //updateTimeLabels()
+            GoalTimeLabel.text = printTime(temp: goalTime)
+            SumTimeLabel.text = printTime(temp: sumTime)
+            TimerLabel.text = printTime(temp: timerTime)
+            //saveTimes()
+            UserDefaults.standard.set(sumTime, forKey: "sum2")
+            UserDefaults.standard.set(timerTime, forKey: "second2")
+            UserDefaults.standard.set(goalTime, forKey: "allTime2")
             
-            updateTimeLabes()
-            saveTimes()
             printLogs()
             updateProgress()
             showNowTime()
@@ -224,8 +234,10 @@ extension ViewController {
         finishTimeLabel.text = getFutureTime()
     }
     
-    func setIsFirst() {
-        if (UserDefaults.standard.object(forKey: "startTime") == nil) {
+    func checkStartTime() {
+        if let getTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
+            startTime = getTime
+        } else {
             isFirst = true
         }
     }
@@ -305,8 +317,7 @@ extension ViewController {
     }
     
     func firstStop() {
-        let startTime = UserDefaults.standard
-        startTime.set(Date(), forKey: "startTime")
+        UserDefaults.standard.set(Date(), forKey: "startTime")
         print("startTime SAVE")
         setLogData()
     }
@@ -386,7 +397,6 @@ extension ViewController {
             sumTime = sumTime + tempSeconds
             timerTime = timerTime - tempSeconds
         }
-        
         updateTimeLabes()
         updateProgress()
         startAction()
@@ -428,10 +438,12 @@ extension ViewController {
         progressPer = Float(fixedSecond - timerTime) / Float(fixedSecond)
         CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: fromSecond)
         fromSecond = progressPer
+        print("updateProgress")
     }
     
     func persentReset() {
         isFirst = true
+        UserDefaults.standard.set(nil, forKey: "startTime")
         AverageLabel.textColor = UIColor.white
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
@@ -588,6 +600,8 @@ extension ViewController {
     func algoOfStart() {
         isStop = false
         startColor()
+        //맥용 코드 추가
+        time.setTimes(goal: goalTime, sum: sumTime, timer: timerTime)
         startAction()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
@@ -619,4 +633,3 @@ extension ViewController {
         finishTimeLabel.text = getFutureTime()
     }
 }
-
