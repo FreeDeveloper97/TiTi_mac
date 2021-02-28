@@ -20,9 +20,16 @@ class SetTimerViewController2: UIViewController {
     @IBOutlet var Text_S: UITextField!
     @IBOutlet var Button_set: UIButton!
     @IBOutlet var Button_Back: UIButton!
-    @IBOutlet var ColorButton: UIButton!
     @IBOutlet var Label_toTime: UILabel!
     @IBOutlet var controlShowAverage: UISegmentedControl!
+    
+    @IBOutlet var Color1: UIButton!
+    @IBOutlet var Color2: UIButton!
+    @IBOutlet var Color3: UIButton!
+    @IBOutlet var Color4: UIButton!
+    @IBOutlet var Color5: UIButton!
+    @IBOutlet var Color6: UIButton!
+    @IBOutlet var Color7: UIButton!
     
     var SetTimerViewControllerDelegate : ChangeViewController2!
     
@@ -40,6 +47,7 @@ class SetTimerViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboard()
+        setRadius()
         
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         showAverage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
@@ -49,13 +57,6 @@ class SetTimerViewController2: UIViewController {
         Text_H.keyboardType = .numberPad
         Text_M.keyboardType = .numberPad
         Text_S.keyboardType = .numberPad
-        
-        Button_set.layer.cornerRadius = 10
-        Button_set.layer.borderWidth = 3
-        
-        Button_Back.layer.cornerRadius = 10
-        Button_Back.layer.borderWidth = 3
-        ColorButton.layer.cornerRadius = 10
         
         updateColor()
 
@@ -78,6 +79,57 @@ class SetTimerViewController2: UIViewController {
         Label_timer.text = printTime(temp: goalTime)
         Label_toTime.text = getFutureTime()
     }
+    
+    @IBAction func Button_set(_ sender: UIButton) {
+        //경고창 추가
+        let alert = UIAlertController(title:"SET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
+        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "SET", style: .default, handler:
+                                        {
+                                            action in
+                                            self.SET_action()
+                                        })
+        alert.addAction(cancel)
+        alert.addAction(okAction)
+        present(alert,animated: true,completion: nil)
+    }
+    
+    @IBAction func Button_Back_action(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//    @IBAction func ColorBTAction(_ sender: Any) {
+//        if #available(iOS 14.0, *) {
+//            let picker = UIColorPickerViewController()
+//            picker.selectedColor = COLOR!
+//            picker.delegate = self
+//            self.present(picker, animated: true, completion: nil)
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//    }
+    
+    @IBAction func set_persent(_ sender: UISegmentedControl) {
+        switch controlShowAverage.selectedSegmentIndex {
+        case 0:
+            showAverage = 0
+            print("0")
+        case 1:
+            showAverage = 1
+            print("1")
+        default: return
+        }
+    }
+    
+    @IBAction func SetColor(_ sender: UIButton) {
+        let colorName: String = sender.currentTitle ?? "Background2"
+        COLOR = UIColor(named: "\(colorName)")
+        updateColor()
+    }
+    
+}
+
+extension SetTimerViewController2 {
     
     func check()
     {
@@ -123,47 +175,6 @@ class SetTimerViewController2: UIViewController {
         return returnString
     }
     
-    @IBAction func Button_set(_ sender: UIButton) {
-        //경고창 추가
-        let alert = UIAlertController(title:"SET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
-        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
-        let okAction = UIAlertAction(title: "SET", style: .default, handler:
-                                        {
-                                            action in
-                                            self.SET_action()
-                                        })
-        alert.addAction(cancel)
-        alert.addAction(okAction)
-        present(alert,animated: true,completion: nil)
-    }
-    
-    @IBAction func Button_Back_action(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func ColorBTAction(_ sender: Any) {
-        if #available(iOS 14.0, *) {
-            let picker = UIColorPickerViewController()
-            picker.selectedColor = COLOR!
-            picker.delegate = self
-            self.present(picker, animated: true, completion: nil)
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
-    @IBAction func set_persent(_ sender: UISegmentedControl) {
-        switch controlShowAverage.selectedSegmentIndex {
-        case 0:
-            showAverage = 0
-            print("0")
-        case 1:
-            showAverage = 1
-            print("1")
-        default: return
-        }
-    }
-    
     func getFutureTime() -> String
     {
         //log 날짜 설정
@@ -177,7 +188,6 @@ class SetTimerViewController2: UIViewController {
     
     func updateColor() {
         Label_timer.textColor = COLOR
-        ColorButton.backgroundColor = COLOR
         Button_set.setTitleColor(COLOR, for: .normal)
         Button_set.layer.borderColor = COLOR?.cgColor
         Button_Back.layer.borderColor = UIColor.white.cgColor
@@ -194,25 +204,40 @@ class SetTimerViewController2: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func setRadius() {
+        Button_set.layer.cornerRadius = 10
+        Button_set.layer.borderWidth = 3
+        
+        Button_Back.layer.cornerRadius = 10
+        Button_Back.layer.borderWidth = 3
+        
+        Color1.layer.cornerRadius = 10
+        Color2.layer.cornerRadius = 10
+        Color3.layer.cornerRadius = 10
+        Color4.layer.cornerRadius = 10
+        Color5.layer.cornerRadius = 10
+        Color6.layer.cornerRadius = 10
+        Color7.layer.cornerRadius = 10
+    }
 }
 
 
-extension SetTimerViewController2 : UIColorPickerViewControllerDelegate {
-    
-    @available(iOS 14.0, *)
-    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        print(viewController.selectedColor)
-        COLOR = viewController.selectedColor
-        updateColor()
-    }
-    
-    @available(iOS 14.0, *)
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        print(viewController.selectedColor)
-        COLOR = viewController.selectedColor
-        updateColor()
-    }
-}
+//extension SetTimerViewController2 : UIColorPickerViewControllerDelegate {
+//
+//    @available(iOS 14.0, *)
+//    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+//        print(viewController.selectedColor)
+//        COLOR = viewController.selectedColor
+//        updateColor()
+//    }
+//
+//    @available(iOS 14.0, *)
+//    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+//        print(viewController.selectedColor)
+//        COLOR = viewController.selectedColor
+//        updateColor()
+//    }
+//}
 
 
 
