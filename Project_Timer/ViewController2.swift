@@ -161,6 +161,7 @@ extension ViewController2 : ChangeViewController2 {
     
     func changeGoalTime() {
         isFirst = true
+        UserDefaults.standard.set(nil, forKey: "startTime")
         setColor()
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
         showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0

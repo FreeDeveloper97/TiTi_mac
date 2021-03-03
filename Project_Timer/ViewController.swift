@@ -170,6 +170,7 @@ extension ViewController : ChangeViewController {
         UserDefaults.standard.set(goalTime, forKey: "allTime2")
         UserDefaults.standard.set(sumTime, forKey: "sum2")
         UserDefaults.standard.set(0, forKey: "breakTime")
+        UserDefaults.standard.set(nil, forKey: "startTime")
         //정지 회수 저장
         stopCount = 0
         UserDefaults.standard.set(0, forKey: "stopCount")
