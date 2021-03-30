@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y4Z-eW-hHu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m58-px-16Y">
+    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,7 +25,7 @@
             <objects>
                 <viewController storyboardIdentifier="SetViewController" id="ZOa-8O-R8V" customClass="SetViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GEg-xe-ZGb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyn-gR-M47">
@@ -322,11 +324,11 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" wantsFullScreenLayout="YES" id="Y4Z-eW-hHu" customClass="ViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VzW-nX-Swv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0K-zv-PIN" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
-                                <rect key="frame" x="233" y="62" width="900" height="900"/>
+                                <rect key="frame" x="233" y="52" width="900" height="900"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EB9-cb-w4v">
                                         <rect key="frame" x="404.5" y="356.5" width="91" height="187"/>
@@ -592,8 +594,8 @@ AVER : 0:00:00</string>
                         <viewLayoutGuide key="safeArea" id="l4R-uS-VuL"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="Z0K-zv-PIN" firstAttribute="centerX" secondItem="VzW-nX-Swv" secondAttribute="centerX" id="N36-G5-xcb"/>
-                            <constraint firstItem="Z0K-zv-PIN" firstAttribute="centerY" secondItem="VzW-nX-Swv" secondAttribute="centerY" id="cMo-Ft-wsk"/>
+                            <constraint firstItem="Z0K-zv-PIN" firstAttribute="centerX" secondItem="l4R-uS-VuL" secondAttribute="centerX" id="N36-G5-xcb"/>
+                            <constraint firstItem="Z0K-zv-PIN" firstAttribute="centerY" secondItem="l4R-uS-VuL" secondAttribute="centerY" id="cMo-Ft-wsk"/>
                         </constraints>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="1200" height="1200"/>
@@ -625,7 +627,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController storyboardIdentifier="SetTimerViewController" id="mBZ-WW-u2z" customClass="SetTimerViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nig-9k-JHR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov4-hG-Mco">
@@ -821,11 +823,11 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController storyboardIdentifier="ViewController2" wantsFullScreenLayout="YES" id="USW-Yb-Z30" customClass="ViewController2" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0D-kL-2nG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yxj-PU-hg5" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
-                                <rect key="frame" x="233" y="62" width="900" height="900"/>
+                                <rect key="frame" x="233" y="52" width="900" height="900"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1z-t7-DSR">
                                         <rect key="frame" x="404.5" y="356.5" width="91" height="187"/>
@@ -1073,8 +1075,8 @@ AVER : 0:00:00</string>
                         <viewLayoutGuide key="safeArea" id="bbo-92-NLZ"/>
                         <color key="backgroundColor" name="Background2"/>
                         <constraints>
-                            <constraint firstItem="Yxj-PU-hg5" firstAttribute="centerY" secondItem="v0D-kL-2nG" secondAttribute="centerY" id="Tjz-t7-ofK"/>
-                            <constraint firstItem="Yxj-PU-hg5" firstAttribute="centerX" secondItem="v0D-kL-2nG" secondAttribute="centerX" id="gfO-WT-0eC"/>
+                            <constraint firstItem="Yxj-PU-hg5" firstAttribute="centerX" secondItem="bbo-92-NLZ" secondAttribute="centerX" id="4s6-Fo-E9T"/>
+                            <constraint firstItem="Yxj-PU-hg5" firstAttribute="centerY" secondItem="bbo-92-NLZ" secondAttribute="centerY" id="oPe-0h-c8b"/>
                         </constraints>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="1200" height="1200"/>
@@ -1105,7 +1107,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController storyboardIdentifier="SetTimerViewController2" id="jZ3-04-sAe" customClass="SetTimerViewController2" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5A9-fd-Rlv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-9S-Lzv">
@@ -1455,7 +1457,7 @@ AVER : 0:00:00</string>
             <objects>
                 <viewController id="6DW-kE-C14" customClass="LogViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="re6-9u-CsG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obh-89-7kn">
@@ -2198,12 +2200,82 @@ AVER : 0:00:00</string>
             </objects>
             <point key="canvasLocation" x="799" y="829"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="bUv-5j-7M6">
+            <objects>
+                <viewController id="m58-px-16Y" customClass="testViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yj3-0b-7iK">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="237-Px-fe4" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                <rect key="frame" x="233" y="52" width="900" height="900"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEM-Jr-kre" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                        <rect key="frame" x="35" y="35" width="830" height="830"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-EN-McL" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                                <rect key="frame" x="35" y="35" width="760" height="760"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ5-l0-swW">
+                                                        <rect key="frame" x="305.5" y="215" width="149.5" height="330"/>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="300"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="BJ5-l0-swW" firstAttribute="centerX" secondItem="rV9-EN-McL" secondAttribute="centerX" id="CLD-vl-k3O"/>
+                                                    <constraint firstItem="BJ5-l0-swW" firstAttribute="centerY" secondItem="rV9-EN-McL" secondAttribute="centerY" id="sLa-UE-Cfn"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rV9-EN-McL" firstAttribute="centerX" secondItem="vEM-Jr-kre" secondAttribute="centerX" id="GXt-gh-zLH"/>
+                                            <constraint firstAttribute="trailing" secondItem="rV9-EN-McL" secondAttribute="trailing" constant="35" id="J9o-Xl-Qmv"/>
+                                            <constraint firstItem="rV9-EN-McL" firstAttribute="top" secondItem="vEM-Jr-kre" secondAttribute="top" constant="35" id="WI6-M2-00f"/>
+                                            <constraint firstAttribute="bottom" secondItem="rV9-EN-McL" secondAttribute="bottom" constant="35" id="Z1Y-iv-Mbh"/>
+                                            <constraint firstItem="rV9-EN-McL" firstAttribute="centerY" secondItem="vEM-Jr-kre" secondAttribute="centerY" id="eur-60-iBL"/>
+                                            <constraint firstItem="rV9-EN-McL" firstAttribute="leading" secondItem="vEM-Jr-kre" secondAttribute="leading" constant="35" id="jf7-Nt-Wue"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="900" id="1Ev-jc-gLI"/>
+                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="top" secondItem="237-Px-fe4" secondAttribute="top" constant="35" id="Nq0-Rx-cE5"/>
+                                    <constraint firstAttribute="bottom" secondItem="vEM-Jr-kre" secondAttribute="bottom" constant="35" id="PMy-N1-mHm"/>
+                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="centerY" secondItem="237-Px-fe4" secondAttribute="centerY" id="VoR-fc-BKg"/>
+                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="leading" secondItem="237-Px-fe4" secondAttribute="leading" constant="35" id="gBC-vK-zh5"/>
+                                    <constraint firstAttribute="trailing" secondItem="vEM-Jr-kre" secondAttribute="trailing" constant="35" id="shk-kG-4gD"/>
+                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="centerX" secondItem="237-Px-fe4" secondAttribute="centerX" id="tdn-qc-y2O"/>
+                                    <constraint firstAttribute="width" constant="900" id="xHm-28-2Ie"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fo7-2E-6PY"/>
+                        <color key="backgroundColor" name="Color6"/>
+                        <constraints>
+                            <constraint firstItem="237-Px-fe4" firstAttribute="centerY" secondItem="Fo7-2E-6PY" secondAttribute="centerY" id="4Iz-HL-8G9"/>
+                            <constraint firstItem="237-Px-fe4" firstAttribute="centerX" secondItem="Fo7-2E-6PY" secondAttribute="centerX" id="CgM-o1-bgJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="count" destination="BJ5-l0-swW" id="Dx8-4d-ou7"/>
+                        <outlet property="progress1" destination="237-Px-fe4" id="bCf-ao-8Di"/>
+                        <outlet property="progress2" destination="vEM-Jr-kre" id="F9C-Vr-Q8N"/>
+                        <outlet property="progress3" destination="rV9-EN-McL" id="MvI-tb-hrH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xL4-AT-twz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="1508"/>
+        </scene>
         <!--Graph View Controller-->
         <scene sceneID="5p9-bA-UUs">
             <objects>
                 <viewController id="czR-HM-5aj" customClass="GraphViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s7g-Bo-Crn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mik-r1-m5Q">

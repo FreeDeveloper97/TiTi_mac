@@ -18,6 +18,7 @@
 		87BF47D525B6E12A00EE2819 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87BF47D425B6E12A00EE2819 /* timer.mp3 */; };
 		87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826625EB1F5300B01464 /* GraphViewController.swift */; };
 		87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826925EB1F6E00B01464 /* ContentView.swift */; };
+		87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E65D6A2612FA0900C3B11C /* testViewController.swift */; };
 		87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FF895025C42D5F00437FD5 /* ViewController2.swift */; };
 		9312E4CC252231E600025C81 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9312E4CB252231E600025C81 /* LogViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
@@ -44,6 +45,7 @@
 		87BF47D425B6E12A00EE2819 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		87CF826625EB1F5300B01464 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		87CF826925EB1F6E00B01464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		87E65D6A2612FA0900C3B11C /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		87FF895025C42D5F00437FD5 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		9312E4CB252231E600025C81 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				93544DA12524BFC8009368C1 /* fonts */,
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
+				87E65D6A2612FA0900C3B11C /* testViewController.swift */,
 				873C760725E79105009374E1 /* SetTimerViewController2ViewController.swift */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
@@ -216,6 +219,7 @@
 			files = (
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
+				87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */,
 				87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */,
 				87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
