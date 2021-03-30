@@ -35,9 +35,9 @@ class ViewController2: UIViewController {
     @IBOutlet var finishTimeLabel: UILabel!
     @IBOutlet var viewLabels: UIView!
     @IBOutlet var CircleView: CircularProgressView!
+    @IBOutlet var CircleView2: CircularProgressView!
     @IBOutlet var ModeButton: UIButton!
     @IBOutlet var nowTimeLabel: UILabel!
-    
     
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
@@ -61,13 +61,15 @@ class ViewController2: UIViewController {
     var progressPer: Float = 0.0
     var fixedSecond: Int = 3600
     var fixedBreak: Int = 300
-    var fromSecond: Float = 0.0
+    var beforePer: Float = 0.0
     var showAvarage: Int = 0
     var array_day = [String](repeating: "", count: 7)
     var array_time = [String](repeating: "", count: 7)
     var array_break = [String](repeating: "", count: 7)
     var stopCount: Int = 0
     var VCNum: Int = 2
+    var totalTime: Int = 0
+    var beforePer2: Float = 0.0
     //맥용을 위한 구조
     var time = Time()
     
@@ -282,6 +284,7 @@ extension ViewController2 {
         showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         stopCount = UserDefaults.standard.value(forKey: "stopCount") as? Int ?? 0
         breakTime = UserDefaults.standard.value(forKey: "breakTime") as? Int ?? 0
+        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         
         fixedSecond = 3600
         fixedBreak = 300
@@ -326,8 +329,10 @@ extension ViewController2 {
     }
     
     func resetProgress() {
-        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
-        fromSecond = 0.0
+        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer)
+        CircleView2.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer2)
+        beforePer = 0.0
+        beforePer2 = 0.0
     }
     
     func checkAverage() {
@@ -343,8 +348,11 @@ extension ViewController2 {
     func setFirstProgress() {
         CircleView.trackColor = UIColor.darkGray
         progressPer = Float(sumTime2) / Float(fixedSecond)
-        fromSecond = progressPer
+        beforePer = progressPer
         CircleView.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
+        //circle2
+        beforePer2 = Float(sumTime)/Float(totalTime)
+        CircleView2.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
     }
     
     func firstStart() {
@@ -387,14 +395,17 @@ extension ViewController2 {
     
     func updateProgress() {
         progressPer = Float(sumTime2) / Float(fixedSecond)
-        CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: fromSecond)
-        fromSecond = progressPer
+        CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: beforePer)
+        beforePer = progressPer
+        let temp = Float(sumTime)/Float(totalTime)
+        CircleView2.setProgressWithAnimation(duration: 0.0, value: temp, from: beforePer2)
+        beforePer2 = temp
     }
     
     func updateBreakProgress() {
         progressPer = Float(breakTime2) / Float(fixedBreak)
-        CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: fromSecond)
-        fromSecond = progressPer
+        CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: beforePer)
+        beforePer = progressPer
     }
     
     func printLogs() {
@@ -492,6 +503,8 @@ extension ViewController2 {
     func stopColor() {
         self.view.backgroundColor = COLOR
         CircleView.progressColor = UIColor.white
+        CircleView2.progressColor = UIColor.black
+        CircleView2.trackColor = COLOR!
         StartButton.backgroundColor = BUTTON
         StopButton.backgroundColor = CLICK
         BreakButton.backgroundColor = BUTTON
@@ -530,6 +543,8 @@ extension ViewController2 {
     func startColor() {
         self.view.backgroundColor = UIColor.black
         CircleView.progressColor = COLOR!
+        CircleView2.progressColor = UIColor.white
+        CircleView2.trackColor = UIColor.black
         StartButton.backgroundColor = CLICK
         StopButton.backgroundColor = UIColor.clear
         BreakButton.backgroundColor = CLICK
