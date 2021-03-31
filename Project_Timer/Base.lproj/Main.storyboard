@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y4Z-eW-hHu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m58-px-16Y">
     <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -2218,46 +2218,10 @@ AVER : 0:00:00</string>
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="237-Px-fe4" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="237-Px-fe4">
                                 <rect key="frame" x="233" y="52" width="900" height="900"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEM-Jr-kre" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
-                                        <rect key="frame" x="35" y="35" width="830" height="830"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-EN-McL" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
-                                                <rect key="frame" x="35" y="35" width="760" height="760"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ5-l0-swW">
-                                                        <rect key="frame" x="296.5" y="205.5" width="167" height="349.5"/>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="300"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="BJ5-l0-swW" firstAttribute="centerX" secondItem="rV9-EN-McL" secondAttribute="centerX" id="CLD-vl-k3O"/>
-                                                    <constraint firstItem="BJ5-l0-swW" firstAttribute="centerY" secondItem="rV9-EN-McL" secondAttribute="centerY" id="sLa-UE-Cfn"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="rV9-EN-McL" firstAttribute="centerX" secondItem="vEM-Jr-kre" secondAttribute="centerX" id="GXt-gh-zLH"/>
-                                            <constraint firstAttribute="trailing" secondItem="rV9-EN-McL" secondAttribute="trailing" constant="35" id="J9o-Xl-Qmv"/>
-                                            <constraint firstItem="rV9-EN-McL" firstAttribute="top" secondItem="vEM-Jr-kre" secondAttribute="top" constant="35" id="WI6-M2-00f"/>
-                                            <constraint firstAttribute="bottom" secondItem="rV9-EN-McL" secondAttribute="bottom" constant="35" id="Z1Y-iv-Mbh"/>
-                                            <constraint firstItem="rV9-EN-McL" firstAttribute="centerY" secondItem="vEM-Jr-kre" secondAttribute="centerY" id="eur-60-iBL"/>
-                                            <constraint firstItem="rV9-EN-McL" firstAttribute="leading" secondItem="vEM-Jr-kre" secondAttribute="leading" constant="35" id="jf7-Nt-Wue"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="900" id="1Ev-jc-gLI"/>
-                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="top" secondItem="237-Px-fe4" secondAttribute="top" constant="35" id="Nq0-Rx-cE5"/>
-                                    <constraint firstAttribute="bottom" secondItem="vEM-Jr-kre" secondAttribute="bottom" constant="35" id="PMy-N1-mHm"/>
-                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="centerY" secondItem="237-Px-fe4" secondAttribute="centerY" id="VoR-fc-BKg"/>
-                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="leading" secondItem="237-Px-fe4" secondAttribute="leading" constant="35" id="gBC-vK-zh5"/>
-                                    <constraint firstAttribute="trailing" secondItem="vEM-Jr-kre" secondAttribute="trailing" constant="35" id="shk-kG-4gD"/>
-                                    <constraint firstItem="vEM-Jr-kre" firstAttribute="centerX" secondItem="237-Px-fe4" secondAttribute="centerX" id="tdn-qc-y2O"/>
                                     <constraint firstAttribute="width" constant="900" id="xHm-28-2Ie"/>
                                 </constraints>
                             </view>
@@ -2270,10 +2234,7 @@ AVER : 0:00:00</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="count" destination="BJ5-l0-swW" id="Dx8-4d-ou7"/>
-                        <outlet property="progress1" destination="237-Px-fe4" id="bCf-ao-8Di"/>
-                        <outlet property="progress2" destination="vEM-Jr-kre" id="F9C-Vr-Q8N"/>
-                        <outlet property="progress3" destination="rV9-EN-McL" id="MvI-tb-hrH"/>
+                        <outlet property="progress" destination="237-Px-fe4" id="ovu-h3-Tn0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xL4-AT-twz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2333,7 +2294,7 @@ AVER : 0:00:00</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yae-BZ-skc"/>
+        <segue reference="lex-LG-oBr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="Background">

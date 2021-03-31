@@ -10,74 +10,109 @@ import UIKit
 
 class testViewController: UIViewController {
 
-    @IBOutlet var progress1: CircularProgressView!
-    @IBOutlet var progress2: CircularProgressView!
-    @IBOutlet var progress3: CircularProgressView!
-    @IBOutlet var count: UILabel!
+    @IBOutlet var progress: UIView!
     
     var timeTrigger = true
     var realTime = Timer()
-    let total3: Int = 5
-    let total2: Int = 15
-    let total1: Int = 30
-    var count3: Int = 0
-    var count2: Int = 0
-    var count1: Int = 0
-    var num: Int = 0
-    var persent1: Float = 0
-    var persent2: Float = 0
-    var persent3: Float = 0
+    let sum1: Int = 75
+    let sum2: Int = 35
+    let sum3: Int = 15
+    let sum4: Int = 45
+    let sum5: Int = 60
+    var datas = [75, 35, 15, 45, 60]
+    var persent1: Float = 0.0
+    var persent2: Float = 0.0
+    var persent3: Float = 0.0
+    var persent4: Float = 0.0
+    var persent5: Float = 0.0
+    var sum: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        progress1.progressColor = UIColor.red
-        progress1.trackColor = UIColor.clear
-        progress1.setProgressWithAnimation(duration: 0, value: persent1, from: 0)
-        progress2.progressColor = UIColor.orange
-        progress2.trackColor = UIColor.clear
-        progress2.setProgressWithAnimation(duration: 0, value: persent2, from: 0)
-        progress3.progressColor = UIColor.yellow
-        progress3.trackColor = UIColor.clear
-        progress3.setProgressWithAnimation(duration: 0, value: persent3, from: 0)
-
-        if(timeTrigger) {
-            checkTimeTrigger()
-        }
+//        sum = sum1+sum2+sum3+sum4+sum5
+//        persent1 = Float(sum1)/Float(sum)
+//        persent2 = Float(sum2)/Float(sum)
+//        persent3 = Float(sum3)/Float(sum)
+//        persent4 = Float(sum4)/Float(sum)
+//        persent5 = Float(sum5)/Float(sum)
+//
+//
+//        print(String(format: "%.1f", persent1*100)+"%")
+//        print(String(format: "%.1f", persent2*100)+"%")
+//        print(String(format: "%.1f", persent3*100)+"%")
+//        print(String(format: "%.1f", persent4*100)+"%")
+//        print(String(format: "%.1f", persent5*100)+"%")
+//
+//        let progress5 = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        progress5.progressColor = UIColor.blue
+//        progress5.trackColor = UIColor.clear
+//        progress5.setProgressWithAnimation(duration: 1, value: persent1+persent2+persent3+persent4+persent5, from: 0)
+//
+//        let progress4 = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        progress4.progressColor = UIColor.purple
+//        progress4.trackColor = UIColor.clear
+//        progress4.setProgressWithAnimation(duration: 1, value: persent1+persent2+persent3+persent4, from: 0)
+//
+//        let progress3 = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        progress3.progressColor = UIColor.yellow
+//        progress3.trackColor = UIColor.clear
+//        progress3.setProgressWithAnimation(duration: 1, value: persent1+persent2+persent3, from: 0)
+//
+//        let progress2 = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        progress2.progressColor = UIColor.orange
+//        progress2.trackColor = UIColor.clear
+//        progress2.setProgressWithAnimation(duration: 1, value: persent1+persent2, from: 0)
+//
+//        let progress1 = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        progress1.progressColor = UIColor.red
+//        progress1.trackColor = UIColor.clear
+//        progress1.setProgressWithAnimation(duration: 1, value: persent1, from: 0)
+//
+//        progress.addSubview(progress5)
+//        progress.addSubview(progress4)
+//        progress.addSubview(progress3)
+//        progress.addSubview(progress2)
+//        progress.addSubview(progress1)
+        
+        let width = progress.bounds.width
+        let height = progress.bounds.height
+        datas.append(52)
+        datas.append(23)
+        datas.append(78)
+        makeProgress(datas, width, height)
+//        if(timeTrigger) {
+//            checkTimeTrigger()
+//        }
     }
     
     func checkTimeTrigger() {
         realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
     }
     @objc func update() {
-        num += 1
-        count.text = "\(num)"
-        if(num == 30) {
-            count.textColor = UIColor.white
-            realTime.invalidate()
-            return
+        
+    }
+    func makeProgress(_ datas: [Int], _ width: CGFloat, _ height: CGFloat) {
+        var sum = 0
+        for i in 0..<datas.count {
+            sum += datas[i]
+        }
+        var value: Float = 1
+        for i in 0..<datas.count {
+            let prog = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            prog.trackColor = UIColor.clear
+            if(i%3 == 0) {
+                prog.progressColor = UIColor.orange
+            } else if(i%3 == 1) {
+                prog.progressColor = UIColor.red
+            } else {
+                prog.progressColor = UIColor.yellow
+            }
+            print(value)
+            prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
+            value -= Float(datas[i])/Float(sum)
+            progress.addSubview(prog)
         }
         
-        update1()
-        update2()
-        update3()
-    }
-    func update1() {
-        let temp = persent1
-        count1 = (count1+1)%total1
-        persent1 = Float(count1)/Float(total1-1)
-        progress1.setProgressWithAnimation(duration: 1, value: persent1, from: temp)
-    }
-    func update2() {
-        let temp = persent2
-        count2 = (count2+1)%total2
-        persent2 = Float(count2)/Float(total2-1)
-        progress2.setProgressWithAnimation(duration: 1, value: persent2, from: temp)
-    }
-    func update3() {
-        let temp = persent3
-        count3 = (count3+1)%total3
-        persent3 = Float(count3)/Float(total3-1)
-        progress3.setProgressWithAnimation(duration: 1, value: persent3, from: temp)
     }
 }
