@@ -1,0 +1,366 @@
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "0Fc-1Y-bTC"; */
+"0Fc-1Y-bTC.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "Study Records"; ObjectID = "17v-Pv-83e"; */
+"17v-Pv-83e.text" = "Study Records";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "1B3-tf-wIn"; */
+"1B3-tf-wIn.text" = "Rest :";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "1zB-LP-OaX"; */
+"1zB-LP-OaX.text" = "Rest :";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "2S2-EV-1oi"; */
+"2S2-EV-1oi.text" = "-/-";
+
+/* Class = "UILabel"; text = "End Time"; ObjectID = "3FQ-YP-Cz9"; */
+"3FQ-YP-Cz9.text" = "End Time";
+
+/* Class = "UIButton"; normalTitle = "Color4"; ObjectID = "3MR-lU-Shl"; */
+"3MR-lU-Shl.normalTitle" = "Color4";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "3e8-h1-Wsj"; */
+"3e8-h1-Wsj.text" = "-/-";
+
+/* Class = "UILabel"; text = "End Time"; ObjectID = "3oB-u2-JXI"; */
+"3oB-u2-JXI.text" = "End Time";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "40T-rk-CeV"; */
+"40T-rk-CeV.text" = "-/-";
+
+/* Class = "UIButton"; normalTitle = "BREAK"; ObjectID = "4aR-m2-zCd"; */
+"4aR-m2-zCd.normalTitle" = "BREAK";
+
+/* Class = "UILabel"; text = "Rest Time"; ObjectID = "51D-HQ-MFX"; */
+"51D-HQ-MFX.text" = "Rest Time";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "55k-FO-xdD"; */
+"55k-FO-xdD.text" = ":";
+
+/* Class = "UILabel"; text = "STOP : 0 \nAVER : 0:00:00"; ObjectID = "594-rf-dmW"; */
+"594-rf-dmW.text" = "STOP : 0 \nAVER : 0:00:00";
+
+/* Class = "UIButton"; normalTitle = "TIMER"; ObjectID = "6XC-RG-lgG"; */
+"6XC-RG-lgG.normalTitle" = "TIMER";
+
+/* Class = "UITextField"; placeholder = "S"; ObjectID = "7OY-JS-NGg"; */
+"7OY-JS-NGg.placeholder" = "S";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "7f0-IK-eVR"; */
+"7f0-IK-eVR.text" = "Study :";
+
+/* Class = "UIButton"; normalTitle = "RE START"; ObjectID = "7gd-VZ-GbR"; */
+"7gd-VZ-GbR.normalTitle" = "RE START";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "7pW-V3-St8"; */
+"7pW-V3-St8.text" = "NO DATA";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "85Q-SQ-iQa"; */
+"85Q-SQ-iQa.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "Average Study Time"; ObjectID = "8rc-aY-uQY"; */
+"8rc-aY-uQY.text" = "Average Study Time";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "BWW-OW-2K4"; */
+"BWW-OW-2K4.text" = ":";
+
+/* Class = "UILabel"; text = "0:40:00"; ObjectID = "C0q-W7-ver"; */
+"C0q-W7-ver.text" = "0:40:00";
+
+/* Class = "UILabel"; text = "6:00:00"; ObjectID = "CIA-d9-K96"; */
+"CIA-d9-K96.text" = "6:00:00";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "Cj4-5w-WYa"; */
+"Cj4-5w-WYa.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "D1z-t7-DSR"; */
+"D1z-t7-DSR.text" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "EB9-cb-w4v"; */
+"EB9-cb-w4v.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "LOG"; ObjectID = "Ewo-N5-ElV"; */
+"Ewo-N5-ElV.normalTitle" = "LOG";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "F8U-VM-Ifw"; */
+"F8U-VM-Ifw.text" = "Rest :";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "FQJ-tz-ND8"; */
+"FQJ-tz-ND8.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "Color3"; ObjectID = "FU7-l8-bTj"; */
+"FU7-l8-bTj.normalTitle" = "Color3";
+
+/* Class = "UITextField"; placeholder = "H"; ObjectID = "Fkc-mk-mCL"; */
+"Fkc-mk-mCL.placeholder" = "H";
+
+/* Class = "UIButton"; normalTitle = "SET"; ObjectID = "H28-dM-3iM"; */
+"H28-dM-3iM.normalTitle" = "SET";
+
+/* Class = "UITextField"; placeholder = "H"; ObjectID = "I13-7w-Qbo"; */
+"I13-7w-Qbo.placeholder" = "H";
+
+/* Class = "UILabel"; text = "Timer Time"; ObjectID = "Izv-xn-5o3"; */
+"Izv-xn-5o3.text" = "Timer Time";
+
+/* Class = "UIButton"; normalTitle = "SET"; ObjectID = "J1x-ZQ-7GQ"; */
+"J1x-ZQ-7GQ.normalTitle" = "SET";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "J6o-zg-Sdi"; */
+"J6o-zg-Sdi.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "Average study Time"; ObjectID = "Jl9-FJ-bzQ"; */
+"Jl9-FJ-bzQ.text" = "Average study Time";
+
+/* Class = "UITextField"; placeholder = "S"; ObjectID = "JzT-zW-yDc"; */
+"JzT-zW-yDc.placeholder" = "S";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "KA6-e6-GX2"; */
+"KA6-e6-GX2.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "KJ5-hz-iaD"; */
+"KJ5-hz-iaD.text" = "Rest :";
+
+/* Class = "UIButton"; normalTitle = "STOP"; ObjectID = "LhG-Ml-JNe"; */
+"LhG-Ml-JNe.normalTitle" = "STOP";
+
+/* Class = "UIButton"; normalTitle = "SETTING"; ObjectID = "M3c-sp-Fuo"; */
+"M3c-sp-Fuo.normalTitle" = "SETTING";
+
+/* Class = "UILabel"; text = "12:59"; ObjectID = "MOY-ol-4fo"; */
+"MOY-ol-4fo.text" = "12:59";
+
+/* Class = "UILabel"; text = "Change Background Color"; ObjectID = "MZI-jz-qcj"; */
+"MZI-jz-qcj.text" = "Change Background Color";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "NXh-i8-QX9"; */
+"NXh-i8-QX9.text" = "-/-";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "OA3-YG-dVq"; */
+"OA3-YG-dVq.text" = "Study :";
+
+/* Class = "UIButton"; normalTitle = "Color6"; ObjectID = "OZy-H2-QuG"; */
+"OZy-H2-QuG.normalTitle" = "Color6";
+
+/* Class = "UILabel"; text = "0:40:00"; ObjectID = "PGM-H1-VNk"; */
+"PGM-H1-VNk.text" = "0:40:00";
+
+/* Class = "UITextField"; placeholder = "H"; ObjectID = "PH5-dP-J5x"; */
+"PH5-dP-J5x.placeholder" = "H";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "Prr-nc-S7g"; */
+"Prr-nc-S7g.text" = ":";
+
+/* Class = "UISegmentedControl"; Qq5-1q-kgI.segmentTitles[0] = "Show"; ObjectID = "Qq5-1q-kgI"; */
+"Qq5-1q-kgI.segmentTitles[0]" = "Show";
+
+/* Class = "UISegmentedControl"; Qq5-1q-kgI.segmentTitles[1] = "Hide"; ObjectID = "Qq5-1q-kgI"; */
+"Qq5-1q-kgI.segmentTitles[1]" = "Hide";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "SD0-jO-oit"; */
+"SD0-jO-oit.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "T0D-XY-Fa2"; */
+"T0D-XY-Fa2.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "TEY-kf-2bw"; */
+"TEY-kf-2bw.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "TSg-HR-iJW"; */
+"TSg-HR-iJW.normalTitle" = "BACK";
+
+/* Class = "UIButton"; normalTitle = "Timer"; ObjectID = "TV0-TN-mUM"; */
+"TV0-TN-mUM.normalTitle" = "Timer";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "VCD-Kv-CPR"; */
+"VCD-Kv-CPR.text" = "NO DATA";
+
+/* Class = "UITextField"; placeholder = "H"; ObjectID = "VMj-2m-QFW"; */
+"VMj-2m-QFW.placeholder" = "H";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "Wmx-hM-xK4"; */
+"Wmx-hM-xK4.text" = "Study :";
+
+/* Class = "UILabel"; text = "12:59"; ObjectID = "XXw-iS-PIr"; */
+"XXw-iS-PIr.text" = "12:59";
+
+/* Class = "UILabel"; text = "Timer Time"; ObjectID = "Xa7-O0-5gA"; */
+"Xa7-O0-5gA.text" = "Timer Time";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "Yst-on-KE2"; */
+"Yst-on-KE2.text" = ":";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "Zqj-k8-g6g"; */
+"Zqj-k8-g6g.text" = ":";
+
+/* Class = "UILabel"; text = "Target Time"; ObjectID = "bDa-Kx-1hg"; */
+"bDa-Kx-1hg.text" = "Target Time";
+
+/* Class = "UIButton"; normalTitle = "Color7"; ObjectID = "brc-E7-Cwc"; */
+"brc-E7-Cwc.normalTitle" = "Color7";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "bva-AW-9Ys"; */
+"bva-AW-9Ys.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "c8U-ec-Qdv"; */
+"c8U-ec-Qdv.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "SETTING"; ObjectID = "cE2-hA-3DG"; */
+"cE2-hA-3DG.normalTitle" = "SETTING";
+
+/* Class = "UILabel"; text = "End Time"; ObjectID = "cfc-Ta-whW"; */
+"cfc-Ta-whW.text" = "End Time";
+
+/* Class = "UITextField"; placeholder = "M"; ObjectID = "cyn-2A-MvE"; */
+"cyn-2A-MvE.placeholder" = "M";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "d3L-1e-Jpf"; */
+"d3L-1e-Jpf.text" = "-/-";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "dRe-xf-jCw"; */
+"dRe-xf-jCw.text" = "Target";
+
+/* Class = "UITextField"; placeholder = "S"; ObjectID = "dZ9-Vq-2ga"; */
+"dZ9-Vq-2ga.placeholder" = "S";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "eBp-Qb-cIQ"; */
+"eBp-Qb-cIQ.text" = "NO DATA";
+
+/* Class = "UIButton"; normalTitle = "Color1"; ObjectID = "eKI-Zm-FIU"; */
+"eKI-Zm-FIU.normalTitle" = "Color1";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "eLF-ev-5IB"; */
+"eLF-ev-5IB.text" = "Target";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "eoG-Me-aet"; */
+"eoG-Me-aet.text" = "NO DATA";
+
+/* Class = "UILabel"; text = "Now Time"; ObjectID = "ey0-9J-1aq"; */
+"ey0-9J-1aq.text" = "Now Time";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "gPC-Zv-BI3"; */
+"gPC-Zv-BI3.text" = "NO DATA";
+
+/* Class = "UIButton"; normalTitle = "GRAPH"; ObjectID = "grO-VA-iGJ"; */
+"grO-VA-iGJ.normalTitle" = "GRAPH";
+
+/* Class = "UITextField"; placeholder = "M"; ObjectID = "gxs-3D-0qF"; */
+"gxs-3D-0qF.placeholder" = "M";
+
+/* Class = "UILabel"; text = "12:00 AM"; ObjectID = "h80-IC-9Kw"; */
+"h80-IC-9Kw.text" = "12:00 AM";
+
+/* Class = "UISegmentedControl"; hOV-17-14f.segmentTitles[0] = "Show"; ObjectID = "hOV-17-14f"; */
+"hOV-17-14f.segmentTitles[0]" = "Show";
+
+/* Class = "UISegmentedControl"; hOV-17-14f.segmentTitles[1] = "Hide"; ObjectID = "hOV-17-14f"; */
+"hOV-17-14f.segmentTitles[1]" = "Hide";
+
+/* Class = "UILabel"; text = "12:00 AM"; ObjectID = "iai-qK-hhe"; */
+"iai-qK-hhe.text" = "12:00 AM";
+
+/* Class = "UIButton"; normalTitle = "STOP"; ObjectID = "k5h-tf-b1u"; */
+"k5h-tf-b1u.normalTitle" = "STOP";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "k6Z-l0-ReJ"; */
+"k6Z-l0-ReJ.normalTitle" = "BACK";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "kfO-KY-Ynr"; */
+"kfO-KY-Ynr.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "STOP : 0 \nAVER : 0:00:00"; ObjectID = "l7t-o3-kah"; */
+"l7t-o3-kah.text" = "STOP : 0 \nAVER : 0:00:00";
+
+/* Class = "UIButton"; normalTitle = "START"; ObjectID = "lUx-K6-5JM"; */
+"lUx-K6-5JM.normalTitle" = "START";
+
+/* Class = "UIButton"; normalTitle = "Color2"; ObjectID = "lak-PT-lSy"; */
+"lak-PT-lSy.normalTitle" = "Color2";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "lgQ-63-Ifn"; */
+"lgQ-63-Ifn.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "LOG"; ObjectID = "luT-Lk-upa"; */
+"luT-Lk-upa.normalTitle" = "LOG";
+
+/* Class = "UILabel"; text = "Sum Time"; ObjectID = "lwZ-C7-FaI"; */
+"lwZ-C7-FaI.text" = "Sum Time";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "mOg-Pl-cqu"; */
+"mOg-Pl-cqu.text" = "Study :";
+
+/* Class = "UIButton"; normalTitle = "SET"; ObjectID = "mWZ-1V-pzc"; */
+"mWZ-1V-pzc.normalTitle" = "SET";
+
+/* Class = "UILabel"; text = "Target"; ObjectID = "mdB-9S-xmT"; */
+"mdB-9S-xmT.text" = "Target";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "n4g-IS-2j9"; */
+"n4g-IS-2j9.text" = "Study :";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "nK6-wm-lHG"; */
+"nK6-wm-lHG.text" = "Rest :";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "nb9-ep-hsp"; */
+"nb9-ep-hsp.text" = ":";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "o59-XK-xld"; */
+"o59-XK-xld.text" = "-/-";
+
+/* Class = "UIButton"; normalTitle = "StopWatch"; ObjectID = "oPI-kR-WB7"; */
+"oPI-kR-WB7.normalTitle" = "StopWatch";
+
+/* Class = "UILabel"; text = "Now Time"; ObjectID = "onx-X7-jGl"; */
+"onx-X7-jGl.text" = "Now Time";
+
+/* Class = "UITextField"; placeholder = "M"; ObjectID = "puu-rL-Uka"; */
+"puu-rL-Uka.placeholder" = "M";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "qgd-XM-xie"; */
+"qgd-XM-xie.text" = ":";
+
+/* Class = "UILabel"; text = "End Time"; ObjectID = "qs4-2C-6ZO"; */
+"qs4-2C-6ZO.text" = "End Time";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "s2g-bX-qkS"; */
+"s2g-bX-qkS.text" = "NO DATA";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "sYS-JM-oby"; */
+"sYS-JM-oby.text" = ":";
+
+/* Class = "UILabel"; text = "0:40:00"; ObjectID = "t6g-Cf-4te"; */
+"t6g-Cf-4te.text" = "0:40:00";
+
+/* Class = "UIButton"; normalTitle = "Color5"; ObjectID = "tPN-wV-70k"; */
+"tPN-wV-70k.normalTitle" = "Color5";
+
+/* Class = "UILabel"; text = "-/-"; ObjectID = "uUH-8Y-szb"; */
+"uUH-8Y-szb.text" = "-/-";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "ufH-z8-bpP"; */
+"ufH-z8-bpP.text" = "Rest :";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "usk-ei-t29"; */
+"usk-ei-t29.text" = "Study :";
+
+/* Class = "UILabel"; text = "Study :"; ObjectID = "ux6-fE-9oF"; */
+"ux6-fE-9oF.text" = "Study :";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "v7b-q7-czR"; */
+"v7b-q7-czR.text" = "NO DATA";
+
+/* Class = "UIButton"; normalTitle = "START"; ObjectID = "vHj-jd-hin"; */
+"vHj-jd-hin.normalTitle" = "START";
+
+/* Class = "UITextField"; placeholder = "M"; ObjectID = "vh3-qV-6xS"; */
+"vh3-qV-6xS.placeholder" = "M";
+
+/* Class = "UILabel"; text = "Rest :"; ObjectID = "wnq-Da-0WD"; */
+"wnq-Da-0WD.text" = "Rest :";
+
+/* Class = "UITextField"; placeholder = "S"; ObjectID = "zDI-LB-6qB"; */
+"zDI-LB-6qB.placeholder" = "S";
+
+/* Class = "UILabel"; text = "NO DATA"; ObjectID = "zHU-Q0-V7D"; */
+"zHU-Q0-V7D.text" = "NO DATA";

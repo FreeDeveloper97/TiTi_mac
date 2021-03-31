@@ -11,6 +11,7 @@ import UIKit
 class testViewController: UIViewController {
 
     @IBOutlet var progress: UIView!
+    @IBOutlet var num: UILabel!
     
     var timeTrigger = true
     var realTime = Timer()
@@ -80,7 +81,16 @@ class testViewController: UIViewController {
         datas.append(52)
         datas.append(23)
         datas.append(78)
+        datas.append(23)
+        datas.append(100)
+//
+        datas.append(45)
+        datas.append(24)
+        datas.append(64)
+        datas.append(10)
+        datas.append(57)
         makeProgress(datas, width, height)
+        num.text = "#\(datas.count)"
 //        if(timeTrigger) {
 //            checkTimeTrigger()
 //        }

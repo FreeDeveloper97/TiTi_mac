@@ -16,6 +16,7 @@ class GraphViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //맥용 코드
         setBackBT()
 
         let hostingController = UIHostingController(rootView: ContentView())
@@ -29,7 +30,7 @@ class GraphViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
     }
-    
+    //맥용 코드
     func setBackBT() {
         backBT.layer.borderWidth = 3
         backBT.layer.borderColor = UIColor.white.cgColor

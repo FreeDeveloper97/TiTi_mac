@@ -31,13 +31,17 @@ class ViewController2: UIViewController {
     @IBOutlet var SettingButton: UIButton!
     @IBOutlet var avarageLabel: UILabel!
     @IBOutlet var LogButton: UIButton!
-    @IBOutlet var finishTimeLabel_show: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
     @IBOutlet var viewLabels: UIView!
     @IBOutlet var CircleView: CircularProgressView!
     @IBOutlet var CircleView2: CircularProgressView!
-    @IBOutlet var ModeButton: UIButton!
     @IBOutlet var nowTimeLabel: UILabel!
+    
+    @IBOutlet var targetLabel: UILabel!
+    @IBOutlet var restLabel: UILabel!
+    @IBOutlet var ModeButton: UIButton!
+    @IBOutlet var finishTimeLabel_show: UILabel!
+    
     
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
@@ -76,6 +80,8 @@ class ViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setVCNum()
+        setLocalizable()
+        
         setColor()
         setRadius()
         setBorder()
@@ -87,7 +93,7 @@ class ViewController2: UIViewController {
         allStopColor()
         
         setBackground()
-        setIsFirst()
+        checkIsFirst()
         checkAverage()
         
         setFirstProgress()
@@ -95,37 +101,33 @@ class ViewController2: UIViewController {
     
     func checkTimeTrigger() {
         DispatchQueue.main.async {
-            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerTest), userInfo: nil, repeats: true)
+            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
             self.timeTrigger = false
         }
     }
     
     func breakTimeTrigger() {
         DispatchQueue.main.async {
-            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.brekrTest), userInfo: nil, repeats: true)
+            self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateBreaker), userInfo: nil, repeats: true)
             self.timeTrigger = false
         }
     }
     
-    @objc func timerTest() {
+    @objc func updateCounter() {
         //맥용 코드
         let seconds = time.getSeconds()
         goalTime = time.startGoalTime - seconds
         sumTime = time.startSumTime + seconds
         sumTime2 = sumTime%fixedSecond
-        //updateTimeLabels()
-        GoalTimeLabel.text = printTime(temp: goalTime)
-        SumTimeLabel.text = printTime(temp: sumTime)
-        //saveTimes()
-        UserDefaults.standard.set(sumTime, forKey: "sum2")
-        UserDefaults.standard.set(goalTime, forKey: "allTime2")
         
-        printLogs()
+        updateTimeLabels()
         updateProgress()
+        printLogs()
+        saveTimes()
         showNowTime()
     }
     
-    @objc func brekrTest() {
+    @objc func updateBreaker() {
         //맥용 코드
         let seconds = time.getSeconds()
         breakTime = time.startBreakTime + seconds
@@ -184,6 +186,7 @@ extension ViewController2 : ChangeViewController2 {
         stopColor()
         stopEnable()
         checkAverage()
+        allStopColor()
     }
 }
 
@@ -299,7 +302,7 @@ extension ViewController2 {
         finishTimeLabel.text = getFutureTime()
     }
     
-    func setIsFirst() {
+    func checkIsFirst() {
         if (UserDefaults.standard.object(forKey: "startTime") == nil) {
             isFirst = true
         }
@@ -330,8 +333,10 @@ extension ViewController2 {
     
     func resetProgress() {
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer)
-        CircleView2.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer2)
         beforePer = 0.0
+        //circle2
+        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+        CircleView2.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer2)
         beforePer2 = 0.0
     }
     
@@ -351,6 +356,7 @@ extension ViewController2 {
         beforePer = progressPer
         CircleView.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
         //circle2
+        CircleView2.trackColor = UIColor.clear
         beforePer2 = Float(sumTime)/Float(totalTime)
         CircleView2.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
     }
@@ -397,6 +403,7 @@ extension ViewController2 {
         progressPer = Float(sumTime2) / Float(fixedSecond)
         CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: beforePer)
         beforePer = progressPer
+        //circle2
         let temp = Float(sumTime)/Float(totalTime)
         CircleView2.setProgressWithAnimation(duration: 0.0, value: temp, from: beforePer2)
         beforePer2 = temp
@@ -495,6 +502,7 @@ extension ViewController2 {
         let now = Date()
         let future = now.addingTimeInterval(TimeInterval(goalTime))
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "hh:mm a"
         let today = dateFormatter.string(from: future)
         return today
@@ -504,7 +512,6 @@ extension ViewController2 {
         self.view.backgroundColor = COLOR
         CircleView.progressColor = UIColor.white
         CircleView2.progressColor = UIColor.black
-        CircleView2.trackColor = COLOR!
         StartButton.backgroundColor = BUTTON
         StopButton.backgroundColor = CLICK
         BreakButton.backgroundColor = BUTTON
@@ -526,7 +533,7 @@ extension ViewController2 {
             self.LogButton.alpha = 1
             self.viewLabels.alpha = 1
         })
-        self.nowTimeLabel.text = "현재시각"
+        self.nowTimeLabel.text = "Now Time".localized()
         self.nowTimeLabel.alpha = 0
     }
     
@@ -544,7 +551,6 @@ extension ViewController2 {
         self.view.backgroundColor = UIColor.black
         CircleView.progressColor = COLOR!
         CircleView2.progressColor = UIColor.white
-        CircleView2.trackColor = UIColor.black
         StartButton.backgroundColor = CLICK
         StopButton.backgroundColor = UIColor.clear
         BreakButton.backgroundColor = CLICK
@@ -611,11 +617,19 @@ extension ViewController2 {
     func showNowTime() {
         let now = Date()
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "hh:mm a"
         let today = dateFormatter.string(from: now)
         avarageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 40)
-        nowTimeLabel.text = "\n현재시각"
+        nowTimeLabel.text = "\n" + "Now Time".localized()
         avarageLabel.text = "\(today)"
+    }
+    
+    func setLocalizable() {
+        targetLabel.text = "Target Time".localized()
+        restLabel.text = "Rest Time".localized()
+        ModeButton.setTitle("Stopwatch".localized(), for: .normal)
+        finishTimeLabel_show.text = "End Time".localized()
     }
 }
 
