@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872047FE261CBAF600EF1691 /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872047FD261CBAF600EF1691 /* Daily.swift */; };
+		87204801261CBB0B00EF1691 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87204800261CBB0B00EF1691 /* Storage.swift */; };
+		87204804261CBB3D00EF1691 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87204803261CBB3D00EF1691 /* taskSelectViewController.swift */; };
+		87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87204807261CBB7300EF1691 /* DailyViewController.swift */; };
 		87313E7E25EBA0C10088D1EC /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87313E7D25EBA0C10088D1EC /* Time.swift */; };
 		873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C760725E79105009374E1 /* SetTimerViewController2.swift */; };
 		8787DFDA25B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */; };
@@ -35,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		872047FD261CBAF600EF1691 /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
+		87204800261CBB0B00EF1691 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		87204803261CBB3D00EF1691 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
+		87204807261CBB7300EF1691 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		87313E7D25EBA0C10088D1EC /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		873C760725E79105009374E1 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
@@ -109,6 +117,8 @@
 				932EE0592490A78400B00774 /* SetViewController.swift */,
 				935411AA25402D89008CB6DD /* SetTimerViewController.swift */,
 				873C760725E79105009374E1 /* SetTimerViewController2.swift */,
+				87204803261CBB3D00EF1691 /* taskSelectViewController.swift */,
+				87204807261CBB7300EF1691 /* DailyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			children = (
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
 				87313E7D25EBA0C10088D1EC /* Time.swift */,
+				872047FD261CBAF600EF1691 /* Daily.swift */,
+				87204800261CBB0B00EF1691 /* Storage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,16 +263,20 @@
 			files = (
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
+				87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */,
 				87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */,
 				87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */,
 				87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */,
 				87313E7E25EBA0C10088D1EC /* Time.swift in Sources */,
+				87204804261CBB3D00EF1691 /* taskSelectViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
+				872047FE261CBAF600EF1691 /* Daily.swift in Sources */,
 				87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */,
+				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 				873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */,
 			);

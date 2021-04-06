@@ -41,6 +41,8 @@ class ViewController2: UIViewController {
     @IBOutlet var restLabel: UILabel!
     @IBOutlet var ModeButton: UIButton!
     @IBOutlet var finishTimeLabel_show: UILabel!
+    @IBOutlet var taskButton: UIButton!
+    @IBOutlet var taskLine: UIView!
     
     
     var COLOR = UIColor(named: "Background2")
@@ -76,6 +78,9 @@ class ViewController2: UIViewController {
     var beforePer2: Float = 0.0
     //맥용을 위한 구조
     var time = Time()
+    var task: String = ""
+    //하루 그래프를 위한 구조
+    var daily = Daily()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +102,9 @@ class ViewController2: UIViewController {
         checkAverage()
         
         setFirstProgress()
+        
+        daily.load()
+        setTask()
     }
     
     func checkTimeTrigger() {
@@ -137,6 +145,8 @@ class ViewController2: UIViewController {
         updateBreakProgress()
         saveBreak()
         finishTimeLabel.text = getFutureTime()
+        //하루 그래프 휴식시간 저장
+        daily.breakTime = breakTime
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
@@ -158,6 +168,9 @@ class ViewController2: UIViewController {
         algoOfBreakStop()
         UserDefaults.standard.set(1, forKey: "VCNum")
         goToViewController(where: "ViewController")
+    }
+    @IBAction func taskButton(_ sender: Any) {
+        showTaskView()
     }
 }
 
@@ -187,6 +200,12 @@ extension ViewController2 : ChangeViewController2 {
         stopEnable()
         checkAverage()
         allStopColor()
+        //하루 그래프 초기화
+        daily.reset()
+    }
+    
+    func changeTask() {
+        setTask()
     }
 }
 
@@ -374,6 +393,12 @@ extension ViewController2 {
             present(setVC,animated: true,completion: nil)
     }
     
+    func showTaskView() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
+            setVC.SetTimerViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
+    
     func startAction() {
         if(timeTrigger) {
             checkTimeTrigger()
@@ -532,9 +557,11 @@ extension ViewController2 {
             self.SettingButton.alpha = 1
             self.LogButton.alpha = 1
             self.viewLabels.alpha = 1
+            self.taskLine.alpha = 1
         })
         self.nowTimeLabel.text = "Now Time".localized()
         self.nowTimeLabel.alpha = 0
+        self.view.layoutIfNeeded()
     }
     
     func breakStartColor() {
@@ -570,7 +597,9 @@ extension ViewController2 {
             self.avarageLabel.alpha = 1
             self.ModeButton.layer.borderColor = nil
             self.nowTimeLabel.alpha = 1
+            self.taskLine.alpha = 0
         })
+        self.view.layoutIfNeeded()
     }
     
     func stopEnable() {
@@ -580,6 +609,7 @@ extension ViewController2 {
         SettingButton.isUserInteractionEnabled = true
         LogButton.isUserInteractionEnabled = true
         ModeButton.isUserInteractionEnabled = true
+        taskButton.isUserInteractionEnabled = true
     }
     
     func startEnable() {
@@ -589,6 +619,7 @@ extension ViewController2 {
         SettingButton.isUserInteractionEnabled = false
         LogButton.isUserInteractionEnabled = false
         ModeButton.isUserInteractionEnabled = false
+        taskButton.isUserInteractionEnabled = false
     }
     
     func goToViewController(where: String) {
@@ -631,6 +662,11 @@ extension ViewController2 {
         ModeButton.setTitle("Stopwatch".localized(), for: .normal)
         finishTimeLabel_show.text = "End Time".localized()
     }
+    
+    func setTask() {
+        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter New Task"
+        taskButton.setTitle(task, for: .normal)
+    }
 }
 
 
@@ -650,6 +686,8 @@ extension ViewController2 {
             isFirst = false
         }
         showNowTime()
+        //하루 그래프 데이터 생성
+        daily.startTask(task)
     }
     
     func algoOfStop() {
@@ -665,6 +703,9 @@ extension ViewController2 {
         stopEnable()
         checkAverage()
         setAverage()
+        //하루 그래프 데이터 계산
+        daily.stopTask()
+        daily.save()
     }
     
     func algoOfBreakStart() {
@@ -681,5 +722,7 @@ extension ViewController2 {
         timeTrigger = true
         realTime.invalidate()
         breakStopColor()
+        //하루 그래프 데이터 저장
+        daily.save()
     }
 }
