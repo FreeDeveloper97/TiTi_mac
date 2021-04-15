@@ -21,7 +21,8 @@ class DailyViewController: UIViewController {
     var printPersent: [String] = []
     var colors: [UIColor] = []
     var counts: Int = 0
-    var sum: Int = 0
+    var fixed_sum: Int = 0
+    let f = Float(0.003)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,22 +70,8 @@ class DailyViewController: UIViewController {
 extension DailyViewController {
     
     func appendColors() {
-        //19 37 70
-        var R: CGFloat = 1
-        var G: CGFloat = 8
-        var B: CGFloat = 40
-        let perR = (255-R)/CGFloat(counts)
-        let perG = (255-G)/CGFloat(counts)
-        let perB = (255-B)/CGFloat(counts)
-        R = 255
-        G = 255
-        B = 255
-        
-        for _ in 0..<counts {
-            colors.append(UIColor(R, G, B, 1.0))
-            R -= perR
-            G -= perG
-            B -= perB
+        for i in 1...12 {
+            colors.append(UIColor(named: "Test\(i)")!)
         }
     }
     
@@ -103,25 +90,45 @@ extension DailyViewController {
     
     func makeProgress(_ datas: [Int], _ width: CGFloat, _ height: CGFloat) {
         print(datas)
-        sum = 0
-        for i in 0..<datas.count {
-            sum += datas[i]
+        fixed_sum = 0
+        for i in 0..<counts {
+            fixed_sum += datas[i]
         }
-        
-        sumTime.text = printTime(temp: sum)
+        var sum = Float(fixed_sum)
+        sumTime.text = printTime(temp: fixed_sum)
+        //그래프 간 구별선 추가
+        sum += f*Float(counts)
         
         var value: Float = 1
+        value = addBlock(value: value, width: width, height: height)
         for i in 0..<counts {
             let prog = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             prog.trackColor = UIColor.clear
-            prog.progressColor = colors[i%7]
+            prog.progressColor = colors[i%12]
             print(value)
             prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
-            let per = Float(datas[i])/Float(sum)
+            
+            let per = Float(datas[i])/Float(sum) //그래프 퍼센트
+            let fixed_per = Float(datas[i])/Float(fixed_sum)
             value -= per
+            
             progress.addSubview(prog)
-            printPersent.append(String(format: "%.1f", per*100) + "%")
+            printPersent.append(String(format: "%.1f", fixed_per*100) + "%")
+            
+            value = addBlock(value: value, width: width, height: height)
         }
         
+    }
+    
+    func addBlock(value: Float, width: CGFloat, height: CGFloat) -> Float {
+        var value = value
+        let block = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        block.trackColor = UIColor.clear
+        block.progressColor = UIColor.black
+        block.setProgressWithAnimation(duration: 1, value: value, from: 0)
+        
+        value -= f
+        progress.addSubview(block)
+        return value
     }
 }
