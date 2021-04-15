@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     @IBOutlet var sumLabel: UILabel!
     @IBOutlet var ModeButton: UIButton!
     @IBOutlet var finishTimeLabel_show: UILabel!
+    @IBOutlet var taskButton: UIButton!
+    @IBOutlet var taskLine: UIView!
+    
     
     let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
@@ -73,6 +76,9 @@ class ViewController: UIViewController {
     var beforePer2: Float = 0.0
     //맥용을 위한 구조
     var time = Time()
+    var task: String = ""
+    //하루 그래프를 위한 구조
+    var daily = Daily()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +96,9 @@ class ViewController: UIViewController {
         checkIsFirst()
         checkAverage()
         setProgress()
+        
+        daily.load()
+        setTask()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,6 +158,9 @@ class ViewController: UIViewController {
     @IBAction func ModeBTAction(_ sender: UIButton) {
         goToViewController(where: "ViewController2")
     }
+    @IBAction func taskButton(_ sender: Any) {
+        showTaskView()
+    }
 }
 
 extension ViewController : ChangeViewController {
@@ -201,6 +213,14 @@ extension ViewController : ChangeViewController {
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
+    }
+}
+
+extension ViewController: ChangeViewController2 {
+    func changeGoalTime() {}
+    
+    func changeTask() {
+        setTask()
     }
 }
 
@@ -347,6 +367,12 @@ extension ViewController {
     func showSettingView() {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
             setVC.setViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
+    
+    func showTaskView() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
+            setVC.SetTimerViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
     
@@ -539,6 +565,7 @@ extension ViewController {
             self.TimerButton.alpha = 1
             self.LogButton.alpha = 1
             self.viewLabels.alpha = 1
+            self.taskLine.alpha = 1
         })
         self.nowTimeLabel.text = "Now Time".localized()
         self.nowTimeLabel.alpha = 0
@@ -568,6 +595,7 @@ extension ViewController {
             self.AverageLabel.alpha = 1
             self.ModeButton.layer.borderColor = nil
             self.nowTimeLabel.alpha = 1
+            self.taskLine.alpha = 0
         })
     }
     
@@ -585,6 +613,7 @@ extension ViewController {
         TimerButton.isUserInteractionEnabled = true
         LogButton.isUserInteractionEnabled = true
         ModeButton.isUserInteractionEnabled = true
+        taskButton.isUserInteractionEnabled = true
     }
     
     func startEnable() {
@@ -595,6 +624,7 @@ extension ViewController {
         TimerButton.isUserInteractionEnabled = false
         LogButton.isUserInteractionEnabled = false
         ModeButton.isUserInteractionEnabled = false
+        taskButton.isUserInteractionEnabled = false
     }
     
     func showNowTime() {
@@ -614,6 +644,11 @@ extension ViewController {
         ModeButton.setTitle("Timer".localized(), for: .normal)
         finishTimeLabel_show.text = "End Time".localized()
     }
+    
+    func setTask() {
+        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter New Task"
+        taskButton.setTitle(task, for: .normal)
+    }
 }
 
 
@@ -632,6 +667,8 @@ extension ViewController {
             isFirst = false
         }
         showNowTime()
+        //하루 그래프 데이터 생성
+        daily.startTask(task)
     }
     
     func algoOfStop() {
@@ -647,6 +684,9 @@ extension ViewController {
         stopEnable()
         checkAverage()
         setAverage()
+        //하루 그래프 데이터 계산
+        daily.stopTask()
+        daily.save()
     }
     
     func algoOfRestart() {
