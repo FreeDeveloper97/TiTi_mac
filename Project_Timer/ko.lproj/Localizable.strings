@@ -50,3 +50,5 @@
 "FINISH" = "종료";
 
 "Change Background Color" = "배경색 변경하기";
+
+"Total : " = "누적 : ";

@@ -24,6 +24,7 @@
 		87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826625EB1F5300B01464 /* GraphViewController.swift */; };
 		87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826925EB1F6E00B01464 /* ContentView.swift */; };
 		87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E65D6A2612FA0900C3B11C /* testViewController.swift */; };
+		87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F669E22631E7460004CD59 /* GraphViewController2.swift */; };
 		87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FF895025C42D5F00437FD5 /* ViewController2.swift */; };
 		9312E4CC252231E600025C81 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9312E4CB252231E600025C81 /* LogViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
@@ -59,6 +60,7 @@
 		87CF826625EB1F5300B01464 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		87CF826925EB1F6E00B01464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87E65D6A2612FA0900C3B11C /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		87F669E22631E7460004CD59 /* GraphViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController2.swift; sourceTree = "<group>"; };
 		87FF895025C42D5F00437FD5 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		9312E4CB252231E600025C81 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
@@ -117,8 +119,6 @@
 				932EE0592490A78400B00774 /* SetViewController.swift */,
 				935411AA25402D89008CB6DD /* SetTimerViewController.swift */,
 				873C760725E79105009374E1 /* SetTimerViewController2.swift */,
-				87204803261CBB3D00EF1691 /* taskSelectViewController.swift */,
-				87204807261CBB7300EF1691 /* DailyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +132,16 @@
 				87204800261CBB0B00EF1691 /* Storage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		87F669E62631E7560004CD59 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				87204803261CBB3D00EF1691 /* taskSelectViewController.swift */,
+				87204807261CBB7300EF1691 /* DailyViewController.swift */,
+				87F669E22631E7460004CD59 /* GraphViewController2.swift */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 		93544DA12524BFC8009368C1 /* fonts */ = {
@@ -166,6 +176,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				87F669E62631E7560004CD59 /* test */,
 				87CB285526149E84004B11F0 /* Model */,
 				87CB285226149DFA004B11F0 /* View */,
 				87CB285426149E48004B11F0 /* Controller */,
@@ -277,6 +288,7 @@
 				872047FE261CBAF600EF1691 /* Daily.swift in Sources */,
 				87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */,
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
+				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 				873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */,
 			);

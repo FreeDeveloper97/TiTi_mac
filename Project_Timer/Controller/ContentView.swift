@@ -16,23 +16,24 @@ struct ContentView: View {
         ScrollView(.vertical, showsIndicators: false) {
             /* 전체 큰 틀 */
             VStack {
-                Spacer(minLength: 10)
-                /* 차트화면 타이틀 */
-                Text("Study Time".localized())
-                    .font(.title)
-                    .fontWeight(.bold)
+                //평균시간 텍스트
+                Text("Total : ".localized() + getHrs(value: getSumTime(value: getStudyTimes())))
+                    .fontWeight(.regular)
                     .foregroundColor(.white)
-                Spacer(minLength: 0)
+                    .font(.system(size:22))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 45)
+                Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
+                    .fontWeight(.regular)
+                    .foregroundColor(.white)
+                    .font(.system(size:22))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 45)
                 
                 /* ----차트화면---- */
                 VStack {
-                    //평균시간 텍스트
-                    Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
-                        .fontWeight(.regular)
-                        .foregroundColor(.white)
-                        .font(.system(size:17))
                     //그래프 틀
-                    HStack(spacing:45) { //좌우로 15만큼 여백
+                    HStack(spacing:45) { //좌우로 45만큼 여백
                         ForEach(DailyDatas) {work in
                             //세로 스택
                             VStack{
@@ -43,7 +44,7 @@ struct ContentView: View {
                                     //시간 설정
                                     Text(getHrs(value: work.studyTime))
                                         .foregroundColor(Color.white)
-                                        .font(.system(size:14))
+                                        .font(.system(size:20))
                                         .padding(.bottom,5)
                                     //그래프 막대
                                     RoundedShape()
@@ -54,57 +55,7 @@ struct ContentView: View {
                                 .frame(height:250)
                                 //날짜 설정
                                 Text(work.day)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
-                }
-                .padding()
-                .background(Color.white.opacity(0.1))
-                .cornerRadius(15)
-                .padding()
-                /* ----차트끝---- */
-                Spacer(minLength: 20)
-                
-                /* 차트화면 타이틀 */
-                Text("Rest Time".localized())
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                Spacer(minLength: 0)
-                
-                /* ----차트화면---- */
-                VStack {
-                    //평균시간 텍스트
-                    Text("Average : ".localized() + getHrs(value: getAverageTime(value: getBreakTimes())))
-                        .fontWeight(.regular)
-                        .foregroundColor(.white)
-                        .font(.system(size:17))
-                    //그래프 틀
-                    HStack(spacing:45) { //좌우로 15만큼 여백
-                        ForEach(DailyDatas) {work in
-                            //세로 스택
-                            VStack{
-                                //시간 + 그래프 막대
-                                VStack{
-                                    //아래로 붙이기
-                                    Spacer(minLength: 0)
-                                    //시간 설정
-                                    Text(getHrs(value: work.breakTime))
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size:14))
-                                        .padding(.bottom,5)
-                                    //그래프 막대
-                                    RoundedShape()
-                                        .fill(LinearGradient(gradient: .init(colors: colors2), startPoint: .top, endPoint: .bottom))
-                                        //그래프 막대 높이설정
-                                        .frame(height:getHeight(value: work.breakTime))
-                                }
-                                .frame(height:250)
-                                //날짜 설정
-                                Text(work.day)
-                                    .font(.caption)
+                                    .font(.system(size: 18))
                                     .foregroundColor(.white)
                             }
                         }
@@ -240,6 +191,14 @@ extension ContentView {
         } else {
             return sum/(value.count - zeroCount)
         }
+    }
+    
+    func getSumTime(value: [Int]) -> Int {
+        var sum: Int = 0
+        for i in value {
+            sum += i
+        }
+        return sum
     }
     
     func getStudyTimes() -> [Int] {

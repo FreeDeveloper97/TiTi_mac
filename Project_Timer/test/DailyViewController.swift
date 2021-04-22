@@ -13,6 +13,7 @@ class DailyViewController: UIViewController {
 
     @IBOutlet var progress: UIView!
     @IBOutlet var sumTime: UILabel!
+    @IBOutlet var breakLabel: UILabel!
     @IBOutlet var taskTitle: UILabel!
     @IBOutlet var taskTime: UILabel!
     @IBOutlet var taskPersent: UILabel!
@@ -23,17 +24,20 @@ class DailyViewController: UIViewController {
     var counts: Int = 0
     var fixed_sum: Int = 0
     let f = Float(0.003)
+    var breakTime: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        breakTime = UserDefaults.standard.value(forKey: "breakTime") as? Int ?? 0
         var temp: [String:Int] = [:]
 
         var daily = Daily()
         daily.load()
         print(daily.tasks)
         temp = daily.tasks
-        temp["breakTime"] = daily.breakTime
+        
+//        temp["휴식 시간"] = breakTime
         
 //        temp = addDumy()
         
@@ -100,6 +104,8 @@ extension DailyViewController {
         }
         var sum = Float(fixed_sum)
         sumTime.text = printTime(temp: fixed_sum)
+//        breakLabel.text = printTime(temp: breakTime)
+        
         //그래프 간 구별선 추가
         sum += f*Float(counts)
         
@@ -109,6 +115,9 @@ extension DailyViewController {
             let prog = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             prog.trackColor = UIColor.clear
             prog.progressColor = colors[i%colors.count]
+            if(datas[i] == breakTime) {
+                prog.progressColor = UIColor(named: "Text")!
+            }
             print(value)
             prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
             

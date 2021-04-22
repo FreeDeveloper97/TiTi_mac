@@ -8,6 +8,7 @@
 
 import UIKit
 struct Daily: Codable {
+    var day: Date = Date()
     var fixedTotalTime: Int = 0
     var fixedSumTime: Int = 0
     var fixedTimerTime: Int = 0
