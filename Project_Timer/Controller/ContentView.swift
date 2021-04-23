@@ -22,13 +22,13 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .font(.system(size:22))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 45)
+                    .padding(.leading, 15)
                 Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
                     .fontWeight(.regular)
                     .foregroundColor(.white)
                     .font(.system(size:22))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 45)
+                    .padding(.leading, 15)
                 
                 /* ----차트화면---- */
                 VStack {
@@ -52,7 +52,7 @@ struct ContentView: View {
                                         //그래프 막대 높이설정
                                         .frame(height:getHeight(value: work.studyTime))
                                 }
-                                .frame(height:250)
+                                .frame(height:220)
                                 //날짜 설정
                                 Text(work.day)
                                     .font(.system(size: 18))
@@ -76,7 +76,7 @@ struct ContentView: View {
     
     func getHeight(value : Int) -> CGFloat {
         let max = getMaxInTotalTime(value: DailyDatas)
-        return (CGFloat(value) / CGFloat(max)) * 200
+        return (CGFloat(value) / CGFloat(max)) * 170
     }
     
     func getMaxInTotalTime (value : [daily]) -> Int {
