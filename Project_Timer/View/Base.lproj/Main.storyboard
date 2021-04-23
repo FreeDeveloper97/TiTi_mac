@@ -2806,13 +2806,13 @@ AVER : 0:00:00</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzl-dt-JRM">
-                                <rect key="frame" x="304.5" y="469" width="95" height="44"/>
+                                <rect key="frame" x="304.5" y="464" width="95" height="44"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUK-Hf-ztf">
-                                <rect key="frame" x="52" y="633" width="600" height="230"/>
+                                <rect key="frame" x="52" y="658" width="600" height="230"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fN-kJ-upa">
                                         <rect key="frame" x="265" y="15" width="315" height="200"/>
@@ -2892,13 +2892,13 @@ AVER : 0:00:00</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-uM-zOI">
-                                <rect key="frame" x="328.5" y="513" width="47" height="22"/>
+                                <rect key="frame" x="328.5" y="508" width="47" height="22"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xr9-y0-SpW">
-                                <rect key="frame" x="1.5" y="548" width="701" height="60"/>
+                                <rect key="frame" x="1.5" y="543" width="701" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWs-rw-qxn">
                                         <rect key="frame" x="63" y="5" width="24" height="50"/>
@@ -2958,7 +2958,7 @@ AVER : 0:00:00</string>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnv-4c-bNV">
                                         <rect key="frame" x="324" y="5" width="24" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="Progress7"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="hrE-lL-8Cw"/>
                                             <constraint firstAttribute="width" constant="24" id="qCY-TM-Rdn"/>
@@ -3038,7 +3038,7 @@ AVER : 0:00:00</string>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DT-xI-geX">
                                         <rect key="frame" x="498" y="5" width="24" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="Color7"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="4eR-za-MAT"/>
                                             <constraint firstAttribute="height" constant="50" id="QpZ-iY-ZKx"/>
@@ -3046,7 +3046,7 @@ AVER : 0:00:00</string>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqh-Ti-1Ly">
                                         <rect key="frame" x="614" y="5" width="24" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="CC1"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="0q8-Nx-ZFh"/>
                                             <constraint firstAttribute="height" constant="50" id="LHG-SJ-zq9"/>
@@ -3147,22 +3147,86 @@ AVER : 0:00:00</string>
                                     <constraint firstItem="0gD-3A-7mK" firstAttribute="leading" secondItem="ukJ-X0-Zyt" secondAttribute="trailing" constant="5" id="ymw-kQ-dX7"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4q-pF-t0d">
+                                <rect key="frame" x="11" y="603" width="15" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWK-UR-Tnb">
+                                <rect key="frame" x="215" y="603" width="13" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8E-Ic-b1w">
+                                <rect key="frame" x="389" y="603" width="13" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa1-lS-J2Z">
+                                <rect key="frame" x="561.5" y="603" width="16" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scy-Dc-Fln">
+                                <rect key="frame" x="677.5" y="603" width="16" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfu-YR-XXA">
+                                <rect key="frame" x="126.5" y="603" width="16" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bp-rK-EXy">
+                                <rect key="frame" x="302" y="603" width="13" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGF-kj-G43">
+                                <rect key="frame" x="476" y="603" width="13" height="17"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Pb-YE-sEZ"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Fa1-lS-J2Z" firstAttribute="centerX" secondItem="QlM-yj-yXO" secondAttribute="centerX" id="3C8-HS-NEC"/>
+                            <constraint firstItem="nWK-UR-Tnb" firstAttribute="top" secondItem="Osj-Ys-WP0" secondAttribute="bottom" constant="5" id="4cZ-3W-CTH"/>
                             <constraint firstItem="ZqE-uM-zOI" firstAttribute="centerX" secondItem="dzl-dt-JRM" secondAttribute="centerX" id="5CQ-ys-OyC"/>
-                            <constraint firstItem="AUK-Hf-ztf" firstAttribute="top" secondItem="dzl-dt-JRM" secondAttribute="bottom" constant="120" id="5GR-j5-TOV"/>
+                            <constraint firstItem="AUK-Hf-ztf" firstAttribute="top" secondItem="dzl-dt-JRM" secondAttribute="bottom" constant="150" id="5GR-j5-TOV"/>
+                            <constraint firstItem="m8E-Ic-b1w" firstAttribute="top" secondItem="x6L-GE-PWf" secondAttribute="bottom" constant="5" id="6us-eM-tMn"/>
                             <constraint firstItem="Xr9-y0-SpW" firstAttribute="top" secondItem="dzl-dt-JRM" secondAttribute="bottom" constant="35" id="7dH-nd-tzg"/>
+                            <constraint firstItem="hfu-YR-XXA" firstAttribute="centerX" secondItem="ukJ-X0-Zyt" secondAttribute="centerX" id="EUj-bi-lcN"/>
+                            <constraint firstItem="b4q-pF-t0d" firstAttribute="centerX" secondItem="ZZx-jq-EDV" secondAttribute="centerX" id="GEq-Cr-Phi"/>
+                            <constraint firstItem="hfu-YR-XXA" firstAttribute="top" secondItem="ukJ-X0-Zyt" secondAttribute="bottom" constant="5" id="IRm-nf-Ayo"/>
+                            <constraint firstItem="YGF-kj-G43" firstAttribute="top" secondItem="afm-up-OmW" secondAttribute="bottom" constant="5" id="Mb2-J3-Vyd"/>
                             <constraint firstItem="V2m-9t-19k" firstAttribute="centerX" secondItem="FRl-gZ-Z0F" secondAttribute="centerX" id="PX5-K5-nS1"/>
+                            <constraint firstItem="m8E-Ic-b1w" firstAttribute="centerX" secondItem="x6L-GE-PWf" secondAttribute="centerX" id="Qoe-le-I5s"/>
+                            <constraint firstItem="scy-Dc-Fln" firstAttribute="centerX" secondItem="9AF-ri-9pr" secondAttribute="centerX" id="T56-U0-S2O"/>
                             <constraint firstItem="Xr9-y0-SpW" firstAttribute="centerX" secondItem="FRl-gZ-Z0F" secondAttribute="centerX" id="TNT-XX-zWb"/>
                             <constraint firstItem="dzl-dt-JRM" firstAttribute="centerX" secondItem="0Pb-YE-sEZ" secondAttribute="centerX" id="WpJ-CV-tB8"/>
+                            <constraint firstItem="nWK-UR-Tnb" firstAttribute="centerX" secondItem="Osj-Ys-WP0" secondAttribute="centerX" id="X64-LF-skP"/>
+                            <constraint firstItem="8bp-rK-EXy" firstAttribute="centerX" secondItem="3d2-un-Whi" secondAttribute="centerX" id="ZOq-yN-kq7"/>
                             <constraint firstItem="AUK-Hf-ztf" firstAttribute="centerX" secondItem="FRl-gZ-Z0F" secondAttribute="centerX" id="avq-Iv-y2U"/>
                             <constraint firstItem="k2I-p8-QCR" firstAttribute="centerX" secondItem="FRl-gZ-Z0F" secondAttribute="centerX" id="awe-rr-tg6"/>
                             <constraint firstItem="V2m-9t-19k" firstAttribute="top" secondItem="KUh-bS-SDn" secondAttribute="bottom" constant="5" id="c22-c2-8O9"/>
+                            <constraint firstItem="b4q-pF-t0d" firstAttribute="top" secondItem="ZZx-jq-EDV" secondAttribute="bottom" constant="5" id="e7i-vu-T8d"/>
                             <constraint firstItem="KUh-bS-SDn" firstAttribute="top" secondItem="0Pb-YE-sEZ" secondAttribute="top" constant="30" id="gDZ-YX-Ndk"/>
+                            <constraint firstItem="Fa1-lS-J2Z" firstAttribute="top" secondItem="QlM-yj-yXO" secondAttribute="bottom" constant="5" id="hHH-TF-A5f"/>
                             <constraint firstItem="0Pb-YE-sEZ" firstAttribute="bottom" secondItem="k2I-p8-QCR" secondAttribute="bottom" constant="30" id="ku7-k9-UMG"/>
-                            <constraint firstItem="dzl-dt-JRM" firstAttribute="top" secondItem="V2m-9t-19k" secondAttribute="bottom" constant="20" id="oPG-Xt-Njp"/>
+                            <constraint firstItem="8bp-rK-EXy" firstAttribute="top" secondItem="3d2-un-Whi" secondAttribute="bottom" constant="5" id="li7-O0-Rs5"/>
+                            <constraint firstItem="scy-Dc-Fln" firstAttribute="top" secondItem="9AF-ri-9pr" secondAttribute="bottom" constant="5" id="nIE-Wb-Crc"/>
+                            <constraint firstItem="dzl-dt-JRM" firstAttribute="top" secondItem="V2m-9t-19k" secondAttribute="bottom" constant="15" id="oPG-Xt-Njp"/>
+                            <constraint firstItem="YGF-kj-G43" firstAttribute="centerX" secondItem="afm-up-OmW" secondAttribute="centerX" id="s5c-qj-V1S"/>
                             <constraint firstItem="KUh-bS-SDn" firstAttribute="centerX" secondItem="0Pb-YE-sEZ" secondAttribute="centerX" id="u2i-a1-2jL"/>
                             <constraint firstItem="ZqE-uM-zOI" firstAttribute="top" secondItem="dzl-dt-JRM" secondAttribute="bottom" id="var-hv-4Mg"/>
                         </constraints>
@@ -3229,6 +3293,9 @@ AVER : 0:00:00</string>
         </namedColor>
         <namedColor name="Color7">
             <color red="0.6705882352941176" green="0.76078431372549016" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Progress7">
+            <color red="0.48600000143051147" green="0.62400001287460327" blue="0.92400002479553223" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.99599999189376831" green="0.25499999523162842" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
