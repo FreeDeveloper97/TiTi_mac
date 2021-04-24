@@ -17,23 +17,25 @@ struct ContentView: View {
             /* 전체 큰 틀 */
             VStack {
                 //평균시간 텍스트
-                Text("Total : ".localized() + getHrs(value: getSumTime(value: getStudyTimes())))
+                let text = "Total : ".localized() + getHrs(value: getSumTime(value: getStudyTimes()))
+                + "   |   " + "Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes()))
+                Text(text)
                     .fontWeight(.regular)
                     .foregroundColor(.white)
                     .font(.system(size:22))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 15)
-                Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
-                    .fontWeight(.regular)
-                    .foregroundColor(.white)
-                    .font(.system(size:22))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 15)
+//                Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
+//                    .fontWeight(.regular)
+//                    .foregroundColor(.white)
+//                    .font(.system(size:22))
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                    .padding(.leading, 15)
                 
                 /* ----차트화면---- */
                 VStack {
                     //그래프 틀
-                    HStack(spacing:45) { //좌우로 45만큼 여백
+                    HStack(spacing:44) { //좌우로 45만큼 여백
                         ForEach(DailyDatas) {work in
                             //세로 스택
                             VStack{
@@ -52,7 +54,7 @@ struct ContentView: View {
                                         //그래프 막대 높이설정
                                         .frame(height:getHeight(value: work.studyTime))
                                 }
-                                .frame(height:220)
+                                .frame(height:200)
                                 //날짜 설정
                                 Text(work.day)
                                     .font(.system(size: 18))
@@ -61,12 +63,15 @@ struct ContentView: View {
                         }
                     }
                 }
-                .padding()
+                .padding(.horizontal, 40)
+                .padding(.vertical, 20)
                 .background(Color.white.opacity(0.1))
                 .cornerRadius(15)
-                .padding()
+                
                 /* ----차트끝---- */
             }
+            .padding(.horizontal, 30)
+            .padding(.vertical, 20)
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
@@ -217,7 +222,7 @@ extension ContentView {
     
     func appendDumyDatas(){
         DailyDatas.append(daily(id: 1, day: "2/24",
-                                studyTime: translate2(input: "2:35:20"),
+                                studyTime: translate2(input: "12:35:20"),
                                 breakTime: translate2(input: "0:35:20")))
         DailyDatas.append(daily(id: 2, day: "2/23",
                                 studyTime: translate2(input: "4:03:41"),
