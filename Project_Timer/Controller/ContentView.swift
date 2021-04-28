@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ContentView: View {
     //그래프 색상 그라데이션 설정
-    var colors = [Color.blue, Color.purple]
+    var colors = [Color("CCC2"), Color("CCC1")]
     var colors2 = [Color.red, Color.purple]
     //화면
     var body : some View {
@@ -25,12 +25,6 @@ struct ContentView: View {
                     .font(.system(size:22))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 15)
-//                Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
-//                    .fontWeight(.regular)
-//                    .foregroundColor(.white)
-//                    .font(.system(size:22))
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .padding(.leading, 15)
                 
                 /* ----차트화면---- */
                 VStack {
@@ -244,3 +238,4 @@ extension ContentView {
                                 breakTime: translate2(input: "0:37:50")))
     }
 }
+

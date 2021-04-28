@@ -156,9 +156,12 @@ extension GraphViewController2 {
     }
     
     func appendColors() {
-        var i = counts%12+1
+        var i = counts%12
+        if(i == 0) {
+            i = 12
+        }
         for _ in 1...counts {
-            colors.append(UIColor(named: "CC\(i)")!)
+            colors.append(UIColor(named: "CCC\(i)")!)
             i -= 1
             if(i == 0) {
                 i = 12
@@ -236,14 +239,14 @@ extension GraphViewController2 {
         temp["통계학 공부"] = 2700
         temp["영어 공부"] = 2280
         temp["swift 프로그래밍"] = 2400
-        temp["수업"] = 2160
-        temp["시스템 분석 공부"] = 1800
-        temp["문학세계 공부"] = 1200
-        temp["코딩테스트 공부"] = 2200
-        temp["자바스크립트 공부"] = 1980
-        temp["휴식 시간"] = 2500
-        temp["13번째과목"] = 2000
-        temp["14번째 과목"] = 2300
+//        temp["수업"] = 2160
+//        temp["시스템 분석 공부"] = 1800
+//        temp["문학세계 공부"] = 1200
+//        temp["코딩테스트 공부"] = 2200
+//        temp["자바스크립트 공부"] = 1980
+//        temp["휴식 시간"] = 2500
+//        temp["13번째과목"] = 2000
+//        temp["14번째 과목"] = 2300
         
         return temp
     }
@@ -274,6 +277,13 @@ extension GraphViewController2 {
         fillColor(time: timeline[21], view: time_21)
         fillColor(time: timeline[22], view: time_22)
         fillColor(time: timeline[23], view: time_23)
+        //이런 세팅으로 실시간으로 올릴 수 있겠네용
+        //아이패드로 사용자 채팅을 볼 수 있고
+        //팬이 계속 돌때 얼마나 시끄러워지는지도 한번 테스트 해볼 생각
+        //친구가 한번 테스트삼아 들어와 줬으면 좋겠는데
+        //오 누구신가요?
+        //채팅좀 보내주세용
+        
     }
     
     func fillColor(time: Int, view: UIView) {

@@ -3312,7 +3312,7 @@ AVER : 0:00:00</string>
             <color red="0.6705882352941176" green="0.76078431372549016" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Empty">
-            <color red="0.086595751575587965" green="0.086595751575587965" blue="0.086595751575587965" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.086999997496604919" green="0.086999997496604919" blue="0.086999997496604919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.99599999189376831" green="0.25499999523162842" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

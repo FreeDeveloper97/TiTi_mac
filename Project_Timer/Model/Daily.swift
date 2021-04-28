@@ -50,5 +50,7 @@ struct Daily: Codable {
     
     mutating func load() {
         self = Storage.retrive("daily.json", from: .documents, as: Daily.self) ?? Daily()
+//        tasks["Swift 프로그래밍"] = 338
+//        save()
     }
 }

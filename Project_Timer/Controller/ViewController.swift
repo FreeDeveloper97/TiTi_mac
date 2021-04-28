@@ -137,6 +137,9 @@ class ViewController: UIViewController {
             printLogs()
             updateProgress()
             showNowTime()
+            //현재시간을 구한다 : date()
+            // date() -> 시간을 구함
+            // 해당 시간값의 배열값을 +1 하면 됨
         }
     }
     
