@@ -18,7 +18,6 @@ class GraphViewController2: UIViewController {
     @IBOutlet var sumTime: UILabel!
     @IBOutlet var taskTitle: UILabel!
     @IBOutlet var taskTime: UILabel!
-    @IBOutlet var taskPersent: UILabel!
     @IBOutlet var today: UILabel!
     
     @IBOutlet var time_05: UIView!
@@ -53,15 +52,12 @@ class GraphViewController2: UIViewController {
     var counts: Int = 0
     var fixed_sum: Int = 0
     let f = Float(0.003)
-    var breakTime: Int = 0
-    let BLUE = UIColor(named: "CC1")
+    var daily = Daily()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setRadius()
-        dumyComor()
-        //맥용 코드
-        setBackBT()
+        setBackBT() //맥용 코드
         
         //7days
         let hostingController = UIHostingController(rootView: ContentView())
@@ -73,38 +69,39 @@ class GraphViewController2: UIViewController {
         viewOfView.addSubview(hostingController.view)
         
         //today
-        var daily = Daily()
         daily.load()
-        
-        today.text = getDay(day: daily.day)
-        let temp: [String:Int] = daily.tasks
-//        let temp = addDumy()
-        counts = temp.count
-        appendColors()
-        
-        let tasks = temp.sorted(by: { $0.1 < $1.1 } )
-        
-        var array: [Int] = []
-        for (key, value) in tasks {
-            printTitle.append(key)
-            printTime.append(printTime(temp: value))
-            array.append(value)
+        fillHourColor()
+        if(daily.tasks != [:]) {
+            today.text = getDay(day: daily.day)
+            let temp: [String:Int] = daily.tasks
+    //        let temp = addDumy()
+            counts = temp.count
+            appendColors()
+            
+            let tasks = temp.sorted(by: { $0.1 < $1.1 } )
+            
+            var array: [Int] = []
+            for (key, value) in tasks {
+                printTitle.append(key)
+                printTime.append(printTime(temp: value))
+                array.append(value)
+            }
+            
+            let width = progress.bounds.width
+            let height = progress.bounds.height
+            makeProgress(array, width, height)
+            var p1 = ""
+            var p2 = ""
+            for i in (0..<tasks.count).reversed() {
+                p1 += "\(printTitle[i])\n"
+                p2 += "\(printTime[i])\n"
+            }
+            taskTitle.text = p1
+            taskTime.text = p2
+        } else {
+            print("no data")
         }
         
-        let width = progress.bounds.width
-        let height = progress.bounds.height
-        makeProgress(array, width, height)
-        var p1 = ""
-        var p2 = ""
-        var p3 = ""
-        for i in (0..<tasks.count).reversed() {
-            p1 += "\(printTitle[i])\n"
-            p2 += "\(printTime[i])\n"
-            p3 += "\(printPersent[i])\n"
-        }
-        taskTitle.text = p1
-        taskTime.text = p2
-        taskPersent.text = p3
     }
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
@@ -201,18 +198,13 @@ extension GraphViewController2 {
             let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             prog.trackColor = UIColor.clear
             prog.progressColor = colors[i%colors.count]
-            if(datas[i] == breakTime) {
-                prog.progressColor = UIColor(named: "Text")!
-            }
             print(value)
             prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
             
             let per = Float(datas[i])/Float(sum) //그래프 퍼센트
-            let fixed_per = Float(datas[i])/Float(fixed_sum)
             value -= per
             
             progress.addSubview(prog)
-            printPersent.append(String(format: "%.1f", fixed_per*100) + "%")
             
             value = addBlock(value: value, width: width, height: height)
         }
@@ -251,8 +243,15 @@ extension GraphViewController2 {
         return temp
     }
     
-    func dumyComor() {
-        let timeline = [2450,1250,1000,0,0,0,0,0,0,1000,3300,3300,2400,1200,1000,3600,3600,2400,2400,1000,0,2400,23400,0]
+    func fillHourColor() {
+        let timeline = daily.timeline
+//        timeline[6] = 600-1
+//        timeline[7] = 1200-1
+//        timeline[8] = 1800-1
+//        timeline[9] = 2400-1
+//        timeline[10] = 3000-1
+//        timeline[11] = 3600-1
+        print("timeLine : \(timeline)")
         fillColor(time: timeline[0], view: time_24)
         fillColor(time: timeline[1], view: time_01)
         fillColor(time: timeline[2], view: time_02)
@@ -277,26 +276,25 @@ extension GraphViewController2 {
         fillColor(time: timeline[21], view: time_21)
         fillColor(time: timeline[22], view: time_22)
         fillColor(time: timeline[23], view: time_23)
-        //이런 세팅으로 실시간으로 올릴 수 있겠네용
-        //아이패드로 사용자 채팅을 볼 수 있고
-        //팬이 계속 돌때 얼마나 시끄러워지는지도 한번 테스트 해볼 생각
-        //친구가 한번 테스트삼아 들어와 줬으면 좋겠는데
-        //오 누구신가요?
-        //채팅좀 보내주세용
-        
     }
     
     func fillColor(time: Int, view: UIView) {
         if(time == 0) {
             return
         }
-        view.backgroundColor = BLUE
-        if(time < 1200) {
-            view.alpha = 0.3
-        } else if(time >= 1200 && time < 2400) {
-            view.alpha = 0.6
-        } else {
-            view.alpha = 1
+        view.backgroundColor = UIColor(named: "CC2")
+        if(time < 600) { //0 ~ 10
+            view.alpha = 0.2
+        } else if(time < 1200) { //10 ~ 20
+            view.alpha = 0.35
+        } else if(time < 1800) { //20 ~ 30
+            view.alpha = 0.5
+        } else if(time < 2400) { //30 ~ 40
+            view.alpha = 0.65
+        } else if(time < 3000) { //40 ~ 50
+            view.alpha = 0.8
+        } else { //50 ~ 60
+            view.alpha = 1.0
         }
     }
 }

@@ -31,7 +31,8 @@ class StopwatchViewController: UIViewController {
     
     @IBOutlet var startStopBT: UIButton!
     @IBOutlet var startStopBTLabel: UILabel!
-    @IBOutlet var tempBT: UIButton!
+    @IBOutlet var resetBT: UIButton!
+    @IBOutlet var resetBTLabel: UILabel!
     @IBOutlet var settingBT: UIButton!
     @IBOutlet var settingBTLabel: UILabel!
     
@@ -52,7 +53,6 @@ class StopwatchViewController: UIViewController {
     var diffMins = 0
     var diffSecs = 0
     var isStop = true
-    var isBreak = false
     var isFirst = false
     var progressPer: Float = 0.0
     var fixedSecond: Int = 3600
@@ -67,7 +67,7 @@ class StopwatchViewController: UIViewController {
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
     var task: String = ""
-    var time = Time() //맥용을 위한 구조
+    var time = Time()
     //하루 그래프를 위한 구조
     var daily = Daily()
     
@@ -78,7 +78,6 @@ class StopwatchViewController: UIViewController {
         modeStopWatch.backgroundColor = UIColor.gray
         modeStopWatchLabel.textColor = UIColor.gray
         modeStopWatch.isUserInteractionEnabled = false
-        tempBT.alpha = 0
         
         setVCNum()
         setLocalizable()
@@ -129,10 +128,9 @@ class StopwatchViewController: UIViewController {
     }
     
     @objc func updateCounter(){
-        //맥용 코드
         let seconds = time.getSeconds()
         sumTime = time.startSumTime + seconds
-        sumTime_temp = seconds
+        sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
         
         updateTimeLabels()
@@ -140,6 +138,7 @@ class StopwatchViewController: UIViewController {
         printLogs()
         saveTimes()
 //        showNowTime()
+        daily.updateTask()
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -165,6 +164,11 @@ class StopwatchViewController: UIViewController {
     @IBAction func settingBTAction(_ sender: Any) {
         showSettingView()
     }
+    
+    @IBAction func resetBTAction(_ sender: Any) {
+        resetSum_temp()
+    }
+    
 }
 
 extension StopwatchViewController : ChangeViewController2 {
@@ -208,6 +212,7 @@ extension StopwatchViewController : ChangeViewController2 {
     
     func changeTask() {
         setTask()
+        resetSum_temp()
     }
 }
 
@@ -225,12 +230,7 @@ extension StopwatchViewController {
             realTime.invalidate()
             timeTrigger = true
             let shared = UserDefaults.standard
-            shared.set(Date(), forKey: "savedTime")
-        } else if(isBreak) {
-            realTime.invalidate()
-            timeTrigger = true
-            let shared = UserDefaults.standard
-            shared.set(Date(), forKey: "savedTime")
+            shared.set(Date(), forKey: "savedTime") //나가는 시점의 시간 저장
         }
     }
     
@@ -239,8 +239,8 @@ extension StopwatchViewController {
         finishTimeLabel.text = getFutureTime()
         if(!isStop) {
             if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
-                (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: savedDate)
-                refresh(hours: diffHrs, mins: diffMins, secs: diffSecs)
+                (diffHrs, diffMins, diffSecs) = StopwatchViewController.getTimeDifference(startDate: savedDate)
+                refresh(hours: diffHrs, mins: diffMins, secs: diffSecs, start: savedDate)
                 removeSavedDate()
             }
         }
@@ -252,7 +252,7 @@ extension StopwatchViewController {
         return(components.hour!, components.minute!, components.second!)
     }
     
-    func refresh (hours: Int, mins: Int, secs: Int) {
+    func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
         let tempSeconds = hours*3600 + mins*60 + secs
         
         goalTime -= tempSeconds
@@ -264,6 +264,8 @@ extension StopwatchViewController {
         updateTimeLabels()
         startAction()
         finishTimeLabel.text = getFutureTime()
+        //나간 시점 start, 현재 시각 Date 와 비교
+        daily.addHoursInBackground(start, tempSeconds)
     }
     
     func removeSavedDate() {
@@ -281,13 +283,12 @@ extension StopwatchViewController {
     
     func setRadius() {
         taskButton.layer.cornerRadius = 17
-        
         startStopBT.layer.cornerRadius = 17
         settingBT.layer.cornerRadius = 17
-        
         modeTimer.layer.cornerRadius = 17
         modeStopWatch.layer.cornerRadius = 17
         log.layer.cornerRadius = 17
+        resetBT.layer.cornerRadius = 17
     }
     
     func setShadow() {
@@ -310,6 +311,11 @@ extension StopwatchViewController {
         log.layer.shadowOpacity = 0.7
         log.layer.shadowOffset = CGSize.zero
         log.layer.shadowRadius = 5
+        
+        resetBT.layer.shadowColor = UIColor.gray.cgColor
+        resetBT.layer.shadowOpacity = 0.7
+        resetBT.layer.shadowOffset = CGSize.zero
+        resetBT.layer.shadowRadius = 5
     }
     
     func setBorder() {
@@ -510,6 +516,8 @@ extension StopwatchViewController {
             self.modeTimerLabel.alpha = 1
             self.modeStopWatchLabel.alpha = 1
             self.logLabel.alpha = 1
+            self.resetBT.alpha = 1
+            self.resetBTLabel.alpha = 1
         })
     }
     
@@ -531,6 +539,8 @@ extension StopwatchViewController {
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
             self.settingBTLabel.alpha = 0
+            self.resetBT.alpha = 0
+            self.resetBTLabel.alpha = 0
         })
     }
     
@@ -539,6 +549,7 @@ extension StopwatchViewController {
         log.isUserInteractionEnabled = true
         modeTimer.isUserInteractionEnabled = true
         taskButton.isUserInteractionEnabled = true
+        resetBT.isUserInteractionEnabled = true
     }
     
     func startEnable() {
@@ -546,6 +557,7 @@ extension StopwatchViewController {
         log.isUserInteractionEnabled = false
         modeTimer.isUserInteractionEnabled = false
         taskButton.isUserInteractionEnabled = false
+        resetBT.isUserInteractionEnabled = false
     }
     
     func goToViewController(where: String) {
@@ -581,13 +593,15 @@ extension StopwatchViewController {
     }
     
     func setTask() {
-        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter New Task"
+        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter New Task".localized()
         taskButton.setTitle(task, for: .normal)
     }
     
     func resetSum_temp() {
         sumTime_temp = 0
+        time.startSumTimeTemp = 0
         updateTimeLabels()
+        updateProgress()
     }
 }
 
@@ -597,9 +611,9 @@ extension StopwatchViewController {
     func algoOfStart() {
         isStop = false
         startColor()
-        resetSum_temp()
+//        resetSum_temp()
         updateProgress()
-        time.setTimes(goal: goalTime, sum: sumTime, timer: 0) //맥용 코드 추가
+        time.setTimes(goal: goalTime, sum: sumTime, timer: 0)
         startAction()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
@@ -607,8 +621,7 @@ extension StopwatchViewController {
             isFirst = false
         }
 //        showNowTime()
-        //하루 그래프 데이터 생성
-        daily.startTask(task)
+        daily.startTask(task) //하루 그래프 데이터 생성
     }
     
     func algoOfStop() {
@@ -621,10 +634,8 @@ extension StopwatchViewController {
         
         stopColor()
         stopEnable()
-        //하루 그래프 데이터 계산
-        daily.stopTask()
-        daily.save()
-        //화면 회전 체크
-        deviceRotated()
+        time.startSumTimeTemp = sumTime_temp //기준시간 저장
+        daily.save() //하루 그래프 데이터 계산
+        deviceRotated() //화면 회전 체크
     }
 }

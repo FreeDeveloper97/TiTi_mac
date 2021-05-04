@@ -13,7 +13,7 @@ struct Time {
     var startGoalTime: Int = 0
     var startSumTime: Int = 0
     var startTimerTime: Int = 0
-    var startBreakTime: Int = 0
+    var startSumTimeTemp: Int = 0
     
     init() {
         self.startTime = nil
@@ -27,11 +27,6 @@ struct Time {
         self.startGoalTime = goal
         self.startSumTime = sum
         self.startTimerTime = timer
-    }
-    
-    mutating func setBreakTime(breakTime: Int) {
-        self.startTime = Date()
-        self.startBreakTime = breakTime
     }
     
     func getSeconds() -> Int {

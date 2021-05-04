@@ -137,7 +137,7 @@ class ViewController2: UIViewController {
     @objc func updateBreaker() {
         //맥용 코드
         let seconds = time.getSeconds()
-        breakTime = time.startBreakTime + seconds
+//        breakTime = time.startBreakTime + seconds
         breakTime2 = breakTime%fixedBreak
         
         updateBreakTimeLabels()
@@ -711,7 +711,7 @@ extension ViewController2 {
         breakStartColor()
         updateBreakProgress()
         //맥용 코드 추가
-        time.setBreakTime(breakTime: breakTime)
+//        time.setBreakTime(breakTime: breakTime)
         breakStartAction()
     }
     
