@@ -19,6 +19,8 @@
 		8787DFDD25B5322A007B8C13 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD725B5322A007B8C13 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		8787DFDE25B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD825B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf */; };
 		8787DFDF25B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD925B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf */; };
+		878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */; };
+		878A8BC1264124AD0058B1E4 /* StaticCircularProgressView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BC0264124AD0058B1E4 /* StaticCircularProgressView copy.swift */; };
 		87BF47D525B6E12A00EE2819 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87BF47D425B6E12A00EE2819 /* timer.mp3 */; };
 		87CB284426149AF8004B11F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CB284626149AF8004B11F0 /* Localizable.strings */; };
 		87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826625EB1F5300B01464 /* GraphViewController.swift */; };
@@ -52,6 +54,8 @@
 		8787DFD725B5322A007B8C13 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		8787DFD825B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
 		8787DFD925B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
+		878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
+		878A8BC0264124AD0058B1E4 /* StaticCircularProgressView copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StaticCircularProgressView copy.swift"; sourceTree = "<group>"; };
 		87BF47D425B6E12A00EE2819 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		87CB284526149AF8004B11F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CB284F26149DB0004B11F0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -115,7 +119,6 @@
 				87FF895025C42D5F00437FD5 /* ViewController2.swift */,
 				9312E4CB252231E600025C81 /* LogViewController.swift */,
 				87CF826625EB1F5300B01464 /* GraphViewController.swift */,
-				87CF826925EB1F6E00B01464 /* ContentView.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
 				935411AA25402D89008CB6DD /* SetTimerViewController.swift */,
 				873C760725E79105009374E1 /* SetTimerViewController2.swift */,
@@ -127,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
+				878A8BC0264124AD0058B1E4 /* StaticCircularProgressView copy.swift */,
 				87313E7D25EBA0C10088D1EC /* Time.swift */,
 				872047FD261CBAF600EF1691 /* Daily.swift */,
 				87204800261CBB0B00EF1691 /* Storage.swift */,
@@ -140,6 +144,8 @@
 				87204803261CBB3D00EF1691 /* taskSelectViewController.swift */,
 				87204807261CBB7300EF1691 /* DailyViewController.swift */,
 				87F669E22631E7460004CD59 /* GraphViewController2.swift */,
+				87CF826925EB1F6E00B01464 /* ContentView.swift */,
+				878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */,
 				87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */,
+				878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */,
 				87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */,
 				87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
@@ -287,6 +294,7 @@
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				872047FE261CBAF600EF1691 /* Daily.swift in Sources */,
 				87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */,
+				878A8BC1264124AD0058B1E4 /* StaticCircularProgressView copy.swift in Sources */,
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
 				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,

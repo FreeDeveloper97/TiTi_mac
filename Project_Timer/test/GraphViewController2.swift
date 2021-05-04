@@ -198,7 +198,7 @@ extension GraphViewController2 {
         var value: Float = 1
         value = addBlock(value: value, width: width, height: height)
         for i in 0..<counts {
-            let prog = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             prog.trackColor = UIColor.clear
             prog.progressColor = colors[i%colors.count]
             if(datas[i] == breakTime) {
@@ -221,7 +221,7 @@ extension GraphViewController2 {
     
     func addBlock(value: Float, width: CGFloat, height: CGFloat) -> Float {
         var value = value
-        let block = CircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         block.trackColor = UIColor.clear
         block.progressColor = UIColor.black
         block.setProgressWithAnimation(duration: 1, value: value, from: 0)

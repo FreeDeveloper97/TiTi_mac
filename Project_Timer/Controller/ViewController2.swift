@@ -76,8 +76,7 @@ class ViewController2: UIViewController {
     var VCNum: Int = 2
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
-    //맥용을 위한 구조
-    var time = Time()
+    var time = Time() //맥용을 위한 구조
     var task: String = ""
     //하루 그래프를 위한 구조
     var daily = Daily()
@@ -677,8 +676,7 @@ extension ViewController2 {
         isStop = false
         startColor()
         updateProgress()
-        //맥용 코드 추가
-        time.setTimes(goal: goalTime, sum: sumTime, timer: 0)
+        time.setTimes(goal: goalTime, sum: sumTime, timer: 0) //맥용 코드 추가
         startAction()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
