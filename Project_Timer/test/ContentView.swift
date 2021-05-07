@@ -29,7 +29,7 @@ struct ContentView: View {
                 /* ----차트화면---- */
                 VStack {
                     //그래프 틀
-                    HStack(spacing:44) { //좌우로 45만큼 여백
+                    HStack(spacing:32) { //좌우로 45만큼 여백
                         ForEach(DailyDatas) {work in
                             //세로 스택
                             VStack{
@@ -60,7 +60,7 @@ struct ContentView: View {
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)
                 .background(Color.white.opacity(0.1))
-                .cornerRadius(15)
+                .cornerRadius(20)
                 
                 /* ----차트끝---- */
             }
@@ -98,7 +98,7 @@ struct ContentView_Previews: PreviewProvider {
 
 struct RoundedShape : Shape {
     func path(in rect : CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 10, height: 10))
         
         return Path(path.cgPath)
     }

@@ -16,8 +16,8 @@ class GraphViewController2: UIViewController {
     
     @IBOutlet var progress: UIView!
     @IBOutlet var sumTime: UILabel!
-    @IBOutlet var taskTitle: UILabel!
-    @IBOutlet var taskTime: UILabel!
+//    @IBOutlet var taskTitle: UILabel!
+//    @IBOutlet var taskTime: UILabel!
     @IBOutlet var today: UILabel!
     
     @IBOutlet var time_05: UIView!
@@ -45,14 +45,13 @@ class GraphViewController2: UIViewController {
     @IBOutlet var time_03: UIView!
     @IBOutlet var time_04: UIView!
     
-    var printTitle: [String] = []
-    var printTime: [String] = []
-    var printPersent: [String] = []
+    var arrayTaskName: [String] = []
+    var arrayTaskTime: [String] = []
     var colors: [UIColor] = []
-    var counts: Int = 0
     var fixed_sum: Int = 0
     let f = Float(0.003)
     var daily = Daily()
+    var counts: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,8 +81,8 @@ class GraphViewController2: UIViewController {
             
             var array: [Int] = []
             for (key, value) in tasks {
-                printTitle.append(key)
-                printTime.append(printTime(temp: value))
+                arrayTaskName.append(key)
+                arrayTaskTime.append(printTime(temp: value))
                 array.append(value)
             }
             
@@ -93,11 +92,11 @@ class GraphViewController2: UIViewController {
             var p1 = ""
             var p2 = ""
             for i in (0..<tasks.count).reversed() {
-                p1 += "\(printTitle[i])\n"
-                p2 += "\(printTime[i])\n"
+                p1 += "\(arrayTaskName[i])\n"
+                p2 += "\(arrayTaskTime[i])\n"
             }
-            taskTitle.text = p1
-            taskTime.text = p2
+//            taskTitle.text = p1
+//            taskTime.text = p2
         } else {
             print("no data")
         }
@@ -120,30 +119,30 @@ class GraphViewController2: UIViewController {
 extension GraphViewController2 {
     
     func setRadius() {
-        time_05.layer.cornerRadius = 3
-        time_06.layer.cornerRadius = 3
-        time_07.layer.cornerRadius = 3
-        time_08.layer.cornerRadius = 3
-        time_09.layer.cornerRadius = 3
-        time_10.layer.cornerRadius = 3
-        time_11.layer.cornerRadius = 3
-        time_12.layer.cornerRadius = 3
-        time_13.layer.cornerRadius = 3
-        time_14.layer.cornerRadius = 3
-        time_15.layer.cornerRadius = 3
-        time_16.layer.cornerRadius = 3
-        time_17.layer.cornerRadius = 3
-        time_18.layer.cornerRadius = 3
-        time_19.layer.cornerRadius = 3
-        time_20.layer.cornerRadius = 3
-        time_21.layer.cornerRadius = 3
-        time_22.layer.cornerRadius = 3
-        time_23.layer.cornerRadius = 3
-        time_24.layer.cornerRadius = 3
-        time_01.layer.cornerRadius = 3
-        time_02.layer.cornerRadius = 3
-        time_03.layer.cornerRadius = 3
-        time_04.layer.cornerRadius = 3
+        time_05.layer.cornerRadius = 5
+        time_06.layer.cornerRadius = 5
+        time_07.layer.cornerRadius = 5
+        time_08.layer.cornerRadius = 5
+        time_09.layer.cornerRadius = 5
+        time_10.layer.cornerRadius = 5
+        time_11.layer.cornerRadius = 5
+        time_12.layer.cornerRadius = 5
+        time_13.layer.cornerRadius = 5
+        time_14.layer.cornerRadius = 5
+        time_15.layer.cornerRadius = 5
+        time_16.layer.cornerRadius = 5
+        time_17.layer.cornerRadius = 5
+        time_18.layer.cornerRadius = 5
+        time_19.layer.cornerRadius = 5
+        time_20.layer.cornerRadius = 5
+        time_21.layer.cornerRadius = 5
+        time_22.layer.cornerRadius = 5
+        time_23.layer.cornerRadius = 5
+        time_24.layer.cornerRadius = 5
+        time_01.layer.cornerRadius = 5
+        time_02.layer.cornerRadius = 5
+        time_03.layer.cornerRadius = 5
+        time_04.layer.cornerRadius = 5
     }
     
     func getDay(day: Date) -> String {
@@ -225,33 +224,23 @@ extension GraphViewController2 {
     
     func addDumy() -> [String:Int] {
         var temp: [String:Int] = [:]
-        temp["ios 프로그래밍"] = 2100
-        temp["OS 공부"] = 4680
-        temp["DB 공부"] = 3900
-        temp["통계학 공부"] = 2700
-        temp["영어 공부"] = 2280
-        temp["swift 프로그래밍"] = 2400
-//        temp["수업"] = 2160
-//        temp["시스템 분석 공부"] = 1800
-//        temp["문학세계 공부"] = 1200
-//        temp["코딩테스트 공부"] = 2200
-//        temp["자바스크립트 공부"] = 1980
-//        temp["휴식 시간"] = 2500
-//        temp["13번째과목"] = 2000
-//        temp["14번째 과목"] = 2300
-        
+//        temp["Learning Korean"] = 2100
+//        temp["Swift Programming"] = 4680
+//        temp["Cycleing"] = 3900
+//        temp["Running"] = 2700
+//        temp["Reading Book"] = 2280
+        temp["프로그래밍 공부"] = 4680
+        temp["전공수업 과제"] = 3900
+        temp["프로젝트 토의"] = 2700
+        temp["책읽기"] = 2280
+        temp["영문학 공부"] = 2100
         return temp
     }
     
     func fillHourColor() {
         let timeline = daily.timeline
-//        timeline[6] = 600-1
-//        timeline[7] = 1200-1
-//        timeline[8] = 1800-1
-//        timeline[9] = 2400-1
-//        timeline[10] = 3000-1
-//        timeline[11] = 3600-1
         print("timeLine : \(timeline)")
+//        let timeline = [3600,1300,0,0,0,0,0,0,0,1200,2000,3000,2600,2600,3600,3600,1000,0,500,2000,0,0,0,1200]
         fillColor(time: timeline[0], view: time_24)
         fillColor(time: timeline[1], view: time_01)
         fillColor(time: timeline[2], view: time_02)
@@ -297,4 +286,32 @@ extension GraphViewController2 {
             view.alpha = 1.0
         }
     }
+}
+
+extension GraphViewController2: UICollectionViewDataSource {
+    //몇개 표시 할까?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return counts
+    }
+    //셀 어떻게 표시 할까?
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCell else {
+            return UICollectionViewCell()
+        }
+        let color = colors[counts - indexPath.item - 1]
+        cell.colorView.backgroundColor = color
+        cell.colorView.layer.cornerRadius = 2
+        cell.taskName.text = arrayTaskName[counts - indexPath.item - 1]
+        cell.taskTime.text = arrayTaskTime[counts - indexPath.item - 1]
+        cell.taskTime.textColor = color
+        
+        return cell
+    }
+}
+
+
+class ListCell: UICollectionViewCell {
+    @IBOutlet var colorView: UIView!
+    @IBOutlet var taskName: UILabel!
+    @IBOutlet var taskTime: UILabel!
 }
