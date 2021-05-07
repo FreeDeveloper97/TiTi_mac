@@ -132,13 +132,14 @@ class StopwatchViewController: UIViewController {
         sumTime = time.startSumTime + seconds
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTask(seconds)
+        if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
         updateTimeLabels()
         updateProgress()
         printLogs()
         saveTimes()
 //        showNowTime()
-        daily.updateTask()
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -206,8 +207,8 @@ extension StopwatchViewController : ChangeViewController2 {
         
         stopColor()
         stopEnable()
-        //하루 그래프 초기화
-        daily.reset()
+        daily.reset() //하루 그래프 초기화
+        resetSum_temp()
     }
     
     func changeTask() {
@@ -236,13 +237,13 @@ extension StopwatchViewController {
     
     @objc func willEnterForeground(noti: Notification) {
         print("Enter")
-        finishTimeLabel.text = getFutureTime()
         if(!isStop) {
             if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
                 (diffHrs, diffMins, diffSecs) = StopwatchViewController.getTimeDifference(startDate: savedDate)
                 refresh(hours: diffHrs, mins: diffMins, secs: diffSecs, start: savedDate)
                 removeSavedDate()
             }
+            finishTimeLabel.text = getFutureTime()
         }
     }
     
@@ -253,19 +254,22 @@ extension StopwatchViewController {
     }
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
-        let tempSeconds = hours*3600 + mins*60 + secs
+        let temp = sumTime
+        let seconds = time.getSeconds()
         
-        goalTime -= tempSeconds
-        sumTime += tempSeconds
-        sumTime_temp += tempSeconds
-        sumTime_temp %= fixedSecond
+        sumTime = time.startSumTime + seconds
+        print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
+        sumTime_temp = time.startSumTimeTemp + seconds
+        goalTime = time.startGoalTime - seconds
+        daily.updateTask(seconds)
+        if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
+        printLogs()
         updateProgress()
         updateTimeLabels()
         startAction()
-        finishTimeLabel.text = getFutureTime()
         //나간 시점 start, 현재 시각 Date 와 비교
-        daily.addHoursInBackground(start, tempSeconds)
+        daily.addHoursInBackground(start, sumTime - temp)
     }
     
     func removeSavedDate() {
@@ -593,7 +597,14 @@ extension StopwatchViewController {
     }
     
     func setTask() {
-        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter New Task".localized()
+        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter a new subject".localized()
+        if(task == "Enter a new subject".localized()) {
+            setFirstStart()
+        } else {
+            taskButton.setTitleColor(UIColor.white, for: .normal)
+            taskButton.layer.borderColor = UIColor.white.cgColor
+            startStopBT.isUserInteractionEnabled = true
+        }
         taskButton.setTitle(task, for: .normal)
     }
     
@@ -602,6 +613,12 @@ extension StopwatchViewController {
         time.startSumTimeTemp = 0
         updateTimeLabels()
         updateProgress()
+    }
+    
+    func setFirstStart() {
+        taskButton.setTitleColor(UIColor.systemPink, for: .normal)
+        taskButton.layer.borderColor = UIColor.systemPink.cgColor
+        startStopBT.isUserInteractionEnabled = false
     }
 }
 
