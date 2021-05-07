@@ -1,8 +1,8 @@
-/* 
+/*
   Localizable.strings
   Project_Timer
 
-  Created by Kang Minsang on 2021/03/31.
+  Created by Kang Minsang on 2021/03/07.
   Copyright © 2021 FDEE. All rights reserved.
 */
 "Now Time" = "현재시각";
@@ -53,4 +53,11 @@
 
 "Total : " = "누적 : ";
 
-"Enter New Task" = "공부할 내용을 입력해주세요";
+"Enter a new subject" = "새로운 공부내용을 입력하세요";
+
+"Select a subject" = "공부내용을 선택하세요";
+
+"Enter a subject that's max length is 20" = "12자리 내의 새로운 과목을 입력하세요";
+
+"New subject" = "새로운 과목";
+
