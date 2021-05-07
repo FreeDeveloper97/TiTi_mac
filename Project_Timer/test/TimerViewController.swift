@@ -1,5 +1,5 @@
 //
-//  StopwatchViewController.swift
+//  TimerViewController.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/04/30.
@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AudioToolbox
+import AVFoundation
 
-class StopwatchViewController: UIViewController {
+class TimerViewController: UIViewController {
 
     @IBOutlet var taskButton: UIButton!
     @IBOutlet var innerProgress: CircularProgressView!
@@ -16,8 +18,8 @@ class StopwatchViewController: UIViewController {
     
     @IBOutlet var sumTimeLabel: UILabel!
     @IBOutlet var TIMEofSum: UILabel!
-    @IBOutlet var stopWatchLabel: UILabel!
-    @IBOutlet var TIMEofStopwatch: UILabel!
+    @IBOutlet var timerLabel: UILabel!
+    @IBOutlet var TIMEofTimer: UILabel!
     @IBOutlet var targetTimeLabel: UILabel!
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
@@ -31,79 +33,73 @@ class StopwatchViewController: UIViewController {
     
     @IBOutlet var startStopBT: UIButton!
     @IBOutlet var startStopBTLabel: UILabel!
-    @IBOutlet var resetBT: UIButton!
-    @IBOutlet var resetBTLabel: UILabel!
+    @IBOutlet var setTimerBT: UIButton!
+    @IBOutlet var setTimerBTLabel: UILabel!
     @IBOutlet var settingBT: UIButton!
     @IBOutlet var settingBTLabel: UILabel!
     
-    var COLOR = UIColor(named: "Background2")
+    let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
     
+    var audioPlayer : AVPlayer!
     var timeTrigger = true
     var realTime = Timer()
+    var timerTime : Int = 0
     var sumTime : Int = 0
-    var sumTime_temp : Int = 0 //progress -> 시작기점 누적시간으로 용도 변경
     var goalTime : Int = 0
-    var breakTime : Int = 0
-    var breakTime2 : Int = 0
     var diffHrs = 0
     var diffMins = 0
     var diffSecs = 0
     var isStop = true
     var isFirst = false
     var progressPer: Float = 0.0
-    var fixedSecond: Int = 3600
-    var fixedBreak: Int = 300
-    var beforePer: Float = 0.0
-    var showAvarage: Int = 0
+    var fixedSecond: Int = 0
+    var fromSecond: Float = 0.0
+    var showAverage: Int = 0
     var array_day = [String](repeating: "", count: 7)
     var array_time = [String](repeating: "", count: 7)
     var array_break = [String](repeating: "", count: 7)
-    var stopCount: Int = 0
-    var VCNum: Int = 2
+    var VCNum: Int = 1
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
-    var task: String = ""
     var time = Time()
+    var task: String = ""
     //하루 그래프를 위한 구조
     var daily = Daily()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        modeTimer.backgroundColor = UIColor.gray
+        modeTimerLabel.textColor = UIColor.gray
+        modeTimer.isUserInteractionEnabled = false
         
-        modeStopWatch.backgroundColor = UIColor.gray
-        modeStopWatchLabel.textColor = UIColor.gray
-        modeStopWatch.isUserInteractionEnabled = false
-        
-        setVCNum()
+        getVCNum()
         setLocalizable()
         
         setButtonRotation()
-        setColor()
         setRadius()
         setShadow()
-        setBorder()
-        setDatas()
-        setTimes()
+        setBorner()
+        getDatas()
         
+        setTimes()
         stopColor()
         stopEnable()
         
         setBackground()
         checkIsFirst()
-        
-        setFirstProgress()
+        setProgress()
         
         daily.load()
         setTask()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
-        print("disappear in stopwatch")
+        print("disappear in timer")
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
@@ -121,34 +117,50 @@ class StopwatchViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //로그인이 이미 되어있는 경우라면 홈페이지로 이동한다.
+        if(VCNum == 2) {
+            goToViewController(where: "StopwatchViewController")
+        }
+    }
+    
     func checkTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 1, target: self,
-            selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timeTrigger = false
     }
     
     @objc func updateCounter(){
-        let seconds = time.getSeconds()
-        sumTime = time.startSumTime + seconds
-        sumTime_temp = time.startSumTimeTemp + seconds
-        goalTime = time.startGoalTime - seconds
-        daily.updateTask(seconds)
-        if(seconds > daily.maxTime) { daily.maxTime = seconds }
-        
-        updateTimeLabels()
-        updateProgress()
-        printLogs()
-        saveTimes()
-//        showNowTime()
+        if timerTime < 1 {
+            algoOfStop()
+            TIMEofTimer.text = "FINISH".localized()
+            playAudioFromProject()
+            saveTimes()
+        } else {
+            if timerTime < 61 {
+                TIMEofTimer.textColor = RED
+                outterProgress.progressColor = RED!
+            }
+            let seconds = time.getSeconds()
+            goalTime = time.startGoalTime - seconds
+            sumTime = time.startSumTime + seconds
+            timerTime = time.startTimerTime - seconds
+            daily.updateTask(seconds)
+            if(seconds > daily.maxTime) { daily.maxTime = seconds }
+            
+            updateTimeLabels()
+            saveTimes()
+            printLogs()
+            updateProgress()
+//            showNowTime()
+        }
     }
-    
+
     @IBAction func taskBTAction(_ sender: Any) {
         showTaskView()
     }
     
-    @IBAction func modeTimerBTAction(_ sender: Any) {
-        UserDefaults.standard.set(1, forKey: "VCNum")
-        goToViewController(where: "TimerViewController")
+    @IBAction func modeStopWatchBTAction(_ sender: Any) {
+        goToViewController(where: "StopwatchViewController")
     }
     
     @IBAction func startStopBTAction(_ sender: Any) {
@@ -166,13 +178,12 @@ class StopwatchViewController: UIViewController {
         showSettingView()
     }
     
-    @IBAction func resetBTAction(_ sender: Any) {
-        resetSum_temp()
+    @IBAction func settingTimerBTAction(_ sender: Any) {
+        showTimerView()
     }
-    
 }
 
-extension StopwatchViewController : ChangeViewController2 {
+extension TimerViewController : ChangeViewController {
     
     func setLandscape() {
         modeTimerLabel.alpha = 1
@@ -186,39 +197,54 @@ extension StopwatchViewController : ChangeViewController2 {
         logLabel.alpha = 0
     }
     
-    func changeGoalTime() {
-        isFirst = true
-        UserDefaults.standard.set(nil, forKey: "startTime")
-        setColor()
-        goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
-        showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
-        sumTime = 0
-        sumTime_temp = 0
-        breakTime = 0
-        breakTime2 = 0
-        
-        UserDefaults.standard.set(goalTime, forKey: "allTime2")
-        UserDefaults.standard.set(sumTime, forKey: "sum2")
-        UserDefaults.standard.set(breakTime, forKey: "breakTime")
-        
-        resetProgress()
-        updateTimeLabels()
-        finishTimeLabel.text = getFutureTime()
-        
+    func updateViewController() {
         stopColor()
         stopEnable()
+        
+        isStop = true
+        realTime.invalidate()
+        timeTrigger = true
+        getTimeData()
+        sumTime = 0
+        print("reset Button complite")
+        
+        UserDefaults.standard.set(timerTime, forKey: "second2")
+        UserDefaults.standard.set(goalTime, forKey: "allTime2")
+        UserDefaults.standard.set(sumTime, forKey: "sum2")
+        UserDefaults.standard.set(0, forKey: "breakTime")
+        UserDefaults.standard.set(nil, forKey: "startTime")
+        
+        TIMEofSum.text = printTime(temp: sumTime)
+        TIMEofTimer.text = printTime(temp: timerTime)
+        TIMEofTarget.text = printTime(temp: goalTime)
+        
+        persentReset()
+ 
+        //종료 예상시간 보이기
+        finishTimeLabel.text = getFutureTime()
         daily.reset() //하루 그래프 초기화
-        resetSum_temp()
     }
     
-    func changeTask() {
-        setTask()
-        resetSum_temp()
+    func changeTimer() {
+        timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        UserDefaults.standard.set(timerTime, forKey: "second2")
+        TIMEofTimer.text = printTime(temp: timerTime)
+        finishTimeLabel.text = getFutureTime()
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        fromSecond = 0.0
     }
 }
 
+extension TimerViewController: ChangeViewController2 {
+    func changeGoalTime() {}
+    
+    func changeTask() {
+        setTask()
+    }
+}
 
-extension StopwatchViewController {
+extension TimerViewController {
     
     func setBackground() {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
@@ -239,7 +265,7 @@ extension StopwatchViewController {
         print("Enter")
         if(!isStop) {
             if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
-                (diffHrs, diffMins, diffSecs) = StopwatchViewController.getTimeDifference(startDate: savedDate)
+                (diffHrs, diffMins, diffSecs) = TimerViewController.getTimeDifference(startDate: savedDate)
                 refresh(hours: diffHrs, mins: diffMins, secs: diffSecs, start: savedDate)
                 removeSavedDate()
             }
@@ -257,17 +283,20 @@ extension StopwatchViewController {
         let temp = sumTime
         let seconds = time.getSeconds()
         
+        goalTime = time.startGoalTime - seconds
         sumTime = time.startSumTime + seconds
         print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
-        sumTime_temp = time.startSumTimeTemp + seconds
-        goalTime = time.startGoalTime - seconds
+        timerTime = time.startTimerTime - seconds
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
         printLogs()
         updateProgress()
-        updateTimeLabels()
+        updateTimeLabes()
         startAction()
+        if(timerTime < 0) {
+            TIMEofTimer.text = printTime(temp: timerTime)
+        }
         //나간 시점 start, 현재 시각 Date 와 비교
         daily.addHoursInBackground(start, sumTime - temp)
     }
@@ -275,6 +304,12 @@ extension StopwatchViewController {
     func removeSavedDate() {
         if (UserDefaults.standard.object(forKey: "savedTime") as? Date) != nil {
             UserDefaults.standard.removeObject(forKey: "savedTime")
+        }
+    }
+    
+    func checkIsFirst() {
+        if (UserDefaults.standard.object(forKey: "startTime") == nil) {
+            isFirst = true
         }
     }
     
@@ -286,13 +321,13 @@ extension StopwatchViewController {
     }
     
     func setRadius() {
-        taskButton.layer.cornerRadius = 17
         startStopBT.layer.cornerRadius = 17
+        setTimerBT.layer.cornerRadius = 17
         settingBT.layer.cornerRadius = 17
         modeTimer.layer.cornerRadius = 17
         modeStopWatch.layer.cornerRadius = 17
         log.layer.cornerRadius = 17
-        resetBT.layer.cornerRadius = 17
+        taskButton.layer.cornerRadius = 17
     }
     
     func setShadow() {
@@ -301,72 +336,59 @@ extension StopwatchViewController {
         startStopBT.layer.shadowOffset = CGSize.zero
         startStopBT.layer.shadowRadius = 4
         
+        setTimerBT.layer.shadowColor = UIColor.gray.cgColor
+        setTimerBT.layer.shadowOpacity = 0.7
+        setTimerBT.layer.shadowOffset = CGSize.zero
+        setTimerBT.layer.shadowRadius = 5
+        
         settingBT.layer.shadowColor = UIColor.gray.cgColor
         settingBT.layer.shadowOpacity = 0.7
         settingBT.layer.shadowOffset = CGSize.zero
         settingBT.layer.shadowRadius = 5
         
-        modeTimer.layer.shadowColor = UIColor.gray.cgColor
-        modeTimer.layer.shadowOpacity = 0.7
-        modeTimer.layer.shadowOffset = CGSize.zero
-        modeTimer.layer.shadowRadius = 5
+        modeStopWatch.layer.shadowColor = UIColor.gray.cgColor
+        modeStopWatch.layer.shadowOpacity = 0.7
+        modeStopWatch.layer.shadowOffset = CGSize.zero
+        modeStopWatch.layer.shadowRadius = 5
         
         log.layer.shadowColor = UIColor.gray.cgColor
         log.layer.shadowOpacity = 0.7
         log.layer.shadowOffset = CGSize.zero
         log.layer.shadowRadius = 5
-        
-        resetBT.layer.shadowColor = UIColor.gray.cgColor
-        resetBT.layer.shadowOpacity = 0.7
-        resetBT.layer.shadowOffset = CGSize.zero
-        resetBT.layer.shadowRadius = 5
     }
     
-    func setBorder() {
+    func getDatas() {
+        sumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
+        goalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
+        timerTime = UserDefaults.standard.value(forKey: "second2") as? Int ?? 2400
+        showAverage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+    }
+    
+    func setBorner() {
         startStopBT.layer.borderWidth = 5
         startStopBT.layer.borderColor = RED!.cgColor
         taskButton.layer.borderWidth = 3
     }
     
-    func setDatas() {
-        goalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
-        sumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
-        showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
-        stopCount = UserDefaults.standard.value(forKey: "stopCount") as? Int ?? 0
-        breakTime = UserDefaults.standard.value(forKey: "breakTime") as? Int ?? 0
-        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-        //새로운 스톱워치 시간
-        sumTime_temp = 0
-        fixedSecond = 3600
+    func goToViewController(where: String) {
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
+        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+        self.present(vcName!, animated: true, completion: nil)
     }
     
-    func setTimes() {
-        TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofStopwatch.text = printTime(temp: sumTime_temp)
-        TIMEofTarget.text = printTime(temp: goalTime)
-        finishTimeLabel.text = getFutureTime()
+    func getVCNum() {
+        VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
+        print(VCNum)
     }
     
-    func checkIsFirst() {
-        if (UserDefaults.standard.object(forKey: "startTime") == nil) {
-            isFirst = true
-        }
-    }
-
-    func resetProgress() {
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer)
-        beforePer = 0.0
-        //circle2
-        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer2)
-        beforePer2 = 0.0
-    }
-    
-    func setFirstProgress() {
+    func setProgress() {
         outterProgress.progressWidth = 40.0
         outterProgress.trackColor = UIColor.darkGray
-        progressPer = 0
-        beforePer = progressPer
+        progressPer = Float(fixedSecond - timerTime) / Float(fixedSecond)
+        fromSecond = progressPer
         outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
         //circle2
         innerProgress.progressWidth = 15.0
@@ -375,15 +397,46 @@ extension StopwatchViewController {
         innerProgress.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
     }
     
-    func firstStart() {
+    func setTimes() {
+        TIMEofSum.text = printTime(temp: sumTime)
+        TIMEofTimer.text = printTime(temp: timerTime)
+        TIMEofTarget.text = printTime(temp: goalTime)
+        finishTimeLabel.text = getFutureTime()
+    }
+    
+    func updateTimeLabels() {
+        TIMEofSum.text = printTime(temp: sumTime)
+        TIMEofTimer.text = printTime(temp: timerTime)
+        TIMEofTarget.text = printTime(temp: goalTime)
+    }
+    
+    func firstStop() {
         let startTime = UserDefaults.standard
         startTime.set(Date(), forKey: "startTime")
         print("startTime SAVE")
         setLogData()
     }
     
+    func resetTimer() {
+        timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        UserDefaults.standard.set(timerTime, forKey: "second2")
+        TIMEofTimer.text = printTime(temp: timerTime)
+        print("reset Timer complete")
+    }
+    
+    func resetProgress() {
+        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        fromSecond = 0.0
+    }
+    
     func showSettingView() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetTimerViewController2") as! SetTimerViewController2
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
+            setVC.setViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
+    
+    func showTimerView() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetTimerViewController") as! SetTimerViewController
             setVC.SetTimerViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
@@ -392,46 +445,6 @@ extension StopwatchViewController {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
             setVC.SetTimerViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
-    }
-    
-    func startAction() {
-        if(timeTrigger) {
-            checkTimeTrigger()
-        }
-        startEnable()
-        print("Start")
-    }
-    
-    func updateTimeLabels() {
-        TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofStopwatch.text = printTime(temp: sumTime_temp)
-        TIMEofTarget.text = printTime(temp: goalTime)
-    }
-    
-    func updateProgress() {
-        progressPer = Float(sumTime_temp%fixedSecond) / Float(fixedSecond)
-        outterProgress.setProgressWithAnimation(duration: 0.0, value: progressPer, from: beforePer)
-        beforePer = progressPer
-        //circle2
-        let temp = Float(sumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 0.0, value: temp, from: beforePer2)
-        beforePer2 = temp
-    }
-    
-    func printLogs() {
-        print("sum : " + String(sumTime))
-        print("stopwatch : \(sumTime_temp)")
-        print("target : " + String(goalTime))
-    }
-    
-    func saveTimes() {
-        UserDefaults.standard.set(sumTime, forKey: "sum2")
-        UserDefaults.standard.set(goalTime, forKey: "allTime2")
-    }
-    
-    func saveBreak() {
-        UserDefaults.standard.set(breakTime, forKey: "breakTime")
-        UserDefaults.standard.set(printTime(temp: breakTime), forKey: "break1")
     }
     
     func printTime(temp : Int) -> String {
@@ -452,14 +465,59 @@ extension StopwatchViewController {
         return returnString
     }
     
-    func getDatas(){
-        sumTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 0
-        print("sumTime get complite")
+    func getTimeData(){
+        timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        print("timerTime get complite")
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         print("goalTime get complite")
-        showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
-        print("showAvarage get comolite")
-        sumTime_temp = 0
+        showAverage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
+        print("showAverage get complite")
+    }
+    
+    func startAction() {
+        if timeTrigger { checkTimeTrigger() }
+        startEnable()
+        print("Start")
+    }
+    
+    func updateTimeLabes() {
+        TIMEofTimer.text = printTime(temp: timerTime)
+        TIMEofSum.text = printTime(temp: sumTime)
+        TIMEofTarget.text = printTime(temp: goalTime)
+    }
+    
+    func saveTimes() {
+        UserDefaults.standard.set(sumTime, forKey: "sum2")
+        UserDefaults.standard.set(timerTime, forKey: "second2")
+        UserDefaults.standard.set(goalTime, forKey: "allTime2")
+    }
+    
+    func printLogs() {
+        print("timer : " + String(timerTime))
+        print("goalTime : " + String(goalTime))
+    }
+    
+    func updateProgress() {
+        progressPer = Float(fixedSecond - timerTime) / Float(fixedSecond)
+        outterProgress.setProgressWithAnimation(duration: 0.0, value: progressPer, from: fromSecond)
+        fromSecond = progressPer
+        //circle2
+        let temp = Float(sumTime)/Float(totalTime)
+        innerProgress.setProgressWithAnimation(duration: 0.0, value: temp, from: beforePer2)
+        beforePer2 = temp
+    }
+    
+    func persentReset() {
+        isFirst = true
+        UserDefaults.standard.set(nil, forKey: "startTime")
+//        AverageLabel.textColor = UIColor.white
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        fromSecond = 0.0
+        //circle2
+        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+        innerProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        beforePer2 = 0.0
     }
     
     func saveLogData() {
@@ -487,11 +545,26 @@ extension StopwatchViewController {
         dateFormatter.dateFormat = "M월 d일"
         let today = dateFormatter.string(from: now)
         UserDefaults.standard.set(today, forKey: "day1")
+        //타이머 모드의 경우 쉬는시간을 0초로 저장한다
+        UserDefaults.standard.set(printTime(temp: 0), forKey: "break1")
+    }
+    
+    private func playAudioFromProject() {
+        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
+            print("error to get the mp3 file")
+            return
+        }
+        do {
+            audioPlayer = try AVPlayer(url: url)
+        } catch {
+            print("audio file error")
+        }
+        audioPlayer?.play()
     }
     
     func getFutureTime() -> String {
         let now = Date()
-        let future = now.addingTimeInterval(TimeInterval(goalTime))
+        let future = now.addingTimeInterval(TimeInterval(timerTime))
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "hh:mm a"
@@ -500,16 +573,18 @@ extension StopwatchViewController {
     }
     
     func stopColor() {
-        self.view.backgroundColor = COLOR
+        self.view.backgroundColor = BLUE
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
         startStopBT.backgroundColor = RED!
-        TIMEofStopwatch.textColor = UIColor.white
+        TIMEofTimer.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
+            self.setTimerBT.alpha = 1
             self.settingBT.alpha = 1
             self.taskButton.layer.borderColor = UIColor.white.cgColor
             self.startStopBTLabel.textColor = UIColor.white
+            self.setTimerBTLabel.alpha = 1
             self.settingBTLabel.alpha = 1
         })
         //animation test
@@ -520,17 +595,15 @@ extension StopwatchViewController {
             self.modeTimerLabel.alpha = 1
             self.modeStopWatchLabel.alpha = 1
             self.logLabel.alpha = 1
-            self.resetBT.alpha = 1
-            self.resetBTLabel.alpha = 1
         })
     }
     
     func startColor() {
         self.view.backgroundColor = UIColor.black
-        outterProgress.progressColor = COLOR!
+        outterProgress.progressColor = BLUE!
         innerProgress.progressColor = UIColor.white
         startStopBT.backgroundColor = UIColor.clear
-        TIMEofStopwatch.textColor = COLOR
+        TIMEofTimer.textColor = BLUE
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.modeTimer.alpha = 0
@@ -539,44 +612,29 @@ extension StopwatchViewController {
             self.modeTimerLabel.alpha = 0
             self.modeStopWatchLabel.alpha = 0
             self.logLabel.alpha = 0
+            self.setTimerBT.alpha = 0
             self.settingBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
+            self.setTimerBTLabel.alpha = 0
             self.settingBTLabel.alpha = 0
-            self.resetBT.alpha = 0
-            self.resetBTLabel.alpha = 0
         })
     }
     
     func stopEnable() {
         settingBT.isUserInteractionEnabled = true
+        setTimerBT.isUserInteractionEnabled = true
         log.isUserInteractionEnabled = true
-        modeTimer.isUserInteractionEnabled = true
+        modeStopWatch.isUserInteractionEnabled = true
         taskButton.isUserInteractionEnabled = true
-        resetBT.isUserInteractionEnabled = true
     }
     
     func startEnable() {
         settingBT.isUserInteractionEnabled = false
+        setTimerBT.isUserInteractionEnabled = false
         log.isUserInteractionEnabled = false
-        modeTimer.isUserInteractionEnabled = false
+        modeStopWatch.isUserInteractionEnabled = false
         taskButton.isUserInteractionEnabled = false
-        resetBT.isUserInteractionEnabled = false
-    }
-    
-    func goToViewController(where: String) {
-        let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
-        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
-        self.present(vcName!, animated: true, completion: nil)
-    }
-    
-    func setColor() {
-        COLOR = UserDefaults.standard.colorForKey(key: "color") as? UIColor ?? UIColor(named: "Background2")
-    }
-    
-    func setVCNum() {
-        UserDefaults.standard.set(2, forKey: "VCNum")
     }
     
 //    func showNowTime() {
@@ -585,14 +643,14 @@ extension StopwatchViewController {
 //        dateFormatter.locale = Locale(identifier: "en_US")
 //        dateFormatter.dateFormat = "hh:mm a"
 //        let today = dateFormatter.string(from: now)
-//        avarageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 35)
+//        AverageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 35)
 //        nowTimeLabel.text = "\n" + "Now Time".localized()
-//        avarageLabel.text = "\(today)"
+//        AverageLabel.text = "\(today)"
 //    }
     
     func setLocalizable() {
         sumTimeLabel.text = "Sum Time".localized()
-        stopWatchLabel.text = "Stopwatch".localized()
+        timerLabel.text = "Timer".localized()
         targetTimeLabel.text = "Target Time".localized()
     }
     
@@ -608,11 +666,10 @@ extension StopwatchViewController {
         taskButton.setTitle(task, for: .normal)
     }
     
-    func resetSum_temp() {
-        sumTime_temp = 0
-        time.startSumTimeTemp = 0
-        updateTimeLabels()
-        updateProgress()
+    func checkReset() {
+        if(timerTime <= 0) {
+            algoOfRestart()
+        }
     }
     
     func setFirstStart() {
@@ -622,19 +679,17 @@ extension StopwatchViewController {
     }
 }
 
-
-extension StopwatchViewController {
+extension TimerViewController {
     
     func algoOfStart() {
         isStop = false
         startColor()
-//        resetSum_temp()
-        updateProgress()
-        time.setTimes(goal: goalTime, sum: sumTime, timer: 0)
+        checkReset()
+        time.setTimes(goal: goalTime, sum: sumTime, timer: timerTime)
         startAction()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
-            firstStart()
+            firstStop()
             isFirst = false
         }
 //        showNowTime()
@@ -651,8 +706,13 @@ extension StopwatchViewController {
         
         stopColor()
         stopEnable()
-        time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
         deviceRotated() //화면 회전 체크
+    }
+    
+    func algoOfRestart() {
+        resetTimer()
+        resetProgress()
+        finishTimeLabel.text = getFutureTime()
     }
 }
