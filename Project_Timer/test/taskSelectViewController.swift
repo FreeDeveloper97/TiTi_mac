@@ -12,9 +12,11 @@ class taskSelectViewController: UIViewController {
 
     @IBOutlet var studyTitle: UILabel!
     @IBOutlet var table: UITableView!
+    @IBOutlet var deleteBT:UIButton!
     
     var tasks: [String] = []
     var SetTimerViewControllerDelegate : ChangeViewController2!
+    var isDelete: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,18 @@ class taskSelectViewController: UIViewController {
         alert.addAction(ok)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
+    }
+    
+    @IBAction func deleteAction(_ sender: Any) {
+        if(isDelete == false) {
+            isDelete = true
+            deleteBT.tintColor = UIColor.systemPink
+            self.table.reloadData()
+        } else {
+            isDelete = false
+            deleteBT.tintColor = UIColor(named: "Blue")
+            self.table.reloadData()
+        }
     }
     
     func selectTask(_ task: String) {
@@ -80,6 +94,19 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.taskName.text = tasks[indexPath.row]
+        if(isDelete == true) {
+            cell.deleteButton.alpha = 1
+        } else {
+            cell.deleteButton.alpha = 0
+        }
+        
+        cell.deleteButtonTapHandler = {
+            self.tasks.remove(at: indexPath.row)
+            self.saveTasks()
+            self.table.reloadData()
+//            self.table.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
         return cell
     }
     // 클릭했을때 어떻게 할까?
@@ -105,4 +132,10 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
 
 class taskListCell: UITableViewCell {
     @IBOutlet var taskName: UILabel!
+    @IBOutlet var deleteButton: UIButton!
+    var deleteButtonTapHandler: (() -> Void)?
+    
+    @IBAction func deleteAction(_ sender: Any) {
+        deleteButtonTapHandler?()
+    }
 }
