@@ -73,7 +73,7 @@ class GraphViewController2: UIViewController {
         if(daily.tasks != [:]) {
             today.text = getDay(day: daily.day)
             let temp: [String:Int] = daily.tasks
-    //        let temp = addDumy()
+//            let temp = addDumy()
             counts = temp.count
             appendColors()
             
@@ -224,16 +224,16 @@ extension GraphViewController2 {
     
     func addDumy() -> [String:Int] {
         var temp: [String:Int] = [:]
-//        temp["Learning Korean"] = 2100
-//        temp["Swift Programming"] = 4680
-//        temp["Cycleing"] = 3900
-//        temp["Running"] = 2700
-//        temp["Reading Book"] = 2280
-        temp["프로그래밍 공부"] = 4680
-        temp["전공수업 과제"] = 3900
-        temp["프로젝트 토의"] = 2700
-        temp["책읽기"] = 2280
-        temp["영문학 공부"] = 2100
+        temp["Swift Programming"] = 8000
+        temp["Cycleing"] = 4010
+        temp["Running"] = 1700
+        temp["Reading Book"] = 1350
+        temp["Learning Korean"] = 600
+//        temp["프로그래밍 공부"] = 8000
+//        temp["전공수업 과제"] = 4010
+//        temp["프로젝트 토의"] = 1700
+//        temp["책읽기"] = 1350
+//        temp["영문학 공부"] = 600
         return temp
     }
     

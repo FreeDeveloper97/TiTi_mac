@@ -215,26 +215,26 @@ extension ContentView {
     }
     
     func appendDumyDatas(){
-        DailyDatas.append(daily(id: 1, day: "2/24",
-                                studyTime: translate2(input: "12:35:20"),
+        DailyDatas.append(daily(id: 1, day: "5/1",
+                                studyTime: translate2(input: "3:37:00"),
                                 breakTime: translate2(input: "0:35:20")))
-        DailyDatas.append(daily(id: 2, day: "2/23",
-                                studyTime: translate2(input: "4:03:41"),
+        DailyDatas.append(daily(id: 2, day: "5/2",
+                                studyTime: translate2(input: "2:58:00"),
                                 breakTime: translate2(input: "2:01:00")))
-        DailyDatas.append(daily(id: 3, day: "2/22",
-                                studyTime: translate2(input: "6:08:14"),
+        DailyDatas.append(daily(id: 3, day: "5/3",
+                                studyTime: translate2(input: "6:02:00"),
                                 breakTime: translate2(input: "2:32:56")))
-        DailyDatas.append(daily(id: 4, day: "2/21",
-                                studyTime: translate2(input: "4:03:39"),
+        DailyDatas.append(daily(id: 4, day: "5/4",
+                                studyTime: translate2(input: "4:03:00"),
                                 breakTime: translate2(input: "1:05:00")))
-        DailyDatas.append(daily(id: 5, day: "2/20",
-                                studyTime: translate2(input: "5:44:07"),
+        DailyDatas.append(daily(id: 5, day: "5/5",
+                                studyTime: translate2(input: "3:35:00"),
                                 breakTime: translate2(input: "1:40:08")))
-        DailyDatas.append(daily(id: 6, day: "2/19",
-                                studyTime: translate2(input: "4:58:23"),
+        DailyDatas.append(daily(id: 6, day: "5/6",
+                                studyTime: translate2(input: "5:10:0"),
                                 breakTime: translate2(input: "2:02:15")))
-        DailyDatas.append(daily(id: 7, day: "2/18",
-                                studyTime: translate2(input: "3:37:20"),
+        DailyDatas.append(daily(id: 7, day: "5/7",
+                                studyTime: translate2(input: "4:21:00"),
                                 breakTime: translate2(input: "0:37:50")))
     }
 }
