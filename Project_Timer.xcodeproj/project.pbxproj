@@ -13,6 +13,7 @@
 		87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87204807261CBB7300EF1691 /* DailyViewController.swift */; };
 		87313E7E25EBA0C10088D1EC /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87313E7D25EBA0C10088D1EC /* Time.swift */; };
 		873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C760725E79105009374E1 /* SetTimerViewController2.swift */; };
+		87558D29265A60490059E593 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87558D28265A60490059E593 /* firstViewController.swift */; };
 		8787DFDA25B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		8787DFDB25B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		8787DFDC25B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD625B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf */; };
@@ -49,6 +50,7 @@
 		87204807261CBB7300EF1691 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		87313E7D25EBA0C10088D1EC /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		873C760725E79105009374E1 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
+		87558D28265A60490059E593 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		8787DFD625B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				87CF826925EB1F6E00B01464 /* ContentView.swift */,
 				878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */,
 				879693CF2645329600021646 /* TimerViewController.swift */,
+				87558D28265A60490059E593 /* firstViewController.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87558D29265A60490059E593 /* firstViewController.swift in Sources */,
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */,
@@ -461,7 +465,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -469,7 +473,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -484,7 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -492,7 +496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;

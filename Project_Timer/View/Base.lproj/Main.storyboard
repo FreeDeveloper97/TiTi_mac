@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tHJ-LR-RBm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Y5-Cq-pD4">
     <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -3768,6 +3768,427 @@ AVER : 0:00:00</string>
             </objects>
             <point key="canvasLocation" x="1316" y="1496"/>
         </scene>
+        <!--First View Controller-->
+        <scene sceneID="bIE-YT-FJP">
+            <objects>
+                <viewController storyboardIdentifier="firstViewController" id="5Y5-Cq-pD4" customClass="firstViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vO8-Kl-vRR">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8b2-6F-QTu">
+                                <rect key="frame" x="278" y="52" width="810" height="920"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiM-Nb-9Dp" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="115" width="800" height="800"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xL-Bp-F0W" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                                <rect key="frame" x="27" y="27" width="746" height="746"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkS-ao-GjJ">
+                                                        <rect key="frame" x="87.5" y="293" width="571.5" height="160"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="160" id="lLe-Me-l5f"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="190"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CI-6d-m6g">
+                                                        <rect key="frame" x="268" y="128" width="210.5" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="65" id="o05-CQ-4RK"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="70"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2B-Qy-LCQ">
+                                                        <rect key="frame" x="268" y="553" width="210.5" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="65" id="wRo-iY-qXb"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="70"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6He-Wd-eBd">
+                                                        <rect key="frame" x="323" y="85.5" width="100.5" height="27.5"/>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2V-UJ-fGn">
+                                                        <rect key="frame" x="339" y="245" width="68.5" height="33"/>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRI-zb-NDJ">
+                                                        <rect key="frame" x="341.5" y="510.5" width="63.5" height="27.5"/>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcd-94-gvj">
+                                                        <rect key="frame" x="329" y="633" width="88.5" height="27.5"/>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="PRI-zb-NDJ" firstAttribute="centerX" secondItem="b2B-Qy-LCQ" secondAttribute="centerX" id="0bV-6p-Poq"/>
+                                                    <constraint firstAttribute="width" constant="746" id="0tg-3c-Y8W"/>
+                                                    <constraint firstItem="EkS-ao-GjJ" firstAttribute="centerX" secondItem="7xL-Bp-F0W" secondAttribute="centerX" id="AKw-Dp-g4E"/>
+                                                    <constraint firstItem="EkS-ao-GjJ" firstAttribute="top" secondItem="0CI-6d-m6g" secondAttribute="bottom" constant="100" id="Ai4-5z-0Dx"/>
+                                                    <constraint firstItem="z2V-UJ-fGn" firstAttribute="centerX" secondItem="EkS-ao-GjJ" secondAttribute="centerX" id="E8n-59-n8m"/>
+                                                    <constraint firstItem="0CI-6d-m6g" firstAttribute="centerX" secondItem="EkS-ao-GjJ" secondAttribute="centerX" id="HhU-pk-SD5"/>
+                                                    <constraint firstItem="EkS-ao-GjJ" firstAttribute="centerY" secondItem="7xL-Bp-F0W" secondAttribute="centerY" id="Nn2-SK-PBi"/>
+                                                    <constraint firstItem="b2B-Qy-LCQ" firstAttribute="top" secondItem="PRI-zb-NDJ" secondAttribute="bottom" constant="15" id="Qwb-Uf-LKb"/>
+                                                    <constraint firstItem="b2B-Qy-LCQ" firstAttribute="top" secondItem="EkS-ao-GjJ" secondAttribute="bottom" constant="100" id="V3o-8M-D6f"/>
+                                                    <constraint firstItem="6He-Wd-eBd" firstAttribute="centerX" secondItem="0CI-6d-m6g" secondAttribute="centerX" id="arw-Gw-frD"/>
+                                                    <constraint firstItem="EkS-ao-GjJ" firstAttribute="top" secondItem="z2V-UJ-fGn" secondAttribute="bottom" constant="15" id="ccq-W1-n7C"/>
+                                                    <constraint firstItem="0CI-6d-m6g" firstAttribute="top" secondItem="6He-Wd-eBd" secondAttribute="bottom" constant="15" id="dP7-Pe-bUo"/>
+                                                    <constraint firstItem="Qcd-94-gvj" firstAttribute="top" secondItem="b2B-Qy-LCQ" secondAttribute="bottom" constant="15" id="lRO-wE-YFk"/>
+                                                    <constraint firstItem="Qcd-94-gvj" firstAttribute="centerX" secondItem="b2B-Qy-LCQ" secondAttribute="centerX" id="pgm-mc-IQD"/>
+                                                    <constraint firstAttribute="height" constant="746" id="uof-Ks-47G"/>
+                                                    <constraint firstItem="b2B-Qy-LCQ" firstAttribute="centerX" secondItem="EkS-ao-GjJ" secondAttribute="centerX" id="woq-O9-zcE"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="800" id="W2S-35-YAt"/>
+                                            <constraint firstItem="7xL-Bp-F0W" firstAttribute="centerX" secondItem="wiM-Nb-9Dp" secondAttribute="centerX" id="gsx-5b-FDm"/>
+                                            <constraint firstItem="7xL-Bp-F0W" firstAttribute="centerY" secondItem="wiM-Nb-9Dp" secondAttribute="centerY" id="rgz-dY-Mr0"/>
+                                            <constraint firstAttribute="width" constant="800" id="sM9-sj-fcz"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57c-Xv-7e1">
+                                        <rect key="frame" x="224" y="5" width="362" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="aSh-Lj-fWR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                                        <state key="normal" title="공부할 내용을 입력해주세요">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="57c-Xv-7e1" firstAttribute="centerX" secondItem="8b2-6F-QTu" secondAttribute="centerX" id="GB5-0m-eys"/>
+                                    <constraint firstItem="wiM-Nb-9Dp" firstAttribute="top" secondItem="57c-Xv-7e1" secondAttribute="bottom" constant="55" id="ThW-e4-Osi"/>
+                                    <constraint firstItem="57c-Xv-7e1" firstAttribute="top" secondItem="8b2-6F-QTu" secondAttribute="top" constant="5" id="eJm-pV-MIf"/>
+                                    <constraint firstAttribute="bottom" secondItem="wiM-Nb-9Dp" secondAttribute="bottom" constant="5" id="emp-Vd-SZ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="wiM-Nb-9Dp" secondAttribute="trailing" constant="5" id="xaJ-dr-VNX"/>
+                                    <constraint firstItem="wiM-Nb-9Dp" firstAttribute="leading" secondItem="8b2-6F-QTu" secondAttribute="leading" constant="5" id="xzN-gf-L42"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wwi-d0-UEq">
+                                <rect key="frame" x="1070" y="289.5" width="55" height="105"/>
+                                <color key="backgroundColor" name="Text"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="YzY-P9-Fx9"/>
+                                    <constraint firstAttribute="height" constant="105" id="tkA-O6-HZK"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKx-nm-tLx">
+                                <rect key="frame" x="1128" y="514.5" width="55" height="105"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="X3I-Bk-XFe"/>
+                                    <constraint firstAttribute="width" constant="55" id="buq-Ka-mET"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYt-UN-cza">
+                                <rect key="frame" x="1070" y="739.5" width="55" height="105"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="Iis-34-qkH"/>
+                                    <constraint firstAttribute="height" constant="105" id="mKC-FZ-91n"/>
+                                </constraints>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="St" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGq-xZ-rUC">
+                                <rect key="frame" x="1085" y="775.5" width="25.5" height="33"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u08-1o-LA8">
+                                <rect key="frame" x="164" y="317" width="64" height="31"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdK-zZ-mtH">
+                                <rect key="frame" x="183" y="539.5" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="8Ss-Aa-gaK"/>
+                                    <constraint firstAttribute="width" constant="55" id="Fg8-uT-SB3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="23"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stopwatch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3L8-3F-sMv">
+                                <rect key="frame" x="49.5" y="551.5" width="120.5" height="31"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj1-9t-uAK">
+                                <rect key="frame" x="241" y="764" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Yet-U0-a5T"/>
+                                    <constraint firstAttribute="width" constant="55" id="cYk-eZ-gIj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="23"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnd-EN-we0">
+                                <rect key="frame" x="186" y="786" width="42" height="31"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1E-Gl-ns7">
+                                <rect key="frame" x="1089.5" y="325.5" width="16" height="33"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9X-pa-Z8y">
+                                <rect key="frame" x="241" y="315" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="59A-do-Q9z"/>
+                                    <constraint firstAttribute="width" constant="55" id="xJ3-FO-k46"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="23"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgX-Qy-vUn">
+                                <rect key="frame" x="1148.5" y="550.5" width="14" height="33"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibh-wz-XSK">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7D-Sv-MaW">
+                                        <rect key="frame" x="663.5" y="122" width="39" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="before start, Enter a new Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0r-Ec-0Zz">
+                                        <rect key="frame" x="406" y="186" width="554.5" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCM-2V-Es5">
+                                        <rect key="frame" x="1015.5" y="315" width="44.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start, Stop button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opi-h0-nTD">
+                                        <rect key="frame" x="679" y="317.5" width="326.5" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can modify Timer Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfT-8M-N0F">
+                                        <rect key="frame" x="566" y="542.5" width="497.5" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting today's times" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eb-IJ-gf6">
+                                        <rect key="frame" x="616" y="767.5" width="389.5" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn7-VO-td4">
+                                        <rect key="frame" x="1073.5" y="540" width="44.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWz-hG-a9t">
+                                        <rect key="frame" x="1015.5" y="765" width="44.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="←" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N11-a6-C7D">
+                                        <rect key="frame" x="306" y="315.5" width="44.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can changes the modes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x54-df-P98">
+                                        <rect key="frame" x="360.5" y="439.5" width="520" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="←" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37g-kQ-fEi">
+                                        <rect key="frame" x="248" y="540" width="44.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="←" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-0V-p09">
+                                        <rect key="frame" x="306" y="764.5" width="44.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj2-K3-aQe">
+                                        <rect key="frame" x="1066" y="844" width="150" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="fTU-h0-DEX"/>
+                                            <constraint firstAttribute="width" constant="150" id="p0b-bt-i49"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <state key="normal" title="NEXT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextAction:" destination="5Y5-Cq-pD4" eventType="touchUpInside" id="TEr-Ly-h0d"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can see your records" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrI-BQ-IoU">
+                                        <rect key="frame" x="360.5" y="767" width="468" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="firstLayer"/>
+                                <constraints>
+                                    <constraint firstItem="x54-df-P98" firstAttribute="leading" secondItem="N11-a6-C7D" secondAttribute="trailing" constant="10" id="25K-PM-z87"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bj2-K3-aQe" secondAttribute="trailing" constant="150" id="2ty-kD-NsD"/>
+                                    <constraint firstItem="WfT-8M-N0F" firstAttribute="centerY" secondItem="Jn7-VO-td4" secondAttribute="centerY" id="Lgx-TL-56N"/>
+                                    <constraint firstItem="V0r-Ec-0Zz" firstAttribute="centerX" secondItem="T7D-Sv-MaW" secondAttribute="centerX" id="P6Q-De-ir1"/>
+                                    <constraint firstItem="oWz-hG-a9t" firstAttribute="leading" secondItem="6eb-IJ-gf6" secondAttribute="trailing" constant="10" id="X8f-b3-jlx"/>
+                                    <constraint firstItem="SrI-BQ-IoU" firstAttribute="centerY" secondItem="QLM-0V-p09" secondAttribute="centerY" id="YXP-wx-Bf9"/>
+                                    <constraint firstItem="x54-df-P98" firstAttribute="top" secondItem="N11-a6-C7D" secondAttribute="bottom" constant="70" id="a10-BA-O1b"/>
+                                    <constraint firstItem="Jn7-VO-td4" firstAttribute="leading" secondItem="WfT-8M-N0F" secondAttribute="trailing" constant="10" id="bul-lO-c5x"/>
+                                    <constraint firstItem="Opi-h0-nTD" firstAttribute="centerY" secondItem="kCM-2V-Es5" secondAttribute="centerY" id="g4V-2z-Qyf"/>
+                                    <constraint firstItem="6eb-IJ-gf6" firstAttribute="centerY" secondItem="oWz-hG-a9t" secondAttribute="centerY" id="hkn-hu-Onk"/>
+                                    <constraint firstItem="kCM-2V-Es5" firstAttribute="leading" secondItem="Opi-h0-nTD" secondAttribute="trailing" constant="10" id="hmv-8I-gmX"/>
+                                    <constraint firstItem="SrI-BQ-IoU" firstAttribute="leading" secondItem="QLM-0V-p09" secondAttribute="trailing" constant="10" id="jx7-CP-V3b"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bj2-K3-aQe" secondAttribute="bottom" constant="80" id="oLt-kZ-i5l"/>
+                                    <constraint firstItem="V0r-Ec-0Zz" firstAttribute="top" secondItem="T7D-Sv-MaW" secondAttribute="bottom" constant="10" id="wCv-cB-60j"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sNs-gq-Lov"/>
+                        <color key="backgroundColor" name="Blue"/>
+                        <constraints>
+                            <constraint firstItem="kCM-2V-Es5" firstAttribute="centerY" secondItem="Wwi-d0-UEq" secondAttribute="centerY" id="1H9-hW-nxa"/>
+                            <constraint firstItem="u08-1o-LA8" firstAttribute="centerY" secondItem="g9X-pa-Z8y" secondAttribute="centerY" constant="-10" id="1SP-Yo-nqD"/>
+                            <constraint firstItem="Wwi-d0-UEq" firstAttribute="leading" secondItem="kCM-2V-Es5" secondAttribute="trailing" constant="10" id="54D-NL-t2W"/>
+                            <constraint firstItem="SdK-zZ-mtH" firstAttribute="leading" secondItem="3L8-3F-sMv" secondAttribute="trailing" constant="13" id="5bc-zQ-NeQ"/>
+                            <constraint firstAttribute="trailing" secondItem="ibh-wz-XSK" secondAttribute="trailing" id="6Fy-9V-RFt"/>
+                            <constraint firstItem="kGq-xZ-rUC" firstAttribute="centerY" secondItem="YYt-UN-cza" secondAttribute="centerY" id="7Dd-Xd-bj2"/>
+                            <constraint firstItem="ZgX-Qy-vUn" firstAttribute="centerX" secondItem="ZKx-nm-tLx" secondAttribute="centerX" id="7UB-SU-2CP"/>
+                            <constraint firstItem="37g-kQ-fEi" firstAttribute="centerY" secondItem="SdK-zZ-mtH" secondAttribute="centerY" id="963-Dl-Iir"/>
+                            <constraint firstItem="O1E-Gl-ns7" firstAttribute="centerY" secondItem="Wwi-d0-UEq" secondAttribute="centerY" id="Aag-o4-ryC"/>
+                            <constraint firstItem="ZKx-nm-tLx" firstAttribute="top" secondItem="Wwi-d0-UEq" secondAttribute="bottom" constant="120" id="B2j-0j-7Lv"/>
+                            <constraint firstItem="T7D-Sv-MaW" firstAttribute="centerX" secondItem="57c-Xv-7e1" secondAttribute="centerX" id="CHr-sf-EA1"/>
+                            <constraint firstItem="wiM-Nb-9Dp" firstAttribute="leading" secondItem="yj1-9t-uAK" secondAttribute="trailing" constant="-13" id="Cd6-7u-Tm2"/>
+                            <constraint firstItem="QLM-0V-p09" firstAttribute="leading" secondItem="yj1-9t-uAK" secondAttribute="trailing" constant="10" id="DEB-W6-77h"/>
+                            <constraint firstItem="ZgX-Qy-vUn" firstAttribute="centerY" secondItem="ZKx-nm-tLx" secondAttribute="centerY" id="KK7-bZ-CnT"/>
+                            <constraint firstItem="N11-a6-C7D" firstAttribute="leading" secondItem="g9X-pa-Z8y" secondAttribute="trailing" constant="10" id="N0D-2w-fPG"/>
+                            <constraint firstItem="ibh-wz-XSK" firstAttribute="bottom" secondItem="vO8-Kl-vRR" secondAttribute="bottom" id="Oas-UR-cQd"/>
+                            <constraint firstItem="YYt-UN-cza" firstAttribute="leading" secondItem="wiM-Nb-9Dp" secondAttribute="trailing" constant="-13" id="PBQ-eX-hoX"/>
+                            <constraint firstItem="ibh-wz-XSK" firstAttribute="top" secondItem="vO8-Kl-vRR" secondAttribute="top" id="PEM-AY-bIv"/>
+                            <constraint firstItem="ZKx-nm-tLx" firstAttribute="leading" secondItem="Jn7-VO-td4" secondAttribute="trailing" constant="10" id="Pre-e2-hM6"/>
+                            <constraint firstItem="oWz-hG-a9t" firstAttribute="centerY" secondItem="YYt-UN-cza" secondAttribute="centerY" id="Sgh-re-SXi"/>
+                            <constraint firstItem="wiM-Nb-9Dp" firstAttribute="leading" secondItem="g9X-pa-Z8y" secondAttribute="trailing" constant="-13" id="TGh-Hp-sCf"/>
+                            <constraint firstItem="YYt-UN-cza" firstAttribute="leading" secondItem="oWz-hG-a9t" secondAttribute="trailing" constant="10" id="Ttj-Ww-tVK"/>
+                            <constraint firstItem="QLM-0V-p09" firstAttribute="centerY" secondItem="yj1-9t-uAK" secondAttribute="centerY" id="VEL-KL-3rw"/>
+                            <constraint firstItem="ZKx-nm-tLx" firstAttribute="centerY" secondItem="7xL-Bp-F0W" secondAttribute="centerY" id="XZB-dK-OTF"/>
+                            <constraint firstItem="8b2-6F-QTu" firstAttribute="centerX" secondItem="vO8-Kl-vRR" secondAttribute="centerX" id="bIl-Vz-6rL"/>
+                            <constraint firstItem="8b2-6F-QTu" firstAttribute="centerY" secondItem="vO8-Kl-vRR" secondAttribute="centerY" id="bXi-us-nTK"/>
+                            <constraint firstItem="ZKx-nm-tLx" firstAttribute="leading" secondItem="wiM-Nb-9Dp" secondAttribute="trailing" constant="45" id="eUu-JI-h9B"/>
+                            <constraint firstItem="Fnd-EN-we0" firstAttribute="centerY" secondItem="yj1-9t-uAK" secondAttribute="centerY" constant="10" id="ecT-E8-HlN"/>
+                            <constraint firstItem="SdK-zZ-mtH" firstAttribute="top" secondItem="g9X-pa-Z8y" secondAttribute="bottom" constant="169.5" id="fTF-fP-I2Z"/>
+                            <constraint firstItem="g9X-pa-Z8y" firstAttribute="leading" secondItem="u08-1o-LA8" secondAttribute="trailing" constant="13" id="gvO-in-Nbe"/>
+                            <constraint firstItem="37g-kQ-fEi" firstAttribute="leading" secondItem="SdK-zZ-mtH" secondAttribute="trailing" constant="10" id="h34-VD-poL"/>
+                            <constraint firstItem="wiM-Nb-9Dp" firstAttribute="leading" secondItem="SdK-zZ-mtH" secondAttribute="trailing" constant="45" id="iWE-am-cdo"/>
+                            <constraint firstItem="Jn7-VO-td4" firstAttribute="centerY" secondItem="ZKx-nm-tLx" secondAttribute="centerY" id="kBW-mr-2nd"/>
+                            <constraint firstItem="Wwi-d0-UEq" firstAttribute="leading" secondItem="wiM-Nb-9Dp" secondAttribute="trailing" constant="-13" id="khw-9V-9Dg"/>
+                            <constraint firstItem="N11-a6-C7D" firstAttribute="centerY" secondItem="g9X-pa-Z8y" secondAttribute="centerY" id="oL4-Ee-c38"/>
+                            <constraint firstItem="O1E-Gl-ns7" firstAttribute="centerX" secondItem="Wwi-d0-UEq" secondAttribute="centerX" id="on3-13-bys"/>
+                            <constraint firstItem="YYt-UN-cza" firstAttribute="top" secondItem="ZKx-nm-tLx" secondAttribute="bottom" constant="120" id="ptX-Oy-0lv"/>
+                            <constraint firstItem="yj1-9t-uAK" firstAttribute="top" secondItem="SdK-zZ-mtH" secondAttribute="bottom" constant="169.5" id="rCJ-5R-xo7"/>
+                            <constraint firstItem="T7D-Sv-MaW" firstAttribute="top" secondItem="57c-Xv-7e1" secondAttribute="bottom" constant="10" id="rQF-a0-CHc"/>
+                            <constraint firstItem="SdK-zZ-mtH" firstAttribute="centerY" secondItem="7xL-Bp-F0W" secondAttribute="centerY" id="s2e-Kg-2aS"/>
+                            <constraint firstItem="yj1-9t-uAK" firstAttribute="leading" secondItem="Fnd-EN-we0" secondAttribute="trailing" constant="13" id="tqe-Vm-Al9"/>
+                            <constraint firstItem="3L8-3F-sMv" firstAttribute="centerY" secondItem="SdK-zZ-mtH" secondAttribute="centerY" id="uUJ-fx-Gjc"/>
+                            <constraint firstItem="ibh-wz-XSK" firstAttribute="leading" secondItem="vO8-Kl-vRR" secondAttribute="leading" id="v6z-S9-yY9"/>
+                            <constraint firstItem="kGq-xZ-rUC" firstAttribute="centerX" secondItem="YYt-UN-cza" secondAttribute="centerX" id="yxB-aa-D5W"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="TIMEofSum" destination="0CI-6d-m6g" id="wK6-ma-rPv"/>
+                        <outlet property="TIMEofTarget" destination="b2B-Qy-LCQ" id="Z4P-ju-gM9"/>
+                        <outlet property="TIMEofTimer" destination="EkS-ao-GjJ" id="j5q-4N-WMm"/>
+                        <outlet property="arrow1" destination="T7D-Sv-MaW" id="J17-0p-cGt"/>
+                        <outlet property="arrow2" destination="oWz-hG-a9t" id="pDV-5s-rqy"/>
+                        <outlet property="arrow3" destination="Jn7-VO-td4" id="9IA-eg-hpL"/>
+                        <outlet property="arrow4" destination="kCM-2V-Es5" id="KpV-xJ-mJd"/>
+                        <outlet property="arrow5" destination="N11-a6-C7D" id="bNw-AK-0pn"/>
+                        <outlet property="arrow6" destination="37g-kQ-fEi" id="eAc-oc-FQf"/>
+                        <outlet property="arrow7" destination="QLM-0V-p09" id="Rwz-Iu-gME"/>
+                        <outlet property="finishTimeLabel" destination="Qcd-94-gvj" id="7Uu-25-LaI"/>
+                        <outlet property="grayLayer" destination="ibh-wz-XSK" id="LJ7-MG-4a1"/>
+                        <outlet property="innerProgress" destination="7xL-Bp-F0W" id="ZaA-E7-yq0"/>
+                        <outlet property="log" destination="yj1-9t-uAK" id="gYd-yM-VcY"/>
+                        <outlet property="logLabel" destination="Fnd-EN-we0" id="iQm-SM-tLO"/>
+                        <outlet property="modeStopWatch" destination="SdK-zZ-mtH" id="gAq-ch-Hhd"/>
+                        <outlet property="modeStopWatchLabel" destination="3L8-3F-sMv" id="Fl6-8a-OF5"/>
+                        <outlet property="modeTimer" destination="g9X-pa-Z8y" id="ENg-3u-Kue"/>
+                        <outlet property="modeTimerLabel" destination="u08-1o-LA8" id="DKK-NT-yk2"/>
+                        <outlet property="nextBT" destination="Bj2-K3-aQe" id="Ymp-Ti-O92"/>
+                        <outlet property="outterProgress" destination="wiM-Nb-9Dp" id="clw-fU-hG1"/>
+                        <outlet property="setTimerBT" destination="ZKx-nm-tLx" id="5cL-Mu-tHn"/>
+                        <outlet property="setTimerBTLabel" destination="ZgX-Qy-vUn" id="rTc-Hi-98M"/>
+                        <outlet property="settingBT" destination="YYt-UN-cza" id="dZs-V7-hdR"/>
+                        <outlet property="settingBTLabel" destination="kGq-xZ-rUC" id="lQB-cJ-8cK"/>
+                        <outlet property="startStopBT" destination="Wwi-d0-UEq" id="4Ir-DF-UgS"/>
+                        <outlet property="startStopBTLabel" destination="O1E-Gl-ns7" id="csQ-c7-uTe"/>
+                        <outlet property="sumTimeLabel" destination="6He-Wd-eBd" id="Wot-bC-308"/>
+                        <outlet property="targetTimeLabel" destination="PRI-zb-NDJ" id="1jg-TD-p3J"/>
+                        <outlet property="taskButton" destination="57c-Xv-7e1" id="z2v-ry-BLZ"/>
+                        <outlet property="text1" destination="V0r-Ec-0Zz" id="kFX-Oh-DTC"/>
+                        <outlet property="text2" destination="6eb-IJ-gf6" id="iYJ-Ie-Ria"/>
+                        <outlet property="text3" destination="WfT-8M-N0F" id="jKh-RT-5b5"/>
+                        <outlet property="text4" destination="Opi-h0-nTD" id="LzJ-Le-a6F"/>
+                        <outlet property="text6" destination="x54-df-P98" id="hy8-4i-vkN"/>
+                        <outlet property="text7" destination="SrI-BQ-IoU" id="QlE-XR-4k8"/>
+                        <outlet property="timerLabel" destination="z2V-UJ-fGn" id="oHp-jF-yPp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OuD-HX-bEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660.61493411420201" y="172.8515625"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="P6I-qB-Knt"/>
@@ -3827,6 +4248,9 @@ AVER : 0:00:00</string>
         </namedColor>
         <namedColor name="background_black">
             <color red="0.071000002324581146" green="0.071000002324581146" blue="0.071000002324581146" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="firstLayer">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
