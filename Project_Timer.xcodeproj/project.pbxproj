@@ -12,6 +12,7 @@
 		87204804261CBB3D00EF1691 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87204803261CBB3D00EF1691 /* taskSelectViewController.swift */; };
 		87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87204807261CBB7300EF1691 /* DailyViewController.swift */; };
 		87313E7E25EBA0C10088D1EC /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87313E7D25EBA0C10088D1EC /* Time.swift */; };
+		8736F74B266FB09F0032B48D /* SmallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736F74A266FB09F0032B48D /* SmallViewController.swift */; };
 		873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C760725E79105009374E1 /* SetTimerViewController2.swift */; };
 		87558D29265A60490059E593 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87558D28265A60490059E593 /* firstViewController.swift */; };
 		8787DFDA25B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */; };
@@ -21,7 +22,7 @@
 		8787DFDE25B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD825B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf */; };
 		8787DFDF25B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD925B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */; };
-		878A8BC1264124AD0058B1E4 /* StaticCircularProgressView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BC0264124AD0058B1E4 /* StaticCircularProgressView copy.swift */; };
+		878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */; };
 		879693D02645329600021646 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879693CF2645329600021646 /* TimerViewController.swift */; };
 		87BF47D525B6E12A00EE2819 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87BF47D425B6E12A00EE2819 /* timer.mp3 */; };
 		87CB284426149AF8004B11F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CB284626149AF8004B11F0 /* Localizable.strings */; };
@@ -49,6 +50,7 @@
 		87204803261CBB3D00EF1691 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		87204807261CBB7300EF1691 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		87313E7D25EBA0C10088D1EC /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		8736F74A266FB09F0032B48D /* SmallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallViewController.swift; sourceTree = "<group>"; };
 		873C760725E79105009374E1 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		87558D28265A60490059E593 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		8787DFD825B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
 		8787DFD925B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
-		878A8BC0264124AD0058B1E4 /* StaticCircularProgressView copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StaticCircularProgressView copy.swift"; sourceTree = "<group>"; };
+		878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		879693CF2645329600021646 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		87BF47D425B6E12A00EE2819 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		87CB284526149AF8004B11F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -134,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
-				878A8BC0264124AD0058B1E4 /* StaticCircularProgressView copy.swift */,
+				878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */,
 				87313E7D25EBA0C10088D1EC /* Time.swift */,
 				872047FD261CBAF600EF1691 /* Daily.swift */,
 				87204800261CBB0B00EF1691 /* Storage.swift */,
@@ -152,6 +154,7 @@
 				878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */,
 				879693CF2645329600021646 /* TimerViewController.swift */,
 				87558D28265A60490059E593 /* firstViewController.swift */,
+				8736F74A266FB09F0032B48D /* SmallViewController.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -296,12 +299,13 @@
 				935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */,
 				87313E7E25EBA0C10088D1EC /* Time.swift in Sources */,
 				87204804261CBB3D00EF1691 /* taskSelectViewController.swift in Sources */,
+				8736F74B266FB09F0032B48D /* SmallViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				872047FE261CBAF600EF1691 /* Daily.swift in Sources */,
 				87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */,
-				878A8BC1264124AD0058B1E4 /* StaticCircularProgressView copy.swift in Sources */,
+				878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */,
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
 				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,

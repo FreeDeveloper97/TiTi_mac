@@ -45,6 +45,11 @@ class GraphViewController2: UIViewController {
     @IBOutlet var time_03: UIView!
     @IBOutlet var time_04: UIView!
     
+    @IBOutlet var view_7days: UIView!
+    @IBOutlet var view_today: UIView!
+    @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    
+    
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
     var colors: [UIColor] = []
@@ -57,6 +62,8 @@ class GraphViewController2: UIViewController {
         super.viewDidLoad()
         setRadius()
         setBackBT() //맥용 코드
+        setShadow(view_7days)
+        setShadow(view_today)
         
         //7days
         let hostingController = UIHostingController(rootView: ContentView())
@@ -97,6 +104,7 @@ class GraphViewController2: UIViewController {
             }
 //            taskTitle.text = p1
 //            taskTime.text = p2
+            setHeight()
         } else {
             print("no data")
         }
@@ -143,6 +151,9 @@ extension GraphViewController2 {
         time_02.layer.cornerRadius = 5
         time_03.layer.cornerRadius = 5
         time_04.layer.cornerRadius = 5
+        
+        view_7days.layer.cornerRadius = 20
+        view_today.layer.cornerRadius = 20
     }
     
     func getDay(day: Date) -> String {
@@ -284,6 +295,19 @@ extension GraphViewController2 {
             view.alpha = 0.8
         } else { //50 ~ 60
             view.alpha = 1.0
+        }
+    }
+    
+    func setShadow(_ view: UIView) {
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowOpacity = 0.6
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowRadius = 6
+    }
+    
+    func setHeight() {
+        if(counts < 9) {
+            collectionViewHeight.constant = CGFloat(25*counts)
         }
     }
 }

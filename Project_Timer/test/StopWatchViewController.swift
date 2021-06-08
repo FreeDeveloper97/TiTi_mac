@@ -40,6 +40,8 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var settingBT: UIButton!
     @IBOutlet var settingBTLabel: UILabel!
     
+    @IBOutlet var smaller: UIButton!
+    
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
@@ -174,6 +176,10 @@ class StopwatchViewController: UIViewController {
         resetSum_temp()
     }
     
+    @IBAction func goSmaller(_ sender: Any) {
+        goToViewController(where: "SmallViewController")
+    }
+    
 }
 
 extension StopwatchViewController : ChangeViewController2 {
@@ -297,6 +303,8 @@ extension StopwatchViewController {
         modeStopWatch.layer.cornerRadius = 17
         log.layer.cornerRadius = 17
         resetBT.layer.cornerRadius = 17
+        
+        smaller.layer.cornerRadius = 5
     }
     
     func setShadow() {

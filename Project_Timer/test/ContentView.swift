@@ -22,9 +22,9 @@ struct ContentView: View {
                 Text(text)
                     .fontWeight(.regular)
                     .foregroundColor(.white)
-                    .font(.system(size:22))
+                    .font(.system(size:18))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 15)
+                    .padding(.leading, 45)
                 
                 /* ----차트화면---- */
                 VStack {
@@ -47,6 +47,7 @@ struct ContentView: View {
                                         .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
                                         //그래프 막대 높이설정
                                         .frame(height:getHeight(value: work.studyTime))
+                                        .padding(.bottom,5)
                                 }
                                 .frame(height:200)
                                 //날짜 설정
@@ -59,12 +60,12 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)
-                .background(Color.white.opacity(0.1))
+//                .background(Color.white.opacity(0.1))
                 .cornerRadius(20)
                 
                 /* ----차트끝---- */
             }
-            .padding(.horizontal, 30)
+            .padding(.horizontal, 10)
             .padding(.vertical, 20)
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
