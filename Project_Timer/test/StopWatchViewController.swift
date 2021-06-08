@@ -17,7 +17,11 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var sumTimeLabel: UILabel!
     @IBOutlet var TIMEofSum: UILabel!
     @IBOutlet var stopWatchLabel: UILabel!
-    @IBOutlet var TIMEofStopwatch: UILabel!
+    @IBOutlet var TIMEofStopwatch_h: UILabel!
+    @IBOutlet var TIMEofStopwatch_m1: UILabel!
+    @IBOutlet var TIMEofStopwatch_m2: UILabel!
+    @IBOutlet var TIMEofStopwatch_s1: UILabel!
+    @IBOutlet var TIMEofStopwatch_s2: UILabel!
     @IBOutlet var targetTimeLabel: UILabel!
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
@@ -342,7 +346,8 @@ extension StopwatchViewController {
     
     func setTimes() {
         TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofStopwatch.text = printTime(temp: sumTime_temp)
+//        TIMEofStopwatch.text = printTime(temp: sumTime_temp)
+        printTime_center(temp: sumTime_temp)
         TIMEofTarget.text = printTime(temp: goalTime)
         finishTimeLabel.text = getFutureTime()
     }
@@ -404,7 +409,8 @@ extension StopwatchViewController {
     
     func updateTimeLabels() {
         TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofStopwatch.text = printTime(temp: sumTime_temp)
+//        TIMEofStopwatch.text = printTime(temp: sumTime_temp)
+        printTime_center(temp: sumTime_temp)
         TIMEofTarget.text = printTime(temp: goalTime)
     }
     
@@ -450,6 +456,30 @@ extension StopwatchViewController {
         
         returnString += String(H) + ":" + stringM + ":" + stringS
         return returnString
+    }
+    
+    func printTime_center(temp : Int) {
+        var returnString = "";
+        var num = temp;
+        if(num < 0) {
+            num = -num;
+            returnString += "+";
+        }
+        let S = num%60
+        let H = num/3600
+        let M = num/60 - H*60
+        
+        let m1 = M/10
+        let m2 = M%10
+        let s1 = S/10
+        let s2 = S%10
+        print("\(H):\(m1)\(m2):\(s1)\(s2)")
+        
+        TIMEofStopwatch_h.text = returnString+String(H)
+        TIMEofStopwatch_m1.text = String(m1)
+        TIMEofStopwatch_m2.text = String(m2)
+        TIMEofStopwatch_s1.text = String(s1)
+        TIMEofStopwatch_s2.text = String(s2)
     }
     
     func getDatas(){
@@ -504,7 +534,12 @@ extension StopwatchViewController {
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
         startStopBT.backgroundColor = RED!
-        TIMEofStopwatch.textColor = UIColor.white
+//        TIMEofStopwatch.textColor = UIColor.white
+        TIMEofStopwatch_h.textColor = UIColor.white
+        TIMEofStopwatch_m1.textColor = UIColor.white
+        TIMEofStopwatch_s1.textColor = UIColor.white
+        TIMEofStopwatch_m2.textColor = UIColor.white
+        TIMEofStopwatch_s2.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
@@ -530,7 +565,12 @@ extension StopwatchViewController {
         outterProgress.progressColor = COLOR!
         innerProgress.progressColor = UIColor.white
         startStopBT.backgroundColor = UIColor.clear
-        TIMEofStopwatch.textColor = COLOR
+//        TIMEofStopwatch.textColor = COLOR
+        TIMEofStopwatch_h.textColor = COLOR
+        TIMEofStopwatch_m1.textColor = COLOR
+        TIMEofStopwatch_s1.textColor = COLOR
+        TIMEofStopwatch_m2.textColor = COLOR
+        TIMEofStopwatch_s2.textColor = COLOR
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.modeTimer.alpha = 0
@@ -654,5 +694,39 @@ extension StopwatchViewController {
         time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
         deviceRotated() //화면 회전 체크
+    }
+}
+
+extension StopwatchViewController {
+//    // MARK: - Keyboard Commands
+//    override var canBecomeFirstResponder: Bool {
+//      true
+//    }
+//
+//    @objc private func space(sender: UIKeyCommand) {
+//    }
+//
+//    override var keyCommands: [UIKeyCommand]? {
+//      let newKeyCommand = UIKeyCommand(input: "N", modifierFlags: .control, action: #selector(space(sender:)))
+//      newKeyCommand.discoverabilityTitle = "Add Entry"
+//      return [newKeyCommand]
+//    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+
+        for press in presses {
+            guard let key = press.key else { continue }
+            if key.characters == " " {
+                print("space bar")
+                //start action
+                if(isStop == true) {
+                    algoOfStart()
+                }
+                //stop action
+                else {
+                    algoOfStop()
+                }
+            }
+        }
     }
 }
