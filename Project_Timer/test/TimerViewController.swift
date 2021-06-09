@@ -19,7 +19,16 @@ class TimerViewController: UIViewController {
     @IBOutlet var sumTimeLabel: UILabel!
     @IBOutlet var TIMEofSum: UILabel!
     @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var TIMEofTimer: UILabel!
+    @IBOutlet var TIMEofTimer_h: UILabel!
+    @IBOutlet var TIMEofTimer_m1: UILabel!
+    @IBOutlet var TIMEofTimer_m2: UILabel!
+    @IBOutlet var TIMEofTimer_s1: UILabel!
+    @IBOutlet var TIMEofTimer_s2: UILabel!
+    
+    @IBOutlet var TIMEofTimer_left: UILabel!
+    @IBOutlet var TIMEofTimer_right: UILabel!
+    @IBOutlet var TIMEofTimer_status: UILabel!
+    
     @IBOutlet var targetTimeLabel: UILabel!
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
@@ -132,12 +141,13 @@ class TimerViewController: UIViewController {
     @objc func updateCounter(){
         if timerTime < 1 {
             algoOfStop()
-            TIMEofTimer.text = "FINISH".localized()
+            TIMEofTimer_status.text = "FINISH".localized()
+            hideTIMEofTimer()
             playAudioFromProject()
             saveTimes()
         } else {
             if timerTime < 61 {
-                TIMEofTimer.textColor = RED
+                setTIMEofTimerColor(RED!)
                 outterProgress.progressColor = RED!
             }
             let seconds = time.getSeconds()
@@ -198,6 +208,7 @@ extension TimerViewController : ChangeViewController {
     }
     
     func updateViewController() {
+        showTIMEofTimer()
         stopColor()
         stopEnable()
         
@@ -215,7 +226,7 @@ extension TimerViewController : ChangeViewController {
         UserDefaults.standard.set(nil, forKey: "startTime")
         
         TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofTimer.text = printTime(temp: timerTime)
+        printTime_center(temp: timerTime)
         TIMEofTarget.text = printTime(temp: goalTime)
         
         persentReset()
@@ -226,9 +237,10 @@ extension TimerViewController : ChangeViewController {
     }
     
     func changeTimer() {
+        showTIMEofTimer()
         timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         UserDefaults.standard.set(timerTime, forKey: "second2")
-        TIMEofTimer.text = printTime(temp: timerTime)
+        printTime_center(temp: timerTime)
         finishTimeLabel.text = getFutureTime()
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
@@ -295,7 +307,7 @@ extension TimerViewController {
         updateTimeLabes()
         startAction()
         if(timerTime < 0) {
-            TIMEofTimer.text = printTime(temp: timerTime)
+            printTime_center(temp: timerTime)
         }
         //나간 시점 start, 현재 시각 Date 와 비교
         daily.addHoursInBackground(start, sumTime - temp)
@@ -355,6 +367,17 @@ extension TimerViewController {
         log.layer.shadowOpacity = 0.7
         log.layer.shadowOffset = CGSize.zero
         log.layer.shadowRadius = 5
+        
+        setTIMEShadow(TIMEofSum)
+        setTIMEShadow(TIMEofTarget)
+        
+        setTIMEShadow(TIMEofTimer_h)
+        setTIMEShadow(TIMEofTimer_left)
+        setTIMEShadow(TIMEofTimer_m1)
+        setTIMEShadow(TIMEofTimer_m2)
+        setTIMEShadow(TIMEofTimer_right)
+        setTIMEShadow(TIMEofTimer_s1)
+        setTIMEShadow(TIMEofTimer_s2)
     }
     
     func getDatas() {
@@ -399,14 +422,14 @@ extension TimerViewController {
     
     func setTimes() {
         TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofTimer.text = printTime(temp: timerTime)
+        printTime_center(temp: timerTime)
         TIMEofTarget.text = printTime(temp: goalTime)
         finishTimeLabel.text = getFutureTime()
     }
     
     func updateTimeLabels() {
         TIMEofSum.text = printTime(temp: sumTime)
-        TIMEofTimer.text = printTime(temp: timerTime)
+        printTime_center(temp: timerTime)
         TIMEofTarget.text = printTime(temp: goalTime)
     }
     
@@ -420,7 +443,7 @@ extension TimerViewController {
     func resetTimer() {
         timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         UserDefaults.standard.set(timerTime, forKey: "second2")
-        TIMEofTimer.text = printTime(temp: timerTime)
+        printTime_center(temp: timerTime)
         print("reset Timer complete")
     }
     
@@ -465,6 +488,30 @@ extension TimerViewController {
         return returnString
     }
     
+    func printTime_center(temp : Int) {
+        var returnString = "";
+        var num = temp;
+        if(num < 0) {
+            num = -num;
+            returnString += "+";
+        }
+        let S = num%60
+        let H = num/3600
+        let M = num/60 - H*60
+        
+        let m1 = M/10
+        let m2 = M%10
+        let s1 = S/10
+        let s2 = S%10
+        print("\(H):\(m1)\(m2):\(s1)\(s2)")
+        
+        TIMEofTimer_h.text = returnString+String(H)
+        TIMEofTimer_m1.text = String(m1)
+        TIMEofTimer_m2.text = String(m2)
+        TIMEofTimer_s1.text = String(s1)
+        TIMEofTimer_s2.text = String(s2)
+    }
+    
     func getTimeData(){
         timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         print("timerTime get complite")
@@ -481,7 +528,7 @@ extension TimerViewController {
     }
     
     func updateTimeLabes() {
-        TIMEofTimer.text = printTime(temp: timerTime)
+        printTime_center(temp: timerTime)
         TIMEofSum.text = printTime(temp: sumTime)
         TIMEofTarget.text = printTime(temp: goalTime)
     }
@@ -577,7 +624,7 @@ extension TimerViewController {
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
         startStopBT.backgroundColor = RED!
-        TIMEofTimer.textColor = UIColor.white
+        setTIMEofTimerColor(UIColor.white)
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.setTimerBT.alpha = 1
@@ -603,7 +650,7 @@ extension TimerViewController {
         outterProgress.progressColor = BLUE!
         innerProgress.progressColor = UIColor.white
         startStopBT.backgroundColor = UIColor.clear
-        TIMEofTimer.textColor = BLUE
+        setTIMEofTimerColor(BLUE!)
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.modeTimer.alpha = 0
@@ -684,6 +731,7 @@ extension TimerViewController {
     func algoOfStart() {
         isStop = false
         startColor()
+        showTIMEofTimer()
         checkReset()
         time.setTimes(goal: goalTime, sum: sumTime, timer: timerTime)
         startAction()
@@ -714,5 +762,44 @@ extension TimerViewController {
         resetTimer()
         resetProgress()
         finishTimeLabel.text = getFutureTime()
+    }
+    
+    func hideTIMEofTimer() {
+        self.TIMEofTimer_h.alpha = 0
+        self.TIMEofTimer_m1.alpha = 0
+        self.TIMEofTimer_m2.alpha = 0
+        self.TIMEofTimer_s1.alpha = 0
+        self.TIMEofTimer_s2.alpha = 0
+        self.TIMEofTimer_left.alpha = 0
+        self.TIMEofTimer_right.alpha = 0
+        self.TIMEofTimer_status.alpha = 1
+    }
+    
+    func showTIMEofTimer() {
+        self.TIMEofTimer_status.alpha = 0
+        self.TIMEofTimer_h.alpha = 1
+        self.TIMEofTimer_m1.alpha = 1
+        self.TIMEofTimer_m2.alpha = 1
+        self.TIMEofTimer_s1.alpha = 1
+        self.TIMEofTimer_s2.alpha = 1
+        self.TIMEofTimer_left.alpha = 1
+        self.TIMEofTimer_right.alpha = 1
+    }
+    
+    func setTIMEofTimerColor(_ color: UIColor) {
+        self.TIMEofTimer_h.textColor = color
+        self.TIMEofTimer_m1.textColor = color
+        self.TIMEofTimer_m2.textColor = color
+        self.TIMEofTimer_s1.textColor = color
+        self.TIMEofTimer_s2.textColor = color
+        self.TIMEofTimer_left.textColor = color
+        self.TIMEofTimer_right.textColor = color
+    }
+    
+    func setTIMEShadow(_ label: UILabel) {
+        label.layer.shadowColor = UIColor.gray.cgColor
+        label.layer.shadowOpacity = 0.7
+        label.layer.shadowOffset = CGSize.zero
+        label.layer.shadowRadius = 5
     }
 }

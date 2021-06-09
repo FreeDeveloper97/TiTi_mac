@@ -22,6 +22,9 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var TIMEofStopwatch_m2: UILabel!
     @IBOutlet var TIMEofStopwatch_s1: UILabel!
     @IBOutlet var TIMEofStopwatch_s2: UILabel!
+    @IBOutlet var TIMEofStopwatch_left: UILabel!
+    @IBOutlet var TIMEofStopwatch_right: UILabel!
+    
     @IBOutlet var targetTimeLabel: UILabel!
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
@@ -304,7 +307,7 @@ extension StopwatchViewController {
         log.layer.cornerRadius = 17
         resetBT.layer.cornerRadius = 17
         
-        smaller.layer.cornerRadius = 5
+        smaller.layer.cornerRadius = 17
     }
     
     func setShadow() {
@@ -332,6 +335,22 @@ extension StopwatchViewController {
         resetBT.layer.shadowOpacity = 0.7
         resetBT.layer.shadowOffset = CGSize.zero
         resetBT.layer.shadowRadius = 5
+        
+        smaller.layer.shadowColor = UIColor.gray.cgColor
+        smaller.layer.shadowOpacity = 0.7
+        smaller.layer.shadowOffset = CGSize.zero
+        smaller.layer.shadowRadius = 5
+        
+        setTIMEShadow(TIMEofSum)
+        setTIMEShadow(TIMEofTarget)
+        
+        setTIMEShadow(TIMEofStopwatch_h)
+        setTIMEShadow(TIMEofStopwatch_left)
+        setTIMEShadow(TIMEofStopwatch_m1)
+        setTIMEShadow(TIMEofStopwatch_m2)
+        setTIMEShadow(TIMEofStopwatch_right)
+        setTIMEShadow(TIMEofStopwatch_s1)
+        setTIMEShadow(TIMEofStopwatch_s2)
     }
     
     func setBorder() {
@@ -542,12 +561,7 @@ extension StopwatchViewController {
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
         startStopBT.backgroundColor = RED!
-//        TIMEofStopwatch.textColor = UIColor.white
-        TIMEofStopwatch_h.textColor = UIColor.white
-        TIMEofStopwatch_m1.textColor = UIColor.white
-        TIMEofStopwatch_s1.textColor = UIColor.white
-        TIMEofStopwatch_m2.textColor = UIColor.white
-        TIMEofStopwatch_s2.textColor = UIColor.white
+        setTIMEofStopwatchColor(UIColor.white)
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
@@ -565,6 +579,7 @@ extension StopwatchViewController {
             self.logLabel.alpha = 1
             self.resetBT.alpha = 1
             self.resetBTLabel.alpha = 1
+            self.smaller.alpha = 1
         })
     }
     
@@ -573,12 +588,7 @@ extension StopwatchViewController {
         outterProgress.progressColor = COLOR!
         innerProgress.progressColor = UIColor.white
         startStopBT.backgroundColor = UIColor.clear
-//        TIMEofStopwatch.textColor = COLOR
-        TIMEofStopwatch_h.textColor = COLOR
-        TIMEofStopwatch_m1.textColor = COLOR
-        TIMEofStopwatch_s1.textColor = COLOR
-        TIMEofStopwatch_m2.textColor = COLOR
-        TIMEofStopwatch_s2.textColor = COLOR
+        setTIMEofStopwatchColor(COLOR!)
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.modeTimer.alpha = 0
@@ -593,6 +603,7 @@ extension StopwatchViewController {
             self.settingBTLabel.alpha = 0
             self.resetBT.alpha = 0
             self.resetBTLabel.alpha = 0
+            self.smaller.alpha = 0
         })
     }
     
@@ -703,38 +714,41 @@ extension StopwatchViewController {
         daily.save() //하루 그래프 데이터 계산
         deviceRotated() //화면 회전 체크
     }
-}
-
-extension StopwatchViewController {
-//    // MARK: - Keyboard Commands
-//    override var canBecomeFirstResponder: Bool {
-//      true
-//    }
-//
-//    @objc private func space(sender: UIKeyCommand) {
-//    }
-//
-//    override var keyCommands: [UIKeyCommand]? {
-//      let newKeyCommand = UIKeyCommand(input: "N", modifierFlags: .control, action: #selector(space(sender:)))
-//      newKeyCommand.discoverabilityTitle = "Add Entry"
-//      return [newKeyCommand]
-//    }
     
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-
-        for press in presses {
-            guard let key = press.key else { continue }
-            if key.characters == " " {
-                print("space bar")
-                //start action
-                if(isStop == true) {
-                    algoOfStart()
-                }
-                //stop action
-                else {
-                    algoOfStop()
-                }
-            }
-        }
+    func setTIMEofStopwatchColor(_ color: UIColor) {
+        TIMEofStopwatch_h.textColor = color
+        TIMEofStopwatch_m1.textColor = color
+        TIMEofStopwatch_s1.textColor = color
+        TIMEofStopwatch_m2.textColor = color
+        TIMEofStopwatch_s2.textColor = color
+        TIMEofStopwatch_left.textColor = color
+        TIMEofStopwatch_right.textColor = color
+    }
+    
+    func setTIMEShadow(_ label: UILabel) {
+        label.layer.shadowColor = UIColor.gray.cgColor
+        label.layer.shadowOpacity = 0.7
+        label.layer.shadowOffset = CGSize.zero
+        label.layer.shadowRadius = 5
     }
 }
+
+//extension StopwatchViewController {
+//    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+//
+//        for press in presses {
+//            guard let key = press.key else { continue }
+//            if key.characters == " " {
+//                print("space bar")
+//                //start action
+//                if(isStop == true) {
+//                    algoOfStart()
+//                }
+//                //stop action
+//                else {
+//                    algoOfStop()
+//                }
+//            }
+//        }
+//    }
+//}

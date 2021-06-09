@@ -101,8 +101,10 @@ extension firstViewController {
             let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
             if(VCNum == 2) {
                 goToViewController(where: "StopwatchViewController")
-            } else {
+            } else if(VCNum == 1) {
                 goToViewController(where: "TimerViewController")
+            } else {
+                goToViewController(where: "SmallViewController")
             }
         }
     }
