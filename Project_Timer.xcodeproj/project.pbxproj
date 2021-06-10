@@ -24,6 +24,7 @@
 		878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */; };
 		878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */; };
 		879693D02645329600021646 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879693CF2645329600021646 /* TimerViewController.swift */; };
+		879FBF462671CC6700EB9123 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FBF452671CC6700EB9123 /* TodayViewController.swift */; };
 		87BF47D525B6E12A00EE2819 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87BF47D425B6E12A00EE2819 /* timer.mp3 */; };
 		87CB284426149AF8004B11F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CB284626149AF8004B11F0 /* Localizable.strings */; };
 		87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826625EB1F5300B01464 /* GraphViewController.swift */; };
@@ -62,6 +63,7 @@
 		878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
 		878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		879693CF2645329600021646 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		879FBF452671CC6700EB9123 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		87BF47D425B6E12A00EE2819 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		87CB284526149AF8004B11F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CB284F26149DB0004B11F0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				87558D28265A60490059E593 /* firstViewController.swift */,
 				878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */,
 				8736F74A266FB09F0032B48D /* SmallViewController.swift */,
+				879FBF452671CC6700EB9123 /* TodayViewController.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
 				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
+				879FBF462671CC6700EB9123 /* TodayViewController.swift in Sources */,
 				879693D02645329600021646 /* TimerViewController.swift in Sources */,
 				873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */,
 			);
@@ -469,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -492,7 +496,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

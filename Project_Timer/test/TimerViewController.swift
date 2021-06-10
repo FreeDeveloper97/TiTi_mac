@@ -81,6 +81,7 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 1300, height: 1100)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         modeTimer.backgroundColor = UIColor.gray
         modeTimerLabel.textColor = UIColor.gray
@@ -803,3 +804,4 @@ extension TimerViewController {
         label.layer.shadowRadius = 5
     }
 }
+

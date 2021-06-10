@@ -122,6 +122,14 @@ class GraphViewController2: UIViewController {
     @IBAction func backBTAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func showToday(_ sender: Any) {
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "TodayViewController")
+//        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+        self.present(vcName!, animated: true, completion: nil)
+    }
+    
 }
 
 extension GraphViewController2 {

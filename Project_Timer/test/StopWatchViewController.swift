@@ -82,6 +82,7 @@ class StopwatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 1300, height: 1100)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         modeStopWatch.backgroundColor = UIColor.gray
@@ -180,6 +181,7 @@ class StopwatchViewController: UIViewController {
     }
     
     @IBAction func goSmaller(_ sender: Any) {
+        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650.0, height: 350.0)
         goToViewController(where: "SmallViewController")
     }
     

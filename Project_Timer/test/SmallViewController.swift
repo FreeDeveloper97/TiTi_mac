@@ -63,6 +63,7 @@ class SmallViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
         
+        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650.0, height: 350.0)
         setVCNum()
         setColor()
         setRadius()
@@ -94,6 +95,7 @@ class SmallViewController: UIViewController {
     }
     
     @IBAction func goToBigger(_ sender: Any) {
+        self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
         goToViewController(where: "StopwatchViewController")
     }
     

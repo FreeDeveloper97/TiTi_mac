@@ -67,6 +67,8 @@ class firstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        resize(1300, height: 1100)
+//        self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
         innerProgress.trackColor = UIColor.clear
         setLocalizable()
         setButtonRotation()
@@ -100,10 +102,13 @@ extension firstViewController {
         if(!isFirst) {
             let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
             if(VCNum == 2) {
+                self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
                 goToViewController(where: "StopwatchViewController")
             } else if(VCNum == 1) {
+                self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
                 goToViewController(where: "TimerViewController")
             } else {
+                self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650.0, height: 350.0)
                 goToViewController(where: "SmallViewController")
             }
         }
@@ -266,7 +271,6 @@ extension firstViewController {
         vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
         vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(vcName!, animated: true, completion: nil)
+        
     }
 }
-
-

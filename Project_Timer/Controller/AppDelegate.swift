@@ -86,4 +86,10 @@ extension UIColor {
     }
 }
 
-
+extension UIViewController {
+    func resize(_ width: Int, height: Int) {
+        UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
+            windowScene.sizeRestrictions?.minimumSize = CGSize(width: width, height: height)
+        }
+    }
+}
