@@ -2680,8 +2680,8 @@ AVER : 0:00:00</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBC-XN-6qk">
                                                 <rect key="frame" x="10" y="10" width="415" height="415"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.06.22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElI-WW-6tG">
-                                                        <rect key="frame" x="142" y="20" width="131" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000.00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElI-WW-6tG">
+                                                        <rect key="frame" x="140" y="20" width="135" height="33"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2717,7 +2717,6 @@ AVER : 0:00:00</string>
                                                                 <subviews>
                                                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7N-a6-Y6r">
                                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="25"/>
-                                                                        <color key="backgroundColor" name="D8"/>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niq-to-664">
                                                                         <rect key="frame" x="11" y="3.5" width="23" height="18"/>
@@ -2892,7 +2891,7 @@ AVER : 0:00:00</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="D8"/>
+                                                        <color key="backgroundColor" name="D1"/>
                                                         <constraints>
                                                             <constraint firstItem="Xas-kx-S0Q" firstAttribute="centerX" secondItem="k78-ww-InV" secondAttribute="centerX" id="BXJ-h0-cGZ"/>
                                                             <constraint firstItem="Xas-kx-S0Q" firstAttribute="centerY" secondItem="k78-ww-InV" secondAttribute="centerY" id="Dtg-8q-XRh"/>
@@ -2906,10 +2905,10 @@ AVER : 0:00:00</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-0l-PAO">
                                                                 <rect key="frame" x="5" y="5" width="120" height="79.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:32:29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmy-aG-bKy">
-                                                                        <rect key="frame" x="-2" y="30.5" width="124" height="44"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmy-aG-bKy">
+                                                                        <rect key="frame" x="-1" y="30.5" width="122" height="44"/>
                                                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="40"/>
-                                                                        <color key="textColor" name="D8"/>
+                                                                        <color key="textColor" name="D1"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O67-Bo-t2h">
@@ -2930,10 +2929,10 @@ AVER : 0:00:00</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-iY-09L">
                                                                 <rect key="frame" x="175" y="5" width="120" height="79.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-tP-rrC">
-                                                                        <rect key="frame" x="1.5" y="30.5" width="117" height="44"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-tP-rrC">
+                                                                        <rect key="frame" x="-1" y="30.5" width="122" height="44"/>
                                                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="40"/>
-                                                                        <color key="textColor" name="D8"/>
+                                                                        <color key="textColor" name="D1"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUG-iQ-kHj">
@@ -3027,16 +3026,23 @@ AVER : 0:00:00</string>
                                                 <rect key="frame" x="10" y="10" width="415" height="415"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000.00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmV-1R-vi2">
-                                                        <rect key="frame" x="151.5" y="54" width="112.5" height="27.5"/>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                                        <rect key="frame" x="140" y="20" width="135" height="33"/>
+                                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NjP-j2-3Kg">
+                                                        <rect key="frame" x="52.5" y="78.5" width="310" height="310"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="310" id="fYB-Sg-9sy"/>
+                                                            <constraint firstAttribute="height" constant="310" id="qZe-sV-B8P"/>
+                                                        </constraints>
+                                                    </view>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HpN-VY-JgJ">
-                                                        <rect key="frame" x="112.5" y="152" width="190" height="160"/>
+                                                        <rect key="frame" x="90" y="135.5" width="235" height="196"/>
                                                         <color key="backgroundColor" name="Background_second"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="160" id="Ch2-F1-Tg1"/>
-                                                            <constraint firstAttribute="width" constant="190" id="Xb9-vG-A2F"/>
+                                                            <constraint firstAttribute="height" constant="196" id="Ch2-F1-Tg1"/>
+                                                            <constraint firstAttribute="width" constant="235" id="Xb9-vG-A2F"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="G27-p2-ZA9">
                                                             <size key="itemSize" width="190" height="20"/>
@@ -3046,29 +3052,29 @@ AVER : 0:00:00</string>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todayCell" id="HdO-Z3-Txm" customClass="todayCell" customModule="TiTi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="190" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="235" height="24.5"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GCu-im-Nvp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="235" height="24.5"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4si-tL-tqq">
-                                                                            <rect key="frame" x="31.5" y="0.0" width="127" height="20"/>
+                                                                            <rect key="frame" x="42" y="2.5" width="151" height="20"/>
                                                                             <subviews>
                                                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-jA-Udo">
-                                                                                    <rect key="frame" x="2.5" y="1.5" width="76" height="17"/>
+                                                                                    <rect key="frame" x="2.5" y="1.5" width="93" height="17"/>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-hu-jI6">
-                                                                                    <rect key="frame" x="5" y="3.5" width="71" height="13"/>
+                                                                                    <rect key="frame" x="5" y="3" width="88" height="13.5"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="3Jf-R0-L6E"/>
                                                                                     </constraints>
-                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
+                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="13"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-LL-sH8">
-                                                                                    <rect key="frame" x="81" y="3" width="41" height="14"/>
-                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
+                                                                                    <rect key="frame" x="98" y="3" width="48" height="13.5"/>
+                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                                                     <color key="textColor" name="CCC1"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                     <color key="shadowColor" name="shadow2"/>
@@ -3096,7 +3102,7 @@ AVER : 0:00:00</string>
                                                                         <constraint firstItem="4si-tL-tqq" firstAttribute="centerX" secondItem="GCu-im-Nvp" secondAttribute="centerX" id="WoX-6F-UiI"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
-                                                                <size key="customSize" width="190" height="20"/>
+                                                                <size key="customSize" width="235" height="24.5"/>
                                                                 <connections>
                                                                     <outlet property="colorView" destination="GjO-jA-Udo" id="Hrw-T8-Te7"/>
                                                                     <outlet property="taskName" destination="kp1-hu-jI6" id="8Tw-h4-uBh"/>
@@ -3105,13 +3111,6 @@ AVER : 0:00:00</string>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NjP-j2-3Kg">
-                                                        <rect key="frame" x="82.5" y="107" width="250" height="250"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="250" id="fYB-Sg-9sy"/>
-                                                            <constraint firstAttribute="height" constant="250" id="qZe-sV-B8P"/>
-                                                        </constraints>
-                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Background_second"/>
                                                 <constraints>
@@ -3119,7 +3118,7 @@ AVER : 0:00:00</string>
                                                     <constraint firstItem="HpN-VY-JgJ" firstAttribute="centerY" secondItem="NjP-j2-3Kg" secondAttribute="centerY" id="Caf-f0-6ZO"/>
                                                     <constraint firstItem="SmV-1R-vi2" firstAttribute="centerX" secondItem="5pl-0J-urT" secondAttribute="centerX" id="Ha3-UE-bWO"/>
                                                     <constraint firstItem="NjP-j2-3Kg" firstAttribute="centerX" secondItem="5pl-0J-urT" secondAttribute="centerX" id="KID-km-dwO"/>
-                                                    <constraint firstItem="SmV-1R-vi2" firstAttribute="top" secondItem="5pl-0J-urT" secondAttribute="top" constant="54" id="kal-fA-bjm"/>
+                                                    <constraint firstItem="SmV-1R-vi2" firstAttribute="top" secondItem="5pl-0J-urT" secondAttribute="top" constant="20" id="kal-fA-bjm"/>
                                                     <constraint firstItem="NjP-j2-3Kg" firstAttribute="top" secondItem="SmV-1R-vi2" secondAttribute="bottom" constant="25.5" id="tKr-nX-NM5"/>
                                                 </constraints>
                                             </view>
