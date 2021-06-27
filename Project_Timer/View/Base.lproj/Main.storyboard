@@ -2554,6 +2554,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="Jxi-pu-NGm"/>
                                                     <constraint firstAttribute="height" constant="25" id="vJL-Yx-BXd"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="lja-Yq-CeT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15j-zS-YOt">
                                                 <rect key="frame" x="39" y="5" width="25" height="25"/>
@@ -2562,6 +2565,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="L1D-6e-UGN"/>
                                                     <constraint firstAttribute="height" constant="25" id="gEo-Bs-XZA"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="4EY-Yp-Y01"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iew-HS-cDh">
                                                 <rect key="frame" x="175" y="5" width="25" height="25"/>
@@ -2570,6 +2576,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="height" constant="25" id="Jth-gf-i4r"/>
                                                     <constraint firstAttribute="width" constant="25" id="z6o-Uy-Kpi"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="q0F-kl-J3l"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqn-AA-J3L">
                                                 <rect key="frame" x="209" y="5" width="25" height="25"/>
@@ -2578,6 +2587,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="SlS-sC-IgL"/>
                                                     <constraint firstAttribute="height" constant="25" id="oBy-tg-Mbk"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="1s6-Xs-D9j"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8am-hc-d5k">
                                                 <rect key="frame" x="379" y="5" width="25" height="25"/>
@@ -2586,6 +2598,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="6rP-xh-nFq"/>
                                                     <constraint firstAttribute="height" constant="25" id="sVz-Cn-Mmi"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="udA-sF-cBL"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4O-7z-Hb2">
                                                 <rect key="frame" x="345" y="5" width="25" height="25"/>
@@ -2594,6 +2609,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="height" constant="25" id="tWs-bE-R03"/>
                                                     <constraint firstAttribute="width" constant="25" id="y6C-yy-2ms"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="Blz-3C-kXk"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGf-ZE-aJe">
                                                 <rect key="frame" x="277" y="5" width="25" height="25"/>
@@ -2602,6 +2620,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="RfT-bf-nny"/>
                                                     <constraint firstAttribute="height" constant="25" id="euK-Gl-doA"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="cTc-F5-8lq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNs-65-rw0">
                                                 <rect key="frame" x="107" y="5" width="25" height="25"/>
@@ -2610,6 +2631,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="bxw-wK-m4Y"/>
                                                     <constraint firstAttribute="height" constant="25" id="fov-MS-gxX"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="yY4-0f-66L"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqI-ZG-mVC">
                                                 <rect key="frame" x="311" y="5" width="25" height="25"/>
@@ -2618,6 +2642,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="UpM-gr-Uhd"/>
                                                     <constraint firstAttribute="height" constant="25" id="pal-tO-Dly"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="WfY-Qc-IQR"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BM2-0G-XaD">
                                                 <rect key="frame" x="73" y="5" width="25" height="25"/>
@@ -2626,6 +2653,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="2YT-ly-W6b"/>
                                                     <constraint firstAttribute="height" constant="25" id="dpk-n3-a4k"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="AyB-lh-Zip"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UT2-Uf-B9F">
                                                 <rect key="frame" x="141" y="5" width="25" height="25"/>
@@ -2634,6 +2664,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="height" constant="25" id="EkC-4W-Cdh"/>
                                                     <constraint firstAttribute="width" constant="25" id="lZK-D7-nI9"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="UUQ-7O-Mkq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xP-mj-YSu">
                                                 <rect key="frame" x="243" y="5" width="25" height="25"/>
@@ -2642,6 +2675,9 @@ AVER : 0:00:00</string>
                                                     <constraint firstAttribute="width" constant="25" id="MCg-5v-wbv"/>
                                                     <constraint firstAttribute="height" constant="25" id="UM2-W9-SGV"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="changeColor:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="63j-Gn-YnF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -3044,27 +3080,27 @@ AVER : 0:00:00</string>
                                                             <constraint firstAttribute="width" constant="235" id="Xb9-vG-A2F"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="G27-p2-ZA9">
-                                                            <size key="itemSize" width="190" height="20"/>
+                                                            <size key="itemSize" width="235" height="24"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todayCell" id="HdO-Z3-Txm" customClass="todayCell" customModule="TiTi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="235" height="24.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="235" height="24"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GCu-im-Nvp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="235" height="24.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="235" height="24"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4si-tL-tqq">
-                                                                            <rect key="frame" x="42" y="2.5" width="151" height="20"/>
+                                                                            <rect key="frame" x="42" y="2" width="151" height="20"/>
                                                                             <subviews>
                                                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-jA-Udo">
                                                                                     <rect key="frame" x="2.5" y="1.5" width="93" height="17"/>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-hu-jI6">
-                                                                                    <rect key="frame" x="5" y="3" width="88" height="13.5"/>
+                                                                                    <rect key="frame" x="5" y="3.5" width="88" height="13"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="3Jf-R0-L6E"/>
                                                                                     </constraints>
@@ -3072,7 +3108,7 @@ AVER : 0:00:00</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-LL-sH8">
-                                                                                    <rect key="frame" x="98" y="3" width="48" height="13.5"/>
+                                                                                    <rect key="frame" x="98" y="3.5" width="48" height="13"/>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                                                     <color key="textColor" name="CCC1"/>
                                                                                     <nil key="highlightedColor"/>
@@ -3101,7 +3137,7 @@ AVER : 0:00:00</string>
                                                                         <constraint firstItem="4si-tL-tqq" firstAttribute="centerX" secondItem="GCu-im-Nvp" secondAttribute="centerX" id="WoX-6F-UiI"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
-                                                                <size key="customSize" width="235" height="24.5"/>
+                                                                <size key="customSize" width="235" height="24"/>
                                                                 <connections>
                                                                     <outlet property="colorView" destination="GjO-jA-Udo" id="Hrw-T8-Te7"/>
                                                                     <outlet property="taskName" destination="kp1-hu-jI6" id="8Tw-h4-uBh"/>
@@ -3109,6 +3145,10 @@ AVER : 0:00:00</string>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="AV6-J4-ZvG" id="wJE-kw-kCl"/>
+                                                            <outlet property="delegate" destination="AV6-J4-ZvG" id="VX4-nm-y9f"/>
+                                                        </connections>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Background_second"/>
@@ -3410,10 +3450,9 @@ AVER : 0:00:00</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwW-T9-0TZ">
-                                                                        <rect key="frame" x="42" y="234" width="120" height="120"/>
-                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <rect key="frame" x="32" y="234" width="140" height="140"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="120" id="U54-ET-bUp"/>
+                                                                            <constraint firstAttribute="width" constant="140" id="U54-ET-bUp"/>
                                                                             <constraint firstAttribute="width" secondItem="OwW-T9-0TZ" secondAttribute="height" multiplier="1:1" id="q9x-S4-sQE"/>
                                                                         </constraints>
                                                                     </view>
@@ -3450,7 +3489,7 @@ AVER : 0:00:00</string>
                                                                     <constraint firstAttribute="height" constant="450" id="OSH-Cf-Rzv"/>
                                                                 </constraints>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0t4-qb-3nD">
-                                                                    <size key="itemSize" width="205" height="20"/>
+                                                                    <size key="itemSize" width="415" height="45"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -3464,18 +3503,18 @@ AVER : 0:00:00</string>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <subviews>
                                                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaO-Nd-zcb">
-                                                                                    <rect key="frame" x="45" y="7" width="71.5" height="31"/>
+                                                                                    <rect key="frame" x="45" y="9" width="65" height="27.5"/>
                                                                                     <color key="backgroundColor" name="CCC1"/>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeE-7S-Ktf">
-                                                                                    <rect key="frame" x="50" y="7" width="61.5" height="31"/>
-                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="28"/>
+                                                                                    <rect key="frame" x="50" y="9" width="55" height="27.5"/>
+                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puf-oD-6AS">
-                                                                                    <rect key="frame" x="320.5" y="6" width="91.5" height="33"/>
-                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                                                                    <rect key="frame" x="326.5" y="7" width="85.5" height="31"/>
+                                                                                    <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="28"/>
                                                                                     <color key="textColor" name="CCC1"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -3521,6 +3560,10 @@ AVER : 0:00:00</string>
                                                                         </connections>
                                                                     </collectionViewCell>
                                                                 </cells>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="AV6-J4-ZvG" id="aRe-iU-k4a"/>
+                                                                    <outlet property="delegate" destination="AV6-J4-ZvG" id="a5c-qR-fgn"/>
+                                                                </connections>
                                                             </collectionView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -3741,10 +3784,54 @@ AVER : 0:00:00</string>
                     <value key="contentSizeForViewInPopover" type="size" width="1670" height="1024"/>
                     <size key="freeformSize" width="1670" height="1024"/>
                     <connections>
+                        <outlet property="collectionHeight" destination="Ch2-F1-Tg1" id="uPf-tn-MHh"/>
+                        <outlet property="collectionView" destination="HpN-VY-JgJ" id="GOa-Ea-0aQ"/>
+                        <outlet property="color1" destination="m26-3A-GgU" id="Tj3-9Q-3RR"/>
+                        <outlet property="color10" destination="UqI-ZG-mVC" id="Zan-lN-OYx"/>
+                        <outlet property="color11" destination="u4O-7z-Hb2" id="hOE-Er-gkX"/>
+                        <outlet property="color12" destination="8am-hc-d5k" id="AD9-A7-09w"/>
+                        <outlet property="color2" destination="15j-zS-YOt" id="M68-Hp-NoI"/>
+                        <outlet property="color3" destination="BM2-0G-XaD" id="96e-M0-Sq7"/>
+                        <outlet property="color4" destination="XNs-65-rw0" id="GiM-SZ-6gl"/>
+                        <outlet property="color5" destination="UT2-Uf-B9F" id="JDa-Df-en6"/>
+                        <outlet property="color6" destination="iew-HS-cDh" id="Ym6-sN-bAJ"/>
+                        <outlet property="color7" destination="kqn-AA-J3L" id="KEK-YB-2lj"/>
+                        <outlet property="color8" destination="1xP-mj-YSu" id="brW-de-hBR"/>
+                        <outlet property="color9" destination="oGf-ZE-aJe" id="gfW-HY-Jhe"/>
+                        <outlet property="datePicker" destination="qVa-hw-g7q" id="5ki-61-Xdg"/>
+                        <outlet property="frame1" destination="eGV-lF-h3D" id="Law-4j-Szy"/>
+                        <outlet property="frame2" destination="BzR-82-7bJ" id="fAC-Fv-SMG"/>
+                        <outlet property="frame3" destination="LuI-7v-rf4" id="PNl-wU-p9m"/>
+                        <outlet property="fri" destination="Hgf-Kf-M5A" id="kdF-xp-Vlh"/>
+                        <outlet property="maxTime" destination="Xio-tP-rrC" id="7ia-h9-zRB"/>
+                        <outlet property="mon" destination="o0a-GA-HSh" id="HEH-LD-QXM"/>
+                        <outlet property="progress" destination="NjP-j2-3Kg" id="f6U-tP-QXm"/>
+                        <outlet property="sat" destination="DPj-qa-Iea" id="roG-31-g1U"/>
+                        <outlet property="sumTime" destination="dmy-aG-bKy" id="gfb-V5-sgc"/>
+                        <outlet property="sun" destination="8HR-28-efZ" id="5qS-UY-P4n"/>
+                        <outlet property="thu" destination="2sw-0C-MCB" id="OTo-b0-GNg"/>
+                        <outlet property="timeline" destination="k78-ww-InV" id="BVS-BF-cjg"/>
+                        <outlet property="today" destination="ElI-WW-6tG" id="Pjm-gh-6Fy"/>
+                        <outlet property="today2" destination="SmV-1R-vi2" id="JpH-8V-VFi"/>
+                        <outlet property="tue" destination="p7N-a6-Y6r" id="MTy-Ic-UdT"/>
                         <outlet property="view1" destination="xBC-XN-6qk" id="Kyc-BD-7x6"/>
                         <outlet property="view2" destination="5pl-0J-urT" id="Gbt-v7-3oD"/>
                         <outlet property="view3" destination="5Pv-FF-sdY" id="PsS-o4-Zsl"/>
+                        <outlet property="view3_collectionView" destination="jCt-aR-wsZ" id="Mcq-m6-fd1"/>
+                        <outlet property="view3_fri" destination="8I4-KR-dob" id="6wN-Vl-tNc"/>
+                        <outlet property="view3_maxTime" destination="wB6-iw-PGG" id="2XH-MM-sPt"/>
+                        <outlet property="view3_mon" destination="mLh-QC-mTC" id="09S-UN-BrG"/>
+                        <outlet property="view3_progress" destination="OwW-T9-0TZ" id="oHR-lg-8n0"/>
+                        <outlet property="view3_sat" destination="zVH-VG-NIX" id="KJa-T2-xFo"/>
+                        <outlet property="view3_sumTime" destination="sks-G8-pW0" id="XXf-6Z-Z2t"/>
+                        <outlet property="view3_sun" destination="7Ld-5w-eAl" id="ucf-ls-344"/>
+                        <outlet property="view3_thu" destination="0zm-px-HZt" id="bDR-NB-40j"/>
+                        <outlet property="view3_timeline" destination="cCG-6u-hX3" id="yPp-AQ-21m"/>
+                        <outlet property="view3_today" destination="WAr-a9-xgM" id="mbU-ye-WqR"/>
+                        <outlet property="view3_tue" destination="KPc-EN-feP" id="m8j-Y6-3Bw"/>
+                        <outlet property="view3_wed" destination="3ih-nY-QPh" id="ojZ-6u-BS9"/>
                         <outlet property="view4" destination="ewd-2u-dmE" id="Cf6-rt-pfE"/>
+                        <outlet property="wed" destination="IFy-3p-h0r" id="ZkV-7z-cSf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SP9-eI-ofH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

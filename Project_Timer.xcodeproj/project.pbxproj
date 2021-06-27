@@ -14,6 +14,10 @@
 		87313E7E25EBA0C10088D1EC /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87313E7D25EBA0C10088D1EC /* Time.swift */; };
 		8736F74B266FB09F0032B48D /* SmallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736F74A266FB09F0032B48D /* SmallViewController.swift */; };
 		873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C760725E79105009374E1 /* SetTimerViewController2.swift */; };
+		874B547A26885C17001DEE00 /* TodayViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B547926885C17001DEE00 /* TodayViewManager.swift */; };
+		874B547C26885C40001DEE00 /* Dumy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B547B26885C40001DEE00 /* Dumy.swift */; };
+		874B547E26885C59001DEE00 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B547D26885C59001DEE00 /* ViewManager.swift */; };
+		874B548026885E8A001DEE00 /* todayContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B547F26885E8A001DEE00 /* todayContentView.swift */; };
 		87558D29265A60490059E593 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87558D28265A60490059E593 /* firstViewController.swift */; };
 		8787DFDA25B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		8787DFDB25B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */; };
@@ -53,6 +57,10 @@
 		87313E7D25EBA0C10088D1EC /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		8736F74A266FB09F0032B48D /* SmallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallViewController.swift; sourceTree = "<group>"; };
 		873C760725E79105009374E1 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
+		874B547926885C17001DEE00 /* TodayViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewManager.swift; sourceTree = "<group>"; };
+		874B547B26885C40001DEE00 /* Dumy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumy.swift; sourceTree = "<group>"; };
+		874B547D26885C59001DEE00 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		874B547F26885E8A001DEE00 /* todayContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayContentView.swift; sourceTree = "<group>"; };
 		87558D28265A60490059E593 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
@@ -101,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		874B547826885C08001DEE00 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				874B547926885C17001DEE00 /* TodayViewManager.swift */,
+				874B547D26885C59001DEE00 /* ViewManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		87BF47D225B6E0E400EE2819 /* component */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +159,7 @@
 				87313E7D25EBA0C10088D1EC /* Time.swift */,
 				872047FD261CBAF600EF1691 /* Daily.swift */,
 				87204800261CBB0B00EF1691 /* Storage.swift */,
+				874B547B26885C40001DEE00 /* Dumy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +176,7 @@
 				878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */,
 				8736F74A266FB09F0032B48D /* SmallViewController.swift */,
 				879FBF452671CC6700EB9123 /* TodayViewController.swift */,
+				874B547F26885E8A001DEE00 /* todayContentView.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -194,6 +213,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				874B547826885C08001DEE00 /* Manager */,
 				87F669E62631E7560004CD59 /* test */,
 				87CB285526149E84004B11F0 /* Model */,
 				87CB285226149DFA004B11F0 /* View */,
@@ -292,11 +312,13 @@
 			files = (
 				87558D29265A60490059E593 /* firstViewController.swift in Sources */,
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
+				874B547C26885C40001DEE00 /* Dumy.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */,
 				87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */,
 				878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */,
 				87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */,
+				874B548026885E8A001DEE00 /* todayContentView.swift in Sources */,
 				87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */,
@@ -308,12 +330,14 @@
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				872047FE261CBAF600EF1691 /* Daily.swift in Sources */,
 				87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */,
+				874B547A26885C17001DEE00 /* TodayViewManager.swift in Sources */,
 				878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */,
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
 				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 				879FBF462671CC6700EB9123 /* TodayViewController.swift in Sources */,
 				879693D02645329600021646 /* TimerViewController.swift in Sources */,
+				874B547E26885C59001DEE00 /* ViewManager.swift in Sources */,
 				873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
