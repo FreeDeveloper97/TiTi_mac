@@ -12,6 +12,7 @@ struct todayContentView: View {
     //크기값 설정
     var frameHeight: CGFloat = 128
     var height: CGFloat = 125
+    var fontSize: CGFloat = 10
     //화면
     var body : some View {
         //세로 스크롤 설정
@@ -20,7 +21,7 @@ struct todayContentView: View {
             /* ----차트화면---- */
             VStack {
                 //그래프 틀
-                HStack(spacing:2) { //좌우로 45만큼 여백
+                HStack(spacing:3) { //좌우로 45만큼 여백
                     ForEach(times) {time in
                         //세로 스택
                         VStack{
@@ -37,7 +38,7 @@ struct todayContentView: View {
                             .frame(height:frameHeight)
                             //날짜 설정
                             Text(String(time.id))
-                                .font(.system(size: 8.5))
+                                .font(.system(size: fontSize))
                                 .foregroundColor(Color("SystemBackground_reverse"))
                                 .padding(.bottom,2)
                         }

@@ -16,8 +16,6 @@ class GraphViewController2: UIViewController {
     
     @IBOutlet var progress: UIView!
     @IBOutlet var sumTime: UILabel!
-//    @IBOutlet var taskTitle: UILabel!
-//    @IBOutlet var taskTime: UILabel!
     @IBOutlet var today: UILabel!
     
     @IBOutlet var time_05: UIView!
@@ -65,50 +63,9 @@ class GraphViewController2: UIViewController {
         setShadow(view_7days)
         setShadow(view_today)
         
-        //7days
-        let hostingController = UIHostingController(rootView: ContentView())
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
-        hostingController.view.frame = viewOfView.bounds
-        ContentView().appendDailyDatas()
-//        ContentView().appendDumyDatas()
-        addChild(hostingController)
-        viewOfView.addSubview(hostingController.view)
-        
-        //today
-        daily.load()
-        fillHourColor()
-        if(daily.tasks != [:]) {
-            today.text = getDay(day: daily.day)
-            let temp: [String:Int] = daily.tasks
-//            let temp = addDumy()
-            counts = temp.count
-            appendColors()
-            
-            let tasks = temp.sorted(by: { $0.1 < $1.1 } )
-            
-            var array: [Int] = []
-            for (key, value) in tasks {
-                arrayTaskName.append(key)
-                arrayTaskTime.append(printTime(temp: value))
-                array.append(value)
-            }
-            
-            let width = progress.bounds.width
-            let height = progress.bounds.height
-            makeProgress(array, width, height)
-            var p1 = ""
-            var p2 = ""
-            for i in (0..<tasks.count).reversed() {
-                p1 += "\(arrayTaskName[i])\n"
-                p2 += "\(arrayTaskTime[i])\n"
-            }
-//            taskTitle.text = p1
-//            taskTime.text = p2
-            setHeight()
-        } else {
-            print("no data")
-        }
-        
+        let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
+        showSwiftUIGraph(isDumy: isDumy)
+        showDatas(isDumy: isDumy)
     }
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
@@ -133,6 +90,56 @@ class GraphViewController2: UIViewController {
 }
 
 extension GraphViewController2 {
+    
+    func showSwiftUIGraph(isDumy: Bool) {
+        //7days
+        let hostingController = UIHostingController(rootView: ContentView())
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.frame = viewOfView.bounds
+        
+        ContentView().appendDailyDatas(isDumy: isDumy)
+        addChild(hostingController)
+        viewOfView.addSubview(hostingController.view)
+    }
+    
+    func showDatas(isDumy: Bool) {
+        //today
+        daily.load()
+        if(isDumy) { daily = Dumy().getDumyDaily() }
+        
+        if(daily.tasks != [:]) {
+            fillHourColor()
+            let temp: [String:Int] = daily.tasks
+            today.text = getDay(day: daily.day)
+            counts = temp.count
+            appendColors()
+            
+            let tasks = temp.sorted(by: { $0.1 < $1.1 } )
+            
+            var array: [Int] = []
+            for (key, value) in tasks {
+                arrayTaskName.append(key)
+                arrayTaskTime.append(printTime(temp: value))
+                array.append(value)
+            }
+            
+            let width = progress.bounds.width
+            let height = progress.bounds.height
+            makeProgress(array, width, height)
+            var p1 = ""
+            var p2 = ""
+            for i in (0..<tasks.count).reversed() {
+                p1 += "\(arrayTaskName[i])\n"
+                p2 += "\(arrayTaskTime[i])\n"
+            }
+            
+            print("max : \(daily.maxTime)")
+            
+            setHeight()
+        } else {
+            print("no data")
+        }
+    }
     
     func setRadius() {
         time_05.layer.cornerRadius = 5
@@ -160,8 +167,8 @@ extension GraphViewController2 {
         time_03.layer.cornerRadius = 5
         time_04.layer.cornerRadius = 5
         
-        view_7days.layer.cornerRadius = 20
-        view_today.layer.cornerRadius = 20
+        view_7days.layer.cornerRadius = 25
+        view_today.layer.cornerRadius = 25
     }
     
     func getDay(day: Date) -> String {

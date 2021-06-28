@@ -23,12 +23,12 @@ struct Dumy {
         dumy.updateValue(1500, forKey: "Cycling")
         dumy.updateValue(700, forKey: "Reading Book")
         dumy.updateValue(607, forKey: "Learning Korean")
+        
 //        dumy.updateValue(2000, forKey: "Swift")
 //        dumy.updateValue(3000, forKey: "Java")
 //        dumy.updateValue(1200, forKey: "C++")
 //        dumy.updateValue(2400, forKey: "Python")
 //        dumy.updateValue(2800, forKey: "Algorithm")
-        
 //        dumy.updateValue(1000, forKey: "coding")
 //        dumy.updateValue(800, forKey: "blog")
 //        dumy.updateValue(2200, forKey: "design")
@@ -45,25 +45,25 @@ struct Dumy {
     
     func get7Dailys() -> [daily] {
         var DailyDatas: [daily] = []
-        DailyDatas.append(daily(id: 1, day: "6/15",
+        DailyDatas.append(daily(id: 1, day: "6/21",
                                 studyTime: ViewManager().translate2(input: "3:37:20"),
                                 breakTime: ViewManager().translate2(input: "0:37:50")))
-        DailyDatas.append(daily(id: 2, day: "6/16",
+        DailyDatas.append(daily(id: 2, day: "6/22",
                                 studyTime: ViewManager().translate2(input: "2:58:23"),
                                 breakTime: ViewManager().translate2(input: "2:02:15")))
-        DailyDatas.append(daily(id: 3, day: "6/17",
+        DailyDatas.append(daily(id: 3, day: "6/23",
                                 studyTime: ViewManager().translate2(input: "6:02:07"),
                                 breakTime: ViewManager().translate2(input: "1:40:08")))
-        DailyDatas.append(daily(id: 4, day: "6/18",
+        DailyDatas.append(daily(id: 4, day: "6/24",
                                 studyTime: ViewManager().translate2(input: "4:03:39"),
                                 breakTime: ViewManager().translate2(input: "1:05:00")))
-        DailyDatas.append(daily(id: 5, day: "6/19",
+        DailyDatas.append(daily(id: 5, day: "6/25",
                                 studyTime: ViewManager().translate2(input: "3:35:15"),
                                 breakTime: ViewManager().translate2(input: "2:32:56")))
-        DailyDatas.append(daily(id: 6, day: "6/20",
+        DailyDatas.append(daily(id: 6, day: "6/26",
                                 studyTime: ViewManager().translate2(input: "5:10:12"),
                                 breakTime: ViewManager().translate2(input: "2:01:00")))
-        DailyDatas.append(daily(id: 7, day: "6/21",
+        DailyDatas.append(daily(id: 7, day: "6/27",
                                 studyTime: ViewManager().translate2(input: "5:16:37"),
                                 breakTime: ViewManager().translate2(input: "0:35:20")))
         return DailyDatas

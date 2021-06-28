@@ -52,6 +52,10 @@ class TodayViewController: UIViewController {
     
     //frame4
     @IBOutlet var view4: UIView!
+    @IBOutlet var inputFraim: UIView!
+    @IBOutlet var input: UITextField!
+    @IBOutlet var add: UIButton!
+    @IBOutlet var view4_collectionView: UICollectionView!
     
     @IBOutlet var color1: UIButton!
     @IBOutlet var color2: UIButton!
@@ -67,13 +71,17 @@ class TodayViewController: UIViewController {
     @IBOutlet var color12: UIButton!
     
     @IBOutlet var datePicker: UIButton!
+    @IBOutlet var backBT: UIButton!
     
     let todayViewManager = TodayViewManager()
     var weeks: [UIView] = []
     var weeks2: [UIView] = []
     
+    let todoListViewModel = TodolistViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         
         weeks = [mon, tue, wed, thu, fri, sat, sun]
         weeks2 = [view3_mon, view3_tue, view3_wed, view3_thu, view3_fri, view3_sat, view3_sun]
@@ -88,6 +96,9 @@ class TodayViewController: UIViewController {
         let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
         showSwiftUIGraph(isDumy: isDumy)
         showDatas(isDumy: isDumy)
+        
+        todoListViewModel.loadTodos()
+//        setBackBT()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -115,10 +126,28 @@ class TodayViewController: UIViewController {
         self.view.layoutIfNeeded()
         collectionView.reloadData()
         view3_collectionView.reloadData()
+        view4_collectionView.reloadData()
+    }
+    
+    @IBAction func addList(_ sender: Any) {
+        guard let text = input.text, text.isEmpty == false else { return }
+        let todo = TodoManager.shared.createTodo(text: text)
+        todoListViewModel.addTodo(todo)
+        
+        view4_collectionView.reloadData()
+        input.text = ""
+        self.view.endEditing(true)
+        self.view.layoutIfNeeded()
     }
 }
 
 extension TodayViewController {
+    func setBackBT() {
+        backBT.layer.borderWidth = 3
+        backBT.layer.borderColor = UIColor(named: "System_border")?.cgColor
+        backBT.layer.cornerRadius = 10
+    }
+    
     func setRadius() {
         view1.layer.cornerRadius = 25
         view2.layer.cornerRadius = 25
@@ -137,6 +166,10 @@ extension TodayViewController {
         color10.layer.cornerRadius = 5
         color11.layer.cornerRadius = 5
         color12.layer.cornerRadius = 5
+        
+        inputFraim.clipsToBounds = true
+        inputFraim.layer.cornerRadius = 25
+        inputFraim.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     
     func setShadow(_ view: UIView) {
@@ -160,7 +193,8 @@ extension TodayViewController {
             colorSecond = startColor-1 == 0 ? 12 : startColor-1
         }
         //frame1
-        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 128, height: 125))
+        let height: CGFloat = 150
+        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: height, height: height-3, fontSize: 10))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
         todayContentView().appendTimes(isDumy: isDumy)
@@ -170,7 +204,8 @@ extension TodayViewController {
         
         todayContentView().reset()
         //frame3
-        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 97, height: 93))
+        let height2: CGFloat = 200
+        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: height2, height: height2-5, fontSize: 15))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view3_timeline.bounds
         todayContentView().appendTimes(isDumy: isDumy)
@@ -195,6 +230,7 @@ extension TodayViewController {
             
             setHeight()
         } else {
+            todayViewManager.setTimesColor(sumTime, view3_sumTime, maxTime, view3_maxTime)
             print("no data")
         }
     }
@@ -211,7 +247,11 @@ extension TodayViewController {
 extension TodayViewController: UICollectionViewDataSource {
     //몇개 표시 할까?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return todayViewManager.counts
+        if(collectionView == self.view4_collectionView) {
+            return todoListViewModel.todos.count
+        } else {
+            return todayViewManager.counts
+        }
     }
     //셀 어떻게 표시 할까?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -245,7 +285,28 @@ extension TodayViewController: UICollectionViewDataSource {
             return cell
         }
         else {
-        return UICollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoCell", for: indexPath) as? TodoCell else {
+                return UICollectionViewCell() }
+            
+            var todo = todoListViewModel.todos[indexPath.item]
+            let index = todayViewManager.startColor
+            cell.check.tintColor = UIColor(named: "D\(index)")
+            cell.colorView.backgroundColor = UIColor(named: "D\(index)")
+            cell.updateUI(todo: todo)
+            self.view.layoutIfNeeded()
+            
+            cell.doneButtonTapHandler = { isDone in
+                todo.isDone = isDone
+                self.todoListViewModel.updateTodo(todo)
+                self.view4_collectionView.reloadData()
+            }
+            
+            cell.deleteButtonTapHandler = {
+                self.todoListViewModel.deleteTodo(todo)
+                self.view4_collectionView.reloadData()
+            }
+            
+            return cell
         }
         
     }
@@ -262,4 +323,57 @@ class todayCell2: UICollectionViewCell {
     @IBOutlet var taskName: UILabel!
     @IBOutlet var taskTime: UILabel!
     @IBOutlet var background: UIView!
+}
+
+class TodoCell: UICollectionViewCell {
+    @IBOutlet weak var check: UIButton!
+    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var delete: UIButton!
+    
+    var doneButtonTapHandler: ((Bool) -> Void)?
+    var deleteButtonTapHandler: (() -> Void)?
+    
+    @IBAction func checkTapped(_ sender: Any) {
+        check.isSelected = !check.isSelected
+        let isDone = check.isSelected
+        showColorView(isDone)
+        delete.isHidden = !isDone
+        doneButtonTapHandler?(isDone)
+    }
+    
+    @IBAction func deleteTapped(_ sender: Any) {
+        deleteButtonTapHandler?()
+    }
+    
+    func reset() {
+        delete.isHidden = true
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        reset()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        reset()
+    }
+    
+    func updateUI(todo: Todo) {
+        check.isSelected = todo.isDone
+        text.text = todo.text
+        delete.isHidden = todo.isDone == false
+        showColorView(todo.isDone)
+    }
+    
+    private func showColorView(_ show: Bool) {
+        if show {
+            colorView.alpha = 0.5
+        } else {
+            colorView.alpha = 0
+        }
+    }
+    
+    
 }

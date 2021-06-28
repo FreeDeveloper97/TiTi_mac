@@ -19,13 +19,16 @@
 		874B547E26885C59001DEE00 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B547D26885C59001DEE00 /* ViewManager.swift */; };
 		874B548026885E8A001DEE00 /* todayContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B547F26885E8A001DEE00 /* todayContentView.swift */; };
 		87558D29265A60490059E593 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87558D28265A60490059E593 /* firstViewController.swift */; };
+		875AECD326887D3C00136194 /* TodolistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AECD226887D3C00136194 /* TodolistViewModel.swift */; };
+		875AECD526887D6200136194 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AECD426887D6200136194 /* Todo.swift */; };
+		875AECD726887D7A00136194 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AECD626887D7A00136194 /* TodoManager.swift */; };
 		8787DFDA25B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		8787DFDB25B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		8787DFDC25B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD625B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		8787DFDD25B5322A007B8C13 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD725B5322A007B8C13 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		8787DFDE25B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD825B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf */; };
 		8787DFDF25B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8787DFD925B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf */; };
-		878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */; };
+		878A8BBF264119A90058B1E4 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BBE264119A90058B1E4 /* StopwatchViewController.swift */; };
 		878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */; };
 		879693D02645329600021646 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879693CF2645329600021646 /* TimerViewController.swift */; };
 		879FBF462671CC6700EB9123 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FBF452671CC6700EB9123 /* TodayViewController.swift */; };
@@ -62,13 +65,16 @@
 		874B547D26885C59001DEE00 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		874B547F26885E8A001DEE00 /* todayContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayContentView.swift; sourceTree = "<group>"; };
 		87558D28265A60490059E593 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
+		875AECD226887D3C00136194 /* TodolistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewModel.swift; sourceTree = "<group>"; };
+		875AECD426887D6200136194 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		875AECD626887D7A00136194 /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
 		8787DFD425B5322A007B8C13 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		8787DFD525B5322A007B8C13 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		8787DFD625B5322A007B8C13 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
 		8787DFD725B5322A007B8C13 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		8787DFD825B5322A007B8C13 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
 		8787DFD925B5322A007B8C13 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
-		878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
+		878A8BBE264119A90058B1E4 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
 		878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		879693CF2645329600021646 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		879FBF452671CC6700EB9123 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +120,17 @@
 			children = (
 				874B547926885C17001DEE00 /* TodayViewManager.swift */,
 				874B547D26885C59001DEE00 /* ViewManager.swift */,
+				875AECD626887D7A00136194 /* TodoManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		875AECD126887D2900136194 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				875AECD226887D3C00136194 /* TodolistViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		87BF47D225B6E0E400EE2819 /* component */ = {
@@ -160,6 +175,7 @@
 				872047FD261CBAF600EF1691 /* Daily.swift */,
 				87204800261CBB0B00EF1691 /* Storage.swift */,
 				874B547B26885C40001DEE00 /* Dumy.swift */,
+				875AECD426887D6200136194 /* Todo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,7 +189,7 @@
 				87CF826925EB1F6E00B01464 /* ContentView.swift */,
 				879693CF2645329600021646 /* TimerViewController.swift */,
 				87558D28265A60490059E593 /* firstViewController.swift */,
-				878A8BBE264119A90058B1E4 /* StopWatchViewController.swift */,
+				878A8BBE264119A90058B1E4 /* StopwatchViewController.swift */,
 				8736F74A266FB09F0032B48D /* SmallViewController.swift */,
 				879FBF452671CC6700EB9123 /* TodayViewController.swift */,
 				874B547F26885E8A001DEE00 /* todayContentView.swift */,
@@ -213,6 +229,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				875AECD126887D2900136194 /* viewModel */,
 				874B547826885C08001DEE00 /* Manager */,
 				87F669E62631E7560004CD59 /* test */,
 				87CB285526149E84004B11F0 /* Model */,
@@ -310,13 +327,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				875AECD326887D3C00136194 /* TodolistViewModel.swift in Sources */,
 				87558D29265A60490059E593 /* firstViewController.swift in Sources */,
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				874B547C26885C40001DEE00 /* Dumy.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */,
 				87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */,
-				878A8BBF264119A90058B1E4 /* StopWatchViewController.swift in Sources */,
+				878A8BBF264119A90058B1E4 /* StopwatchViewController.swift in Sources */,
 				87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */,
 				874B548026885E8A001DEE00 /* todayContentView.swift in Sources */,
 				87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */,
@@ -333,10 +351,12 @@
 				874B547A26885C17001DEE00 /* TodayViewManager.swift in Sources */,
 				878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */,
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
+				875AECD526887D6200136194 /* Todo.swift in Sources */,
 				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 				879FBF462671CC6700EB9123 /* TodayViewController.swift in Sources */,
 				879693D02645329600021646 /* TimerViewController.swift in Sources */,
+				875AECD726887D7A00136194 /* TodoManager.swift in Sources */,
 				874B547E26885C59001DEE00 /* ViewManager.swift in Sources */,
 				873C760825E79105009374E1 /* SetTimerViewController2.swift in Sources */,
 			);
@@ -497,7 +517,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -505,7 +525,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -520,7 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -528,7 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;

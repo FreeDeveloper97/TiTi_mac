@@ -82,8 +82,10 @@ class StopwatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 1300, height: 1100)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        DispatchQueue.main.async {
+            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 5000, height: 5000)
+            self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
+        }
         
         modeStopWatch.backgroundColor = UIColor.gray
         modeStopWatchLabel.textColor = UIColor.gray
@@ -111,24 +113,14 @@ class StopwatchViewController: UIViewController {
         daily.load()
         setTask()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 650, height: 350)
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         print("disappear in stopwatch")
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-    }
-
-    @objc func deviceRotated(){
-        if(isStop) {
-            if UIDevice.current.orientation.isPortrait {
-                //Code here
-                print("Portrait")
-                setPortrait()
-            } else {
-                //Code here
-                print("Landscape")
-                setLandscape()
-            }
-        }
     }
     
     func checkTimeTrigger() {
@@ -158,7 +150,7 @@ class StopwatchViewController: UIViewController {
     
     @IBAction func modeTimerBTAction(_ sender: Any) {
         UserDefaults.standard.set(1, forKey: "VCNum")
-        goToViewController(where: "TimerViewController")
+        goToViewController(where: "TimerViewController", isFull: true)
     }
     
     @IBAction func startStopBTAction(_ sender: Any) {
@@ -181,8 +173,7 @@ class StopwatchViewController: UIViewController {
     }
     
     @IBAction func goSmaller(_ sender: Any) {
-        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650.0, height: 350.0)
-        goToViewController(where: "SmallViewController")
+        goToViewController(where: "SmallViewController", isFull: true)
     }
     
 }
@@ -625,9 +616,10 @@ extension StopwatchViewController {
         resetBT.isUserInteractionEnabled = false
     }
     
-    func goToViewController(where: String) {
+    func goToViewController(where: String, isFull: Bool) {
         let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        //전체화면으로 보이게 설정
+        if(isFull) { vcName?.modalPresentationStyle = .fullScreen }
         vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(vcName!, animated: true, completion: nil)
     }
@@ -639,17 +631,6 @@ extension StopwatchViewController {
     func setVCNum() {
         UserDefaults.standard.set(2, forKey: "VCNum")
     }
-    
-//    func showNowTime() {
-//        let now = Date()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US")
-//        dateFormatter.dateFormat = "hh:mm a"
-//        let today = dateFormatter.string(from: now)
-//        avarageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 35)
-//        nowTimeLabel.text = "\n" + "Now Time".localized()
-//        avarageLabel.text = "\(today)"
-//    }
     
     func setLocalizable() {
         sumTimeLabel.text = "Sum Time".localized()
@@ -714,7 +695,6 @@ extension StopwatchViewController {
         stopEnable()
         time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
-        deviceRotated() //화면 회전 체크
     }
     
     func setTIMEofStopwatchColor(_ color: UIColor) {
@@ -735,22 +715,32 @@ extension StopwatchViewController {
     }
 }
 
-//extension StopwatchViewController {
-//    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-//
-//        for press in presses {
-//            guard let key = press.key else { continue }
-//            if key.characters == " " {
-//                print("space bar")
-//                //start action
-//                if(isStop == true) {
-//                    algoOfStart()
-//                }
-//                //stop action
-//                else {
-//                    algoOfStop()
-//                }
-//            }
-//        }
-//    }
-//}
+extension StopwatchViewController {
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+
+        for press in presses {
+            guard let key = press.key else { continue }
+            if key.characters == " " {
+                print("space bar")
+                //start action
+                if(isStop == true) {
+                    algoOfStart()
+                }
+                //stop action
+                else {
+                    algoOfStop()
+                }
+            } else if(key.characters == "s") {
+                DispatchQueue.main.async {
+                    self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650, height: 350)
+                    self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 650, height: 350)
+                }
+                goToViewController(where: "SmallViewController", isFull: true)
+            } else if(key.characters == "l") {
+                goToViewController(where: "GraphViewController2", isFull: false)
+            } else if(key.characters == "m") {
+                goToViewController(where: "TimerViewController", isFull: true)
+            }
+        }
+    }
+}

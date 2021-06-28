@@ -24,7 +24,7 @@ class SmallViewController: UIViewController {
     @IBOutlet var TIMEofStopwatch_left: UILabel!
     @IBOutlet var TIMEofStopwatch_right: UILabel!
     
-    @IBOutlet var taskName: UILabel!
+    @IBOutlet var taskButton: UIButton!
     
     
     var realTime = Timer()
@@ -61,12 +61,15 @@ class SmallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650, height: 350)
+            self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 650, height: 350)
+        }
         self.view.backgroundColor = UIColor.black
-        
-        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 650.0, height: 350.0)
         setVCNum()
         setColor()
         setRadius()
+        setBorder()
         setShadow()
         setDatas()
         setTimes()
@@ -95,8 +98,7 @@ class SmallViewController: UIViewController {
     }
     
     @IBAction func goToBigger(_ sender: Any) {
-        self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
-        goToViewController(where: "StopwatchViewController")
+        goToViewController(where: "StopwatchViewController", isFull: true)
     }
     
     func checkTimeTrigger() {
@@ -118,6 +120,10 @@ class SmallViewController: UIViewController {
         printLogs()
         saveTimes()
 //        showNowTime()
+    }
+    
+    @IBAction func taskBTAction(_ sender: Any) {
+        showTaskView()
     }
 }
 
@@ -184,6 +190,11 @@ extension SmallViewController {
     func setRadius() {
         self.startStopBT.layer.cornerRadius = 5
         self.bigger.layer.cornerRadius = 5
+        self.taskButton.layer.cornerRadius = 17
+    }
+    
+    func setBorder() {
+        taskButton.layer.borderWidth = 3
     }
     
     func setShadow() {
@@ -397,6 +408,7 @@ extension SmallViewController {
         setTIMEofStopwatchColor(UIColor.white)
         UIView.animate(withDuration: 0.3) {
             self.bigger.alpha = 1
+            self.taskButton.layer.borderColor = UIColor.white.cgColor
         }
     }
     
@@ -407,6 +419,7 @@ extension SmallViewController {
         setTIMEofStopwatchColor(COLOR!)
         UIView.animate(withDuration: 0.3) {
             self.bigger.alpha = 0
+            self.taskButton.layer.borderColor = UIColor.clear.cgColor
         }
     }
     
@@ -418,9 +431,10 @@ extension SmallViewController {
         bigger.isUserInteractionEnabled = false
     }
     
-    func goToViewController(where: String) {
+    func goToViewController(where: String, isFull: Bool) {
         let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        //전체화면으로 보이게 설정
+        if(isFull) { vcName?.modalPresentationStyle = .fullScreen }
         vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(vcName!, animated: true, completion: nil)
     }
@@ -431,7 +445,42 @@ extension SmallViewController {
     
     func setTask() {
         task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter a new subject".localized()
-        taskName.text = task
+        if(task == "Enter a new subject".localized()) {
+            setFirstStart()
+        } else {
+            taskButton.setTitleColor(UIColor.white, for: .normal)
+            taskButton.layer.borderColor = UIColor.white.cgColor
+            startStopBT.isUserInteractionEnabled = true
+        }
+        taskButton.setTitle(task, for: .normal)
+    }
+    
+    func setFirstStart() {
+        taskButton.setTitleColor(UIColor.systemPink, for: .normal)
+        taskButton.layer.borderColor = UIColor.systemPink.cgColor
+        startStopBT.isUserInteractionEnabled = false
+    }
+    
+    func showTaskView() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
+            setVC.SetTimerViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
+    
+    func resetSum_temp() {
+        sumTime_temp = 0
+        time.startSumTimeTemp = 0
+        updateTimeLabels()
+        updateProgress()
+    }
+}
+
+extension SmallViewController: ChangeViewController2 {
+    func changeGoalTime() { }
+    
+    func changeTask() {
+        setTask()
+        resetSum_temp()
     }
 }
 
@@ -486,5 +535,34 @@ extension SmallViewController {
     
     func setVCNum() {
         UserDefaults.standard.set(3, forKey: "VCNum")
+    }
+}
+
+
+extension SmallViewController {
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+
+        for press in presses {
+            guard let key = press.key else { continue }
+            if key.characters == " " {
+                print("space bar")
+                //start action
+                if(isStop == true) {
+                    algoOfStart()
+                }
+                //stop action
+                else {
+                    algoOfStop()
+                }
+            } else if(key.characters == "b") {
+                DispatchQueue.main.async {
+                    self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 5000, height: 5000)
+                    self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
+                }
+                goToViewController(where: "StopwatchViewController", isFull: true)
+            } else if(key.characters == "l") {
+                goToViewController(where: "GraphViewController2", isFull: false)
+            }
+        }
     }
 }

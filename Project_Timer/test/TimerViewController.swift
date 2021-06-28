@@ -81,8 +81,10 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 1300, height: 1100)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        DispatchQueue.main.async {
+            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 5000, height: 5000)
+            self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
+        }
         modeTimer.backgroundColor = UIColor.gray
         modeTimerLabel.textColor = UIColor.gray
         modeTimer.isUserInteractionEnabled = false
@@ -108,31 +110,14 @@ class TimerViewController: UIViewController {
         setTask()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 650, height: 350)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         print("disappear in timer")
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
-
-    @objc func deviceRotated(){
-        if(isStop) {
-            if UIDevice.current.orientation.isPortrait {
-                //Code here
-                print("Portrait")
-                setPortrait()
-            } else {
-                //Code here
-                print("Landscape")
-                setLandscape()
-            }
-        }
-    }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        //로그인이 이미 되어있는 경우라면 홈페이지로 이동한다.
-//        if(VCNum == 2) {
-//            goToViewController(where: "StopwatchViewController")
-//        }
-//    }
     
     func checkTimeTrigger() {
         realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
@@ -171,7 +156,7 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func modeStopWatchBTAction(_ sender: Any) {
-        goToViewController(where: "StopwatchViewController")
+        goToViewController(where: "StopwatchViewController", isFull: true)
     }
     
     @IBAction func startStopBTAction(_ sender: Any) {
@@ -396,9 +381,10 @@ extension TimerViewController {
         taskButton.layer.borderWidth = 3
     }
     
-    func goToViewController(where: String) {
+    func goToViewController(where: String, isFull: Bool) {
         let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        //전체화면으로 보이게 설정
+        if(isFull) { vcName?.modalPresentationStyle = .fullScreen }
         vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(vcName!, animated: true, completion: nil)
     }
@@ -685,17 +671,6 @@ extension TimerViewController {
         taskButton.isUserInteractionEnabled = false
     }
     
-//    func showNowTime() {
-//        let now = Date()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US")
-//        dateFormatter.dateFormat = "hh:mm a"
-//        let today = dateFormatter.string(from: now)
-//        AverageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 35)
-//        nowTimeLabel.text = "\n" + "Now Time".localized()
-//        AverageLabel.text = "\(today)"
-//    }
-    
     func setLocalizable() {
         sumTimeLabel.text = "Sum Time".localized()
         timerLabel.text = "Timer".localized()
@@ -756,7 +731,6 @@ extension TimerViewController {
         stopColor()
         stopEnable()
         daily.save() //하루 그래프 데이터 계산
-        deviceRotated() //화면 회전 체크
     }
     
     func algoOfRestart() {
@@ -805,3 +779,29 @@ extension TimerViewController {
     }
 }
 
+
+extension TimerViewController {
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+
+        for press in presses {
+            guard let key = press.key else { continue }
+            if key.characters == " " {
+                print("space bar")
+                //start action
+                if(isStop == true) {
+                    algoOfStart()
+                }
+                //stop action
+                else {
+                    algoOfStop()
+                }
+            } else if(key.characters == "l") {
+                goToViewController(where: "GraphViewController2", isFull: false)
+            } else if(key.characters == "m") {
+                goToViewController(where: "StopwatchViewController", isFull: true)
+            } else if(key.characters == "t") {
+                showTimerView()
+            }
+        }
+    }
+}
