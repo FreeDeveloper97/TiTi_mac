@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,13 +32,15 @@
 		878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */; };
 		879693D02645329600021646 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879693CF2645329600021646 /* TimerViewController.swift */; };
 		879FBF462671CC6700EB9123 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FBF452671CC6700EB9123 /* TodayViewController.swift */; };
+		87B51C202696CDE600686B42 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B51C1F2696CDE600686B42 /* calendarViewController.swift */; };
+		87B51C222696CE8800686B42 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B51C212696CE8800686B42 /* DailyViewModel.swift */; };
+		87B51C242696CEB400686B42 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B51C232696CEB400686B42 /* DailyManager.swift */; };
 		87BF47D525B6E12A00EE2819 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87BF47D425B6E12A00EE2819 /* timer.mp3 */; };
 		87CB284426149AF8004B11F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CB284626149AF8004B11F0 /* Localizable.strings */; };
 		87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826625EB1F5300B01464 /* GraphViewController.swift */; };
 		87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF826925EB1F6E00B01464 /* ContentView.swift */; };
 		87E65D6B2612FA0900C3B11C /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E65D6A2612FA0900C3B11C /* testViewController.swift */; };
 		87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F669E22631E7460004CD59 /* GraphViewController2.swift */; };
-		87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FF895025C42D5F00437FD5 /* ViewController2.swift */; };
 		9312E4CC252231E600025C81 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9312E4CB252231E600025C81 /* LogViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935411AA25402D89008CB6DD /* SetTimerViewController.swift */; };
@@ -46,13 +48,14 @@
 		93A892B324C1544A00F89180 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B224C1544A00F89180 /* Test.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
-		93B08525248DDF2F00E215BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08524248DDF2F00E215BD /* ViewController.swift */; };
 		93B08528248DDF2F00E215BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B08526248DDF2F00E215BD /* Main.storyboard */; };
 		93B0852A248DDF3000E215BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
 		93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */; };
+		DFAA996CADBA7109B7CA6023 /* Pods_Project_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71716C0A5B4BE5C1BADA839D /* Pods_Project_Timer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71716C0A5B4BE5C1BADA839D /* Pods_Project_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872047FD261CBAF600EF1691 /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		87204800261CBB0B00EF1691 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		87204803261CBB3D00EF1691 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +81,9 @@
 		878A8BC0264124AD0058B1E4 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		879693CF2645329600021646 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		879FBF452671CC6700EB9123 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		87B51C1F2696CDE600686B42 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
+		87B51C212696CE8800686B42 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
+		87B51C232696CEB400686B42 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87BF47D425B6E12A00EE2819 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		87CB284526149AF8004B11F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CB284F26149DB0004B11F0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -87,7 +93,6 @@
 		87CF826925EB1F6E00B01464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87E65D6A2612FA0900C3B11C /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		87F669E22631E7460004CD59 /* GraphViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController2.swift; sourceTree = "<group>"; };
-		87FF895025C42D5F00437FD5 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		9312E4CB252231E600025C81 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		935411AA25402D89008CB6DD /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
@@ -96,12 +101,13 @@
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B08522248DDF2F00E215BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		93B08524248DDF2F00E215BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		93B08527248DDF2F00E215BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93B08529248DDF3000E215BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B0852C248DDF3000E215BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B0852E248DDF3000E215BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93B08534248DEEBA00E215BD /* Project_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Timer.entitlements; sourceTree = "<group>"; };
+		BEE0624BC38429A525C9763F /* Pods-Project_Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.release.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.release.xcconfig"; sourceTree = "<group>"; };
+		D3196C12C5100668F3FE3567 /* Pods-Project_Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.debug.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,18 +115,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFAA996CADBA7109B7CA6023 /* Pods_Project_Timer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72A19C35F7E563888CD5607C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71716C0A5B4BE5C1BADA839D /* Pods_Project_Timer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		874B547826885C08001DEE00 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				874B547926885C17001DEE00 /* TodayViewManager.swift */,
 				874B547D26885C59001DEE00 /* ViewManager.swift */,
 				875AECD626887D7A00136194 /* TodoManager.swift */,
+				87B51C232696CEB400686B42 /* DailyManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -129,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				875AECD226887D3C00136194 /* TodolistViewModel.swift */,
+				87B51C212696CE8800686B42 /* DailyViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -155,8 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
-				93B08524248DDF2F00E215BD /* ViewController.swift */,
-				87FF895025C42D5F00437FD5 /* ViewController2.swift */,
 				9312E4CB252231E600025C81 /* LogViewController.swift */,
 				87CF826625EB1F5300B01464 /* GraphViewController.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
@@ -193,6 +208,7 @@
 				8736F74A266FB09F0032B48D /* SmallViewController.swift */,
 				879FBF452671CC6700EB9123 /* TodayViewController.swift */,
 				874B547F26885E8A001DEE00 /* todayContentView.swift */,
+				87B51C1F2696CDE600686B42 /* calendarViewController.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -215,6 +231,8 @@
 			children = (
 				93B0851F248DDF2F00E215BD /* Project_Timer */,
 				93B0851E248DDF2F00E215BD /* Products */,
+				BA50AB1B2B1D7C34CC6B51A7 /* Pods */,
+				72A19C35F7E563888CD5607C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,6 +265,15 @@
 			path = Project_Timer;
 			sourceTree = "<group>";
 		};
+		BA50AB1B2B1D7C34CC6B51A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3196C12C5100668F3FE3567 /* Pods-Project_Timer.debug.xcconfig */,
+				BEE0624BC38429A525C9763F /* Pods-Project_Timer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,9 +281,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B08531248DDF3000E215BD /* Build configuration list for PBXNativeTarget "Project_Timer" */;
 			buildPhases = (
+				4DE6E14082C44386A0955A0A /* [CP] Check Pods Manifest.lock */,
 				93B08519248DDF2F00E215BD /* Sources */,
 				93B0851A248DDF2F00E215BD /* Frameworks */,
 				93B0851B248DDF2F00E215BD /* Resources */,
+				903DEAC9B10B36F92FE8B5B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,6 +351,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4DE6E14082C44386A0955A0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Project_Timer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		903DEAC9B10B36F92FE8B5B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		93B08519248DDF2F00E215BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -329,7 +400,6 @@
 			files = (
 				875AECD326887D3C00136194 /* TodolistViewModel.swift in Sources */,
 				87558D29265A60490059E593 /* firstViewController.swift in Sources */,
-				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				874B547C26885C40001DEE00 /* Dumy.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87204808261CBB7300EF1691 /* DailyViewController.swift in Sources */,
@@ -337,19 +407,21 @@
 				878A8BBF264119A90058B1E4 /* StopwatchViewController.swift in Sources */,
 				87CF826A25EB1F6E00B01464 /* ContentView.swift in Sources */,
 				874B548026885E8A001DEE00 /* todayContentView.swift in Sources */,
-				87FF895425C42DBF00437FD5 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				935411AB25402D89008CB6DD /* SetTimerViewController.swift in Sources */,
+				87B51C202696CDE600686B42 /* calendarViewController.swift in Sources */,
 				87313E7E25EBA0C10088D1EC /* Time.swift in Sources */,
 				87204804261CBB3D00EF1691 /* taskSelectViewController.swift in Sources */,
 				8736F74B266FB09F0032B48D /* SmallViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
+				87B51C242696CEB400686B42 /* DailyManager.swift in Sources */,
 				872047FE261CBAF600EF1691 /* Daily.swift in Sources */,
 				87CF826725EB1F5300B01464 /* GraphViewController.swift in Sources */,
 				874B547A26885C17001DEE00 /* TodayViewManager.swift in Sources */,
 				878A8BC1264124AD0058B1E4 /* StaticCircularProgressView.swift in Sources */,
+				87B51C222696CE8800686B42 /* DailyViewModel.swift in Sources */,
 				87204801261CBB0B00EF1691 /* Storage.swift in Sources */,
 				875AECD526887D6200136194 /* Todo.swift in Sources */,
 				87F669E32631E7460004CD59 /* GraphViewController2.swift in Sources */,
@@ -513,6 +585,7 @@
 		};
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3196C12C5100668F3FE3567 /* Pods-Project_Timer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
@@ -536,6 +609,7 @@
 		};
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEE0624BC38429A525C9763F /* Pods-Project_Timer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;

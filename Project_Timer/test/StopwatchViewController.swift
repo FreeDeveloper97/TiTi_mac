@@ -80,6 +80,8 @@ class StopwatchViewController: UIViewController {
     //하루 그래프를 위한 구조
     var daily = Daily()
     
+    let dailyViewModel = DailyViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
@@ -93,6 +95,9 @@ class StopwatchViewController: UIViewController {
         
         setVCNum()
         setLocalizable()
+        daily.load()
+        setTask()
+        setSumTime()
         
         setButtonRotation()
         setColor()
@@ -109,18 +114,12 @@ class StopwatchViewController: UIViewController {
         checkIsFirst()
         
         setFirstProgress()
-        
-        daily.load()
-        setTask()
+        //저장된 daily들 로딩
+        dailyViewModel.loadDailys()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 650, height: 350)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        print("disappear in stopwatch")
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     func checkTimeTrigger() {
@@ -134,6 +133,7 @@ class StopwatchViewController: UIViewController {
         sumTime = time.startSumTime + seconds
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -141,7 +141,6 @@ class StopwatchViewController: UIViewController {
         updateProgress()
         printLogs()
         saveTimes()
-//        showNowTime()
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -154,13 +153,17 @@ class StopwatchViewController: UIViewController {
     }
     
     @IBAction func startStopBTAction(_ sender: Any) {
-        //start action
-        if(isStop == true) {
-            algoOfStart()
-        }
-        //stop action
-        else {
-            algoOfStop()
+        if(task == "Enter a new subject".localized()) {
+            showFirstAlert()
+        } else {
+            //start action
+            if(isStop == true) {
+                algoOfStart()
+            }
+            //stop action
+            else {
+                algoOfStop()
+            }
         }
     }
     
@@ -180,24 +183,13 @@ class StopwatchViewController: UIViewController {
 
 extension StopwatchViewController : ChangeViewController2 {
     
-    func setLandscape() {
-        modeTimerLabel.alpha = 1
-        modeStopWatchLabel.alpha = 1
-        logLabel.alpha = 1
-    }
-    
-    func setPortrait() {
-        modeTimerLabel.alpha = 0
-        modeStopWatchLabel.alpha = 0
-        logLabel.alpha = 0
-    }
-    
     func changeGoalTime() {
         isFirst = true
         UserDefaults.standard.set(nil, forKey: "startTime")
         setColor()
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
         showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
+        let timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         sumTime = 0
         sumTime_temp = 0
         breakTime = 0
@@ -213,7 +205,7 @@ extension StopwatchViewController : ChangeViewController2 {
         
         stopColor()
         stopEnable()
-        daily.reset() //하루 그래프 초기화
+        daily.reset(goalTime, timerTime) //하루 그래프 초기화
         resetSum_temp()
     }
     
@@ -267,6 +259,7 @@ extension StopwatchViewController {
         print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -276,6 +269,7 @@ extension StopwatchViewController {
         startAction()
         //나간 시점 start, 현재 시각 Date 와 비교
         daily.addHoursInBackground(start, sumTime - temp)
+        saveTimes()
     }
     
     func removeSavedDate() {
@@ -436,11 +430,11 @@ extension StopwatchViewController {
     
     func updateProgress() {
         progressPer = Float(sumTime_temp%fixedSecond) / Float(fixedSecond)
-        outterProgress.setProgressWithAnimation(duration: 0.0, value: progressPer, from: beforePer)
+        outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: beforePer)
         beforePer = progressPer
         //circle2
         let temp = Float(sumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 0.0, value: temp, from: beforePer2)
+        innerProgress.setProgressWithAnimation(duration: 1.0, value: temp, from: beforePer2)
         beforePer2 = temp
     }
     
@@ -660,7 +654,36 @@ extension StopwatchViewController {
     func setFirstStart() {
         taskButton.setTitleColor(UIColor.systemPink, for: .normal)
         taskButton.layer.borderColor = UIColor.systemPink.cgColor
-        startStopBT.isUserInteractionEnabled = false
+    }
+    
+    func showFirstAlert() {
+        //1. 경고창 내용 만들기
+        let alert = UIAlertController(title:"Enter a new subject".localized(),
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
+        //2. 확인 버튼 만들기
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        //3. 확인 버튼을 경고창에 추가하기
+        alert.addAction(ok)
+        //4. 경고창 보이기
+        present(alert,animated: true,completion: nil)
+    }
+    
+    func setSumTime() {
+        var tempSumTime: Int = 0
+        if(daily.tasks != [:]) {
+            for (_, value) in daily.tasks {
+                tempSumTime += value
+            }
+            sumTime = tempSumTime
+            daily.currentSumTime = tempSumTime
+            UserDefaults.standard.set(sumTime, forKey: "sum2")
+            saveLogData()
+            
+            let tempGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+            goalTime = tempGoalTime - sumTime
+            UserDefaults.standard.set(goalTime, forKey: "allTime2")
+        }
     }
 }
 
@@ -679,7 +702,6 @@ extension StopwatchViewController {
             firstStart()
             isFirst = false
         }
-//        showNowTime()
         daily.startTask(task) //하루 그래프 데이터 생성
     }
     
@@ -695,6 +717,8 @@ extension StopwatchViewController {
         stopEnable()
         time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
+        //dailys 저장
+        dailyViewModel.addDaily(daily)
     }
     
     func setTIMEofStopwatchColor(_ color: UIColor) {

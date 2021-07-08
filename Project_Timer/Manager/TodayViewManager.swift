@@ -103,8 +103,8 @@ class TodayViewManager {
     
     func setDay(_ today: UILabel, _ today2: UILabel, _ view4_today: UILabel) {
         let stringDay = getDay(day: daily.day)
-//        today.text = stringDay
-//        today2.text = stringDay
+        today.text = stringDay
+        today2.text = stringDay
         view4_today.text = stringDay
     }
     
@@ -116,12 +116,14 @@ class TodayViewManager {
     
     func setWeek(_ weeks: [UIView]) {
         let todayNum = weekday(daily.day)
-        if(todayNum != 0) {
-            let target: UIView = weeks[todayNum-1]
-            target.backgroundColor = COLOR
-        } else {
-            let target: UIView = weeks[6]
-            target.backgroundColor = COLOR
+        for i in 0..<7 {
+            if(i == todayNum) {
+                let target: UIView = weeks[todayNum]
+                target.backgroundColor = COLOR
+            } else {
+                let target: UIView = weeks[i]
+                target.backgroundColor = UIColor.clear
+            }
         }
     }
     
@@ -171,8 +173,8 @@ class TodayViewManager {
         for i in 0..<counts {
             let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             let prog2 = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width2, height: height2))
-            prog.progressWidth = 45
-            prog2.progressWidth = 55
+            prog.progressWidth = 35
+            prog2.progressWidth = 25
             prog.trackColor = UIColor.clear
             prog2.trackColor = UIColor.clear
             prog.progressColor = colors[i%colors.count]
@@ -204,8 +206,8 @@ class TodayViewManager {
         block2.trackColor = UIColor.clear
         block.progressColor = UIColor.systemBackground
         block2.progressColor = UIColor.systemBackground
-        block.progressWidth = 45
-        block2.progressWidth = 55
+        block.progressWidth = 35
+        block2.progressWidth = 25
         block.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
         block2.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
         
@@ -219,12 +221,23 @@ class TodayViewManager {
         let stringSum = ViewManager().printTime(fixedSum)
         sum1.text = stringSum
         sum2.text = stringSum
+        sum1.textColor = COLOR
+        sum2.textColor = COLOR
         
         let stringMax = ViewManager().printTime(daily.maxTime)
         max1.text = stringMax
         max2.text = stringMax
-        
-        setTimesColor(sum1, sum2, max1, max2)
+        max1.textColor = COLOR
+        max2.textColor = COLOR
+    }
+    
+    func setDumyDaily() {
+        daily = Dumy().getDumyDaily()
+    }
+    
+    func getColor() {
+        startColor = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        COLOR = UIColor(named: "D\(startColor)")!
     }
     
     func setTimesColor(_ sum1: UILabel, _ sum2: UILabel, _ max1: UILabel, _ max2: UILabel) {
@@ -233,9 +246,5 @@ class TodayViewManager {
         sum2.textColor = COLOR
         max1.textColor = COLOR
         max2.textColor = COLOR
-    }
-    
-    func setDumyDaily() {
-        daily = Dumy().getDumyDaily()
     }
 }

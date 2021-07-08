@@ -74,11 +74,12 @@ var times: [timeBlock] = []
 
 extension todayContentView {
     
-    func appendTimes(isDumy: Bool){
-        var daily = Daily()
-        daily.load()
+    func appendTimes(isDumy: Bool, daily: Daily){
+        var daily = daily
+//        daily.load()
         var timeline = daily.timeline
         if(isDumy) {
+            daily = Dumy().getDumyDaily()
             timeline = Dumy().getTimelines()
         }
         print("timeline : \(timeline)")

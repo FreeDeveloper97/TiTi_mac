@@ -3796,40 +3796,62 @@ AVER : 0:00:00</string>
                                             <constraint firstAttribute="trailing" secondItem="ewd-2u-dmE" secondAttribute="trailing" constant="10" id="yMn-Ih-qTq"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVa-hw-g7q">
-                                        <rect key="frame" x="779.5" y="7" width="83" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QF-K0-E7C" userLabel="background">
+                                        <rect key="frame" x="775.5" y="4" width="91" height="42"/>
+                                        <color key="backgroundColor" name="Background_second"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuL-k6-S0Z">
+                                        <rect key="frame" x="741" y="5" width="160" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="A6f-uZ-GVV"/>
+                                            <constraint firstAttribute="width" constant="160" id="Pv5-j3-4dM"/>
+                                            <constraint firstAttribute="height" constant="40" id="Yaz-94-Mdb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="35"/>
-                                        <state key="normal" title="Today">
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                        <state key="normal">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="showCalendar:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="aTA-UR-tNP"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFk-EI-wNe">
+                                        <rect key="frame" x="785.5" y="8.5" width="71" height="33"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP40g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="system_backg"/>
                                 <constraints>
+                                    <constraint firstItem="9QF-K0-E7C" firstAttribute="centerX" secondItem="eKh-uC-cLr" secondAttribute="centerX" id="0Wi-8G-8e8"/>
                                     <constraint firstItem="CdN-Nl-9fN" firstAttribute="width" secondItem="eGV-lF-h3D" secondAttribute="width" id="0p3-CE-9Iw"/>
                                     <constraint firstAttribute="bottom" secondItem="BzR-82-7bJ" secondAttribute="bottom" constant="10" id="2je-46-FGk"/>
+                                    <constraint firstItem="9QF-K0-E7C" firstAttribute="centerX" secondItem="fFk-EI-wNe" secondAttribute="centerX" id="3BX-Ee-1Ao"/>
                                     <constraint firstItem="BzR-82-7bJ" firstAttribute="leading" secondItem="eKh-uC-cLr" secondAttribute="leading" constant="10" id="50Q-Kk-eVq"/>
                                     <constraint firstItem="8bk-T0-yiL" firstAttribute="centerX" secondItem="eGV-lF-h3D" secondAttribute="centerX" id="5Cw-yP-MAO"/>
                                     <constraint firstItem="eGV-lF-h3D" firstAttribute="top" secondItem="eKh-uC-cLr" secondAttribute="top" constant="50" id="5OH-rb-Vu4"/>
                                     <constraint firstItem="eGV-lF-h3D" firstAttribute="leading" secondItem="eKh-uC-cLr" secondAttribute="leading" constant="10" id="61S-dc-cBA"/>
                                     <constraint firstItem="CdN-Nl-9fN" firstAttribute="leading" secondItem="LuI-7v-rf4" secondAttribute="trailing" constant="20" id="73O-bT-EaZ"/>
+                                    <constraint firstItem="9QF-K0-E7C" firstAttribute="width" secondItem="fFk-EI-wNe" secondAttribute="width" constant="20" id="8bd-7l-Cde"/>
                                     <constraint firstItem="LuI-7v-rf4" firstAttribute="top" secondItem="eKh-uC-cLr" secondAttribute="top" constant="50" id="BQS-MY-iAw"/>
+                                    <constraint firstItem="fFk-EI-wNe" firstAttribute="centerX" secondItem="wuL-k6-S0Z" secondAttribute="centerX" id="Ciw-Sh-5k9"/>
+                                    <constraint firstItem="9QF-K0-E7C" firstAttribute="height" secondItem="fFk-EI-wNe" secondAttribute="height" constant="9" id="FFT-jg-Gi2"/>
+                                    <constraint firstItem="9QF-K0-E7C" firstAttribute="centerY" secondItem="fFk-EI-wNe" secondAttribute="centerY" id="Fs8-S3-qj0"/>
                                     <constraint firstItem="CdN-Nl-9fN" firstAttribute="height" secondItem="LuI-7v-rf4" secondAttribute="height" id="MBu-cg-7rq"/>
                                     <constraint firstItem="BzR-82-7bJ" firstAttribute="height" secondItem="eGV-lF-h3D" secondAttribute="height" id="NWy-Zq-3U8"/>
-                                    <constraint firstItem="qVa-hw-g7q" firstAttribute="top" secondItem="eKh-uC-cLr" secondAttribute="top" constant="7" id="Tlj-rG-uBN"/>
                                     <constraint firstAttribute="bottom" secondItem="LuI-7v-rf4" secondAttribute="bottom" constant="10" id="V9O-I7-xPr"/>
                                     <constraint firstAttribute="trailing" secondItem="CdN-Nl-9fN" secondAttribute="trailing" constant="10" id="Yof-Sc-nRi"/>
                                     <constraint firstItem="8bk-T0-yiL" firstAttribute="top" secondItem="eKh-uC-cLr" secondAttribute="top" constant="10" id="ZnH-TY-UiR"/>
-                                    <constraint firstItem="qVa-hw-g7q" firstAttribute="centerX" secondItem="eKh-uC-cLr" secondAttribute="centerX" id="dkd-GF-Fvk"/>
+                                    <constraint firstItem="wuL-k6-S0Z" firstAttribute="centerX" secondItem="eKh-uC-cLr" secondAttribute="centerX" id="bc4-oI-fz2"/>
                                     <constraint firstItem="LuI-7v-rf4" firstAttribute="leading" secondItem="BzR-82-7bJ" secondAttribute="trailing" constant="20" id="eVH-S2-2Oh"/>
                                     <constraint firstItem="LuI-7v-rf4" firstAttribute="leading" secondItem="eGV-lF-h3D" secondAttribute="trailing" constant="20" id="iB1-lf-OKG"/>
                                     <constraint firstAttribute="bottom" secondItem="CdN-Nl-9fN" secondAttribute="bottom" constant="10" id="jZL-5V-TZm"/>
                                     <constraint firstItem="CdN-Nl-9fN" firstAttribute="top" secondItem="eKh-uC-cLr" secondAttribute="top" constant="50" id="kYp-WX-84Y"/>
                                     <constraint firstItem="BzR-82-7bJ" firstAttribute="width" secondItem="eGV-lF-h3D" secondAttribute="width" id="mcI-mG-Pmo"/>
                                     <constraint firstItem="BzR-82-7bJ" firstAttribute="top" secondItem="eGV-lF-h3D" secondAttribute="bottom" constant="20" id="rnA-un-Twq"/>
+                                    <constraint firstItem="wuL-k6-S0Z" firstAttribute="top" secondItem="eKh-uC-cLr" secondAttribute="top" constant="5" id="rqk-fy-rlr"/>
+                                    <constraint firstItem="fFk-EI-wNe" firstAttribute="centerY" secondItem="wuL-k6-S0Z" secondAttribute="centerY" id="xLL-88-Mie"/>
+                                    <constraint firstItem="fFk-EI-wNe" firstAttribute="centerX" secondItem="eKh-uC-cLr" secondAttribute="centerX" id="zsJ-w0-Rl5"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bF4-Ig-ic7">
@@ -3878,7 +3900,6 @@ AVER : 0:00:00</string>
                         <outlet property="color7" destination="kqn-AA-J3L" id="KEK-YB-2lj"/>
                         <outlet property="color8" destination="1xP-mj-YSu" id="brW-de-hBR"/>
                         <outlet property="color9" destination="oGf-ZE-aJe" id="gfW-HY-Jhe"/>
-                        <outlet property="datePicker" destination="qVa-hw-g7q" id="5ki-61-Xdg"/>
                         <outlet property="frame1" destination="eGV-lF-h3D" id="Law-4j-Szy"/>
                         <outlet property="frame2" destination="BzR-82-7bJ" id="fAC-Fv-SMG"/>
                         <outlet property="frame3" destination="LuI-7v-rf4" id="PNl-wU-p9m"/>
@@ -3889,6 +3910,9 @@ AVER : 0:00:00</string>
                         <outlet property="mon" destination="o0a-GA-HSh" id="HEH-LD-QXM"/>
                         <outlet property="progress" destination="NjP-j2-3Kg" id="f6U-tP-QXm"/>
                         <outlet property="sat" destination="DPj-qa-Iea" id="roG-31-g1U"/>
+                        <outlet property="selectDay" destination="fFk-EI-wNe" id="6Cw-n4-IAl"/>
+                        <outlet property="selectDayBT" destination="wuL-k6-S0Z" id="QFv-lY-WRU"/>
+                        <outlet property="selectDayBgView" destination="9QF-K0-E7C" id="y6f-L4-7oE"/>
                         <outlet property="sumTime" destination="dmy-aG-bKy" id="gfb-V5-sgc"/>
                         <outlet property="sun" destination="8HR-28-efZ" id="5qS-UY-P4n"/>
                         <outlet property="thu" destination="2sw-0C-MCB" id="OTo-b0-GNg"/>
@@ -6031,6 +6055,124 @@ AVER : 0:00:00</string>
             </objects>
             <point key="canvasLocation" x="660" y="311"/>
         </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="cCI-gc-LxE">
+            <objects>
+                <viewController storyboardIdentifier="calendarViewController" id="nPs-wx-lKE" customClass="calendarViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uQy-JW-r36">
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="650"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6K-bV-ljO">
+                                <rect key="frame" x="40" y="27.5" width="470" height="595"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-rn-4eL" customClass="FSCalendar">
+                                        <rect key="frame" x="10" y="10" width="450" height="500"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="450" id="5Ca-UV-w83"/>
+                                            <constraint firstAttribute="height" constant="500" id="BCT-dw-EEu"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                                <color key="value" systemColor="systemPinkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                                <color key="value" systemColor="systemRedColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                                <color key="value" systemColor="systemGreenColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                                <color key="value" systemColor="systemGreenColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                                <color key="value" systemColor="labelColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                                <color key="value" systemColor="systemGreenColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
+                                                <color key="value" systemColor="systemGreenColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titlePlaceholderColor">
+                                                <color key="value" name="placeholder"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="nPs-wx-lKE" id="qWh-kd-XUT"/>
+                                            <outlet property="delegate" destination="nPs-wx-lKE" id="Vyz-Wx-uyr"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pE-Cq-qMz">
+                                        <rect key="frame" x="181.5" y="515" width="107" height="40"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <state key="normal" title="Select Day"/>
+                                        <connections>
+                                            <action selector="back:" destination="nPs-wx-lKE" eventType="touchUpInside" id="1QR-r8-C6g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBY-23-ZuB">
+                                        <rect key="frame" x="208" y="560" width="54" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="QpL-SQ-qWd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <state key="normal" title="cancle">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="back:" destination="nPs-wx-lKE" eventType="touchUpInside" id="ihV-Fy-B8d"/>
+                                            <action selector="cancle:" destination="nPs-wx-lKE" eventType="touchUpInside" id="gic-IC-xwC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Eh4-rn-4eL" secondAttribute="trailing" constant="10" id="1FX-gF-6qK"/>
+                                    <constraint firstItem="Eh4-rn-4eL" firstAttribute="leading" secondItem="L6K-bV-ljO" secondAttribute="leading" constant="10" id="3NQ-Lp-4h8"/>
+                                    <constraint firstItem="4pE-Cq-qMz" firstAttribute="centerX" secondItem="Eh4-rn-4eL" secondAttribute="centerX" id="6Qt-U6-8rq"/>
+                                    <constraint firstItem="Eh4-rn-4eL" firstAttribute="top" secondItem="L6K-bV-ljO" secondAttribute="top" constant="10" id="LRI-tP-mKi"/>
+                                    <constraint firstAttribute="bottom" secondItem="cBY-23-ZuB" secondAttribute="bottom" constant="5" id="UMy-IO-roy"/>
+                                    <constraint firstItem="4pE-Cq-qMz" firstAttribute="top" secondItem="Eh4-rn-4eL" secondAttribute="bottom" constant="5" id="oVG-Wj-3ZF"/>
+                                    <constraint firstItem="cBY-23-ZuB" firstAttribute="top" secondItem="4pE-Cq-qMz" secondAttribute="bottom" constant="5" id="rX9-rS-ZpH"/>
+                                    <constraint firstItem="cBY-23-ZuB" firstAttribute="centerX" secondItem="L6K-bV-ljO" secondAttribute="centerX" id="tCv-16-feB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R31-2S-HZL"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L6K-bV-ljO" firstAttribute="centerY" secondItem="R31-2S-HZL" secondAttribute="centerY" id="8ht-Ch-JNU"/>
+                            <constraint firstItem="L6K-bV-ljO" firstAttribute="centerX" secondItem="R31-2S-HZL" secondAttribute="centerX" id="tXc-dl-xNM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UPY-74-F6o"/>
+                    <size key="freeformSize" width="550" height="650"/>
+                    <connections>
+                        <outlet property="backBT" destination="4pE-Cq-qMz" id="UIu-6h-Vi3"/>
+                        <outlet property="calendar" destination="Eh4-rn-4eL" id="jHx-Kl-NaK"/>
+                        <outlet property="frame" destination="L6K-bV-ljO" id="tMo-T1-2yN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bad-VU-I1k" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2222" y="677"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="S6c-TU-9I3"/>
@@ -6140,6 +6282,9 @@ AVER : 0:00:00</string>
         <namedColor name="firstLayer">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="placeholder">
+            <color red="0.6679999828338623" green="0.6679999828338623" blue="0.6679999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="shadow2">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -6149,11 +6294,20 @@ AVER : 0:00:00</string>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
             <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>

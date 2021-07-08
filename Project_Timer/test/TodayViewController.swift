@@ -70,7 +70,9 @@ class TodayViewController: UIViewController {
     @IBOutlet var color11: UIButton!
     @IBOutlet var color12: UIButton!
     
-    @IBOutlet var datePicker: UIButton!
+    @IBOutlet var selectDayBT: UIButton!
+    @IBOutlet var selectDay: UILabel!
+    @IBOutlet var selectDayBgView: UIView!
     @IBOutlet var backBT: UIButton!
     
     let todayViewManager = TodayViewManager()
@@ -79,26 +81,36 @@ class TodayViewController: UIViewController {
     
     let todoListViewModel = TodolistViewModel()
     
+    var dateIndex: Int?
+    let dateFormatter = DateFormatter()
+    let dailyViewModel = DailyViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
         
-        weeks = [mon, tue, wed, thu, fri, sat, sun]
-        weeks2 = [view3_mon, view3_tue, view3_wed, view3_thu, view3_fri, view3_sat, view3_sun]
+        weeks = [sun, mon, tue, wed, thu, fri, sat]
+        weeks2 = [view3_sun, view3_mon, view3_tue, view3_wed, view3_thu, view3_fri, view3_sat]
         
+        todayViewManager.getColor()
         setRadius()
         setShadow(view1)
         setShadow(view2)
         setShadow(view3)
         setShadow(view4)
+        setShadowDayBgView()
+        
+        //저장된 dailys들 로딩
+        dailyViewModel.loadDailys()
         
         getColor()
         let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
-        showSwiftUIGraph(isDumy: isDumy)
         showDatas(isDumy: isDumy)
+        showSwiftUIGraph(isDumy: isDumy)
         
         todoListViewModel.loadTodos()
-//        setBackBT()
+        
+        dateFormatter.dateFormat = "yyyy.MM.dd"
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -113,20 +125,7 @@ class TodayViewController: UIViewController {
         let i = Int(sender.tag)
         todayViewManager.setStartColorIndex(i)
         
-        for view in self.progress.subviews {
-            view.removeFromSuperview()
-        }
-        for view in self.view3_progress.subviews {
-            view.removeFromSuperview()
-        }
-        
-        todayViewManager.reset()
-        todayContentView().reset()
-        self.viewDidLoad()
-        self.view.layoutIfNeeded()
-        collectionView.reloadData()
-        view3_collectionView.reloadData()
-        view4_collectionView.reloadData()
+        reset()
     }
     
     @IBAction func addList(_ sender: Any) {
@@ -139,14 +138,13 @@ class TodayViewController: UIViewController {
         self.view.endEditing(true)
         self.view.layoutIfNeeded()
     }
+    
+    @IBAction func showCalendar(_ sender: Any) {
+        showCalendar()
+    }
 }
 
 extension TodayViewController {
-    func setBackBT() {
-        backBT.layer.borderWidth = 3
-        backBT.layer.borderColor = UIColor(named: "System_border")?.cgColor
-        backBT.layer.cornerRadius = 10
-    }
     
     func setRadius() {
         view1.layer.cornerRadius = 25
@@ -170,6 +168,8 @@ extension TodayViewController {
         inputFraim.clipsToBounds = true
         inputFraim.layer.cornerRadius = 25
         inputFraim.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        
+        selectDayBgView.layer.cornerRadius = 12
     }
     
     func setShadow(_ view: UIView) {
@@ -177,6 +177,19 @@ extension TodayViewController {
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 5
+    }
+    
+    func setShadowDayBgView() {
+        selectDayBgView.layer.masksToBounds = false
+        selectDayBgView.layer.shadowColor = todayViewManager.COLOR.cgColor
+        selectDayBgView.layer.shadowOpacity = 0.5
+        selectDayBgView.layer.shadowOffset = CGSize.zero
+        selectDayBgView.layer.shadowRadius = 5.5
+        
+        selectDay.layer.shadowColor = todayViewManager.COLOR.cgColor
+        selectDay.layer.shadowOpacity = 1
+        selectDay.layer.shadowOffset = CGSize(width: 1, height: 0.5)
+        selectDay.layer.shadowRadius = 1.5
     }
     
     func getColor() {
@@ -197,7 +210,7 @@ extension TodayViewController {
         let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: height, height: height-3, fontSize: 10))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy)
+        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
         
         addChild(hostingController)
         timeline.addSubview(hostingController.view)
@@ -208,14 +221,20 @@ extension TodayViewController {
         let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: height2, height: height2-5, fontSize: 15))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view3_timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy)
+        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
         
         addChild(hostingController2)
         view3_timeline.addSubview(hostingController2.view)
     }
     
     func showDatas(isDumy: Bool) {
-        todayViewManager.daily.load()
+        if(dateIndex == nil) {
+            todayViewManager.daily.load()
+        } else {
+            //배열에 있는 daily 보이기
+            todayViewManager.daily = dailyViewModel.dailys[dateIndex!]
+        }
+        
         if(isDumy) {
             todayViewManager.setDumyDaily()
         }
@@ -240,9 +259,38 @@ extension TodayViewController {
             collectionHeight.constant = CGFloat(24*todayViewManager.array.count)
         }
     }
+    
+    func showCalendar() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "calendarViewController") as! calendarViewController
+        setVC.calendarViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+    
+    func reset() {
+        for view in self.progress.subviews {
+            view.removeFromSuperview()
+        }
+        for view in self.view3_progress.subviews {
+            view.removeFromSuperview()
+        }
+        
+        todayViewManager.reset()
+        todayContentView().reset()
+        self.viewDidLoad()
+        self.view.layoutIfNeeded()
+        collectionView.reloadData()
+        view3_collectionView.reloadData()
+        view4_collectionView.reloadData()
+    }
 }
 
-
+extension TodayViewController: selectCalendar {
+    func getDailyIndex() {
+        dateIndex = UserDefaults.standard.value(forKey: "dateIndex") as? Int ?? nil
+        selectDay.text = dateFormatter.string(from: dailyViewModel.dates[dateIndex!])
+        reset()
+    }
+}
 
 extension TodayViewController: UICollectionViewDataSource {
     //몇개 표시 할까?
