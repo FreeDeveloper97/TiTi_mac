@@ -84,7 +84,7 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
-            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 5000, height: 5000)
+            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 4096, height: 2160)
             self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
         }
         modeTimer.backgroundColor = UIColor.gray
@@ -94,7 +94,6 @@ class TimerViewController: UIViewController {
         getVCNum()
         setLocalizable()
         daily.load()
-        setTask()
         setSumTime()
         
         setButtonRotation()
@@ -102,10 +101,11 @@ class TimerViewController: UIViewController {
         setShadow()
         setBorner()
         getDatas()
-        
         setTimes()
+        
         stopColor()
         stopEnable()
+        setTask()
         
         setBackground()
         checkIsFirst()
@@ -681,7 +681,6 @@ extension TimerViewController {
         } else {
             taskButton.setTitleColor(UIColor.white, for: .normal)
             taskButton.layer.borderColor = UIColor.white.cgColor
-            startStopBT.isUserInteractionEnabled = true
         }
         taskButton.setTitle(task, for: .normal)
     }

@@ -103,8 +103,8 @@ class TodayViewManager {
     
     func setDay(_ today: UILabel, _ today2: UILabel, _ view4_today: UILabel) {
         let stringDay = getDay(day: daily.day)
-        today.text = stringDay
-        today2.text = stringDay
+//        today.text = stringDay
+//        today2.text = stringDay
         view4_today.text = stringDay
     }
     
@@ -173,8 +173,8 @@ class TodayViewManager {
         for i in 0..<counts {
             let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             let prog2 = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width2, height: height2))
-            prog.progressWidth = 35
-            prog2.progressWidth = 25
+            prog.progressWidth = 45
+            prog2.progressWidth = 55
             prog.trackColor = UIColor.clear
             prog2.trackColor = UIColor.clear
             prog.progressColor = colors[i%colors.count]
@@ -206,8 +206,8 @@ class TodayViewManager {
         block2.trackColor = UIColor.clear
         block.progressColor = UIColor.systemBackground
         block2.progressColor = UIColor.systemBackground
-        block.progressWidth = 35
-        block2.progressWidth = 25
+        block.progressWidth = 45
+        block2.progressWidth = 55
         block.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
         block2.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
         

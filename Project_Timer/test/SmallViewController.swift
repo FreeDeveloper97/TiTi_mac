@@ -59,6 +59,8 @@ class SmallViewController: UIViewController {
     //하루 그래프를 위한 구조
     var daily = Daily()
     
+    let dailyViewModel = DailyViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
@@ -67,6 +69,9 @@ class SmallViewController: UIViewController {
         }
         self.view.backgroundColor = UIColor.black
         setVCNum()
+        daily.load()
+        setSumTime()
+        
         setColor()
         setRadius()
         setBorder()
@@ -76,24 +81,28 @@ class SmallViewController: UIViewController {
         
         stopColor()
         stopEnable()
+        setTask()
         
         setBackground()
         checkIsFirst()
         
         setFirstProgress()
-        
-        daily.load()
-        setTask()
+        //저장된 daily들 로딩
+        dailyViewModel.loadDailys()
     }
     
     @IBAction func startStopBTAction(_ sender: Any) {
-        //start action
-        if(isStop == true) {
-            algoOfStart()
-        }
-        //stop action
-        else {
-            algoOfStop()
+        if(task == "Enter a new subject".localized()) {
+            showFirstAlert()
+        } else {
+            //start action
+            if(isStop == true) {
+                algoOfStart()
+            }
+            //stop action
+            else {
+                algoOfStop()
+            }
         }
     }
     
@@ -112,6 +121,7 @@ class SmallViewController: UIViewController {
         sumTime = time.startSumTime + seconds
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -119,7 +129,6 @@ class SmallViewController: UIViewController {
         updateProgress()
         printLogs()
         saveTimes()
-//        showNowTime()
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -170,6 +179,7 @@ extension SmallViewController {
         print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -179,6 +189,7 @@ extension SmallViewController {
         startAction()
         //나간 시점 start, 현재 시각 Date 와 비교
         daily.addHoursInBackground(start, sumTime - temp)
+        saveTimes()
     }
     
     func removeSavedDate() {
@@ -290,7 +301,7 @@ extension SmallViewController {
         let temp = Float(sumTime)/Float(totalTime)
         beforePer2 = temp
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 1.0) {
             self.outterProgress.setProgress(self.progressPer, animated: true)
             self.innerProgress.setProgress(temp, animated: true)
         }
@@ -458,7 +469,6 @@ extension SmallViewController {
     func setFirstStart() {
         taskButton.setTitleColor(UIColor.systemPink, for: .normal)
         taskButton.layer.borderColor = UIColor.systemPink.cgColor
-        startStopBT.isUserInteractionEnabled = false
     }
     
     func showTaskView() {
@@ -472,6 +482,36 @@ extension SmallViewController {
         time.startSumTimeTemp = 0
         updateTimeLabels()
         updateProgress()
+    }
+    
+    func showFirstAlert() {
+        //1. 경고창 내용 만들기
+        let alert = UIAlertController(title:"Enter a new subject".localized(),
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
+        //2. 확인 버튼 만들기
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        //3. 확인 버튼을 경고창에 추가하기
+        alert.addAction(ok)
+        //4. 경고창 보이기
+        present(alert,animated: true,completion: nil)
+    }
+    
+    func setSumTime() {
+        var tempSumTime: Int = 0
+        if(daily.tasks != [:]) {
+            for (_, value) in daily.tasks {
+                tempSumTime += value
+            }
+            sumTime = tempSumTime
+            daily.currentSumTime = tempSumTime
+            UserDefaults.standard.set(sumTime, forKey: "sum2")
+            saveLogData()
+            
+            let tempGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+            goalTime = tempGoalTime - sumTime
+            UserDefaults.standard.set(goalTime, forKey: "allTime2")
+        }
     }
 }
 
@@ -498,7 +538,6 @@ extension SmallViewController {
             firstStart()
             isFirst = false
         }
-//        showNowTime()
         daily.startTask(task) //하루 그래프 데이터 생성
     }
     
@@ -514,6 +553,8 @@ extension SmallViewController {
         stopEnable()
         time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
+        //dailys 저장
+        dailyViewModel.addDaily(daily)
     }
     
     func setTIMEofStopwatchColor(_ color: UIColor) {
@@ -556,7 +597,7 @@ extension SmallViewController {
                 }
             } else if(key.characters == "b") {
                 DispatchQueue.main.async {
-                    self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 5000, height: 5000)
+                    self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 4096, height: 2160)
                     self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
                 }
                 goToViewController(where: "StopwatchViewController", isFull: true)

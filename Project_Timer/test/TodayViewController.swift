@@ -56,6 +56,8 @@ class TodayViewController: UIViewController {
     @IBOutlet var input: UITextField!
     @IBOutlet var add: UIButton!
     @IBOutlet var view4_collectionView: UICollectionView!
+    @IBOutlet var innercheck: UIButton!
+    @IBOutlet var checkAll: UIButton!
     
     @IBOutlet var color1: UIButton!
     @IBOutlet var color2: UIButton!
@@ -142,6 +144,17 @@ class TodayViewController: UIViewController {
     @IBAction func showCalendar(_ sender: Any) {
         showCalendar()
     }
+    
+    @IBAction func checkAll(_ sender: Any) {
+        let check = innercheck.isSelected
+        for i in 0..<todoListViewModel.todos.count {
+            var todo = todoListViewModel.todos[i]
+            todo.isDone = check
+            self.todoListViewModel.updateTodo(todo)
+        }
+        self.view4_collectionView.reloadData()
+        innercheck.isSelected = !innercheck.isSelected
+    }
 }
 
 extension TodayViewController {
@@ -170,6 +183,7 @@ extension TodayViewController {
         inputFraim.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         selectDayBgView.layer.cornerRadius = 12
+        checkAll.layer.cornerRadius = 10
     }
     
     func setShadow(_ view: UIView) {
@@ -190,6 +204,10 @@ extension TodayViewController {
         selectDay.layer.shadowOpacity = 1
         selectDay.layer.shadowOffset = CGSize(width: 1, height: 0.5)
         selectDay.layer.shadowRadius = 1.5
+        
+        innercheck.tintColor = todayViewManager.COLOR
+        checkAll.layer.borderWidth = 1
+        checkAll.layer.borderColor = UIColor.label.withAlphaComponent(0.5).cgColor
     }
     
     func getColor() {

@@ -85,7 +85,7 @@ class StopwatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
-            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 5000, height: 5000)
+            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 4096, height: 2160)
             self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
         }
         
@@ -96,7 +96,6 @@ class StopwatchViewController: UIViewController {
         setVCNum()
         setLocalizable()
         daily.load()
-        setTask()
         setSumTime()
         
         setButtonRotation()
@@ -109,6 +108,7 @@ class StopwatchViewController: UIViewController {
         
         stopColor()
         stopEnable()
+        setTask()
         
         setBackground()
         checkIsFirst()
@@ -639,7 +639,6 @@ extension StopwatchViewController {
         } else {
             taskButton.setTitleColor(UIColor.white, for: .normal)
             taskButton.layer.borderColor = UIColor.white.cgColor
-            startStopBT.isUserInteractionEnabled = true
         }
         taskButton.setTitle(task, for: .normal)
     }

@@ -3101,10 +3101,10 @@ AVER : 0:00:00</string>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4si-tL-tqq">
                                                                             <rect key="frame" x="40" y="2" width="155.5" height="20"/>
                                                                             <subviews>
-                                                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-jA-Udo">
+                                                                                <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-jA-Udo">
                                                                                     <rect key="frame" x="2.5" y="1.5" width="93" height="17"/>
                                                                                 </view>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-hu-jI6">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-hu-jI6">
                                                                                     <rect key="frame" x="5" y="3.5" width="88" height="13"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="3Jf-R0-L6E"/>
@@ -3112,7 +3112,7 @@ AVER : 0:00:00</string>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP40g" family="HGGGothicssi_Pro" pointSize="13"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-LL-sH8">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-LL-sH8">
                                                                                     <rect key="frame" x="103" y="3.5" width="47.5" height="13"/>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                                                     <color key="textColor" name="CCC1"/>
@@ -3774,16 +3774,58 @@ AVER : 0:00:00</string>
                                                             <constraint firstItem="h4M-u5-N5c" firstAttribute="centerY" secondItem="wBF-s1-kKq" secondAttribute="centerY" id="tD0-mi-Lvz"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zx5-dj-oZ0">
+                                                        <rect key="frame" x="26.5" y="22" width="52" height="29"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ux4-34-yWP">
+                                                                <rect key="frame" x="3" y="3" width="23" height="23"/>
+                                                                <color key="tintColor" name="D1"/>
+                                                                <state key="normal" image="square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                                </state>
+                                                                <state key="selected" image="checkmark.square.fill" catalog="system"/>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddW-zF-Qh3">
+                                                                <rect key="frame" x="29" y="3.5" width="20" height="22"/>
+                                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Ux4-34-yWP" firstAttribute="leading" secondItem="zx5-dj-oZ0" secondAttribute="leading" constant="3" id="5MZ-QN-EGs"/>
+                                                            <constraint firstItem="Ux4-34-yWP" firstAttribute="top" secondItem="zx5-dj-oZ0" secondAttribute="top" constant="3" id="8F6-BG-QpN"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Ux4-34-yWP" secondAttribute="bottom" constant="3" id="dpN-MJ-0gt"/>
+                                                            <constraint firstItem="ddW-zF-Qh3" firstAttribute="centerY" secondItem="Ux4-34-yWP" secondAttribute="centerY" id="eCG-H4-nDc"/>
+                                                            <constraint firstItem="ddW-zF-Qh3" firstAttribute="leading" secondItem="Ux4-34-yWP" secondAttribute="trailing" constant="3" id="fro-8c-xaH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ddW-zF-Qh3" secondAttribute="trailing" constant="3" id="uPh-iZ-QMd"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVw-8G-yhE">
+                                                        <rect key="frame" x="20" y="20" width="65" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="65" id="KgU-vf-dVe"/>
+                                                            <constraint firstAttribute="height" constant="33" id="hCY-BW-m3T"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="checkAll:" destination="AV6-J4-ZvG" eventType="touchUpInside" id="Llx-sw-7gX"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Background_second"/>
                                                 <constraints>
                                                     <constraint firstItem="U90-z8-Tt5" firstAttribute="centerX" secondItem="ewd-2u-dmE" secondAttribute="centerX" id="0bI-j8-nF7"/>
+                                                    <constraint firstItem="QVw-8G-yhE" firstAttribute="leading" secondItem="ewd-2u-dmE" secondAttribute="leading" constant="20" id="7R5-E2-Pea"/>
                                                     <constraint firstAttribute="bottom" secondItem="wBF-s1-kKq" secondAttribute="bottom" id="MBY-md-xWT"/>
                                                     <constraint firstAttribute="trailing" secondItem="wBF-s1-kKq" secondAttribute="trailing" id="PsG-Xw-SBE"/>
+                                                    <constraint firstItem="zx5-dj-oZ0" firstAttribute="centerY" secondItem="QVw-8G-yhE" secondAttribute="centerY" id="UQt-cc-HLF"/>
                                                     <constraint firstItem="wBF-s1-kKq" firstAttribute="leading" secondItem="ewd-2u-dmE" secondAttribute="leading" id="UTs-pi-AJn"/>
                                                     <constraint firstItem="8UW-Gh-MLy" firstAttribute="top" secondItem="ewd-2u-dmE" secondAttribute="top" constant="20" id="WlI-7e-Meb"/>
                                                     <constraint firstItem="U90-z8-Tt5" firstAttribute="top" secondItem="8UW-Gh-MLy" secondAttribute="bottom" constant="20" id="b1b-Sn-rVA"/>
                                                     <constraint firstItem="wBF-s1-kKq" firstAttribute="top" secondItem="U90-z8-Tt5" secondAttribute="bottom" constant="20" id="dVj-8x-qe8"/>
+                                                    <constraint firstItem="zx5-dj-oZ0" firstAttribute="centerX" secondItem="QVw-8G-yhE" secondAttribute="centerX" id="gix-Uy-Ie1"/>
+                                                    <constraint firstItem="QVw-8G-yhE" firstAttribute="centerY" secondItem="8UW-Gh-MLy" secondAttribute="centerY" id="qvw-Ww-fe7"/>
+                                                    <constraint firstItem="zx5-dj-oZ0" firstAttribute="centerY" secondItem="8UW-Gh-MLy" secondAttribute="centerY" id="siK-tV-GMp"/>
                                                     <constraint firstItem="8UW-Gh-MLy" firstAttribute="centerX" secondItem="ewd-2u-dmE" secondAttribute="centerX" id="wlt-YN-m3F"/>
                                                 </constraints>
                                             </view>
@@ -3886,6 +3928,7 @@ AVER : 0:00:00</string>
                     <connections>
                         <outlet property="add" destination="1Ex-gc-PpE" id="dMD-06-TvE"/>
                         <outlet property="backBT" destination="bF4-Ig-ic7" id="sPO-S3-p9v"/>
+                        <outlet property="checkAll" destination="QVw-8G-yhE" id="fwB-bO-BLo"/>
                         <outlet property="collectionHeight" destination="Ch2-F1-Tg1" id="uPf-tn-MHh"/>
                         <outlet property="collectionView" destination="HpN-VY-JgJ" id="GOa-Ea-0aQ"/>
                         <outlet property="color1" destination="m26-3A-GgU" id="Tj3-9Q-3RR"/>
@@ -3904,6 +3947,7 @@ AVER : 0:00:00</string>
                         <outlet property="frame2" destination="BzR-82-7bJ" id="fAC-Fv-SMG"/>
                         <outlet property="frame3" destination="LuI-7v-rf4" id="PNl-wU-p9m"/>
                         <outlet property="fri" destination="Hgf-Kf-M5A" id="kdF-xp-Vlh"/>
+                        <outlet property="innercheck" destination="Ux4-34-yWP" id="GoH-Yf-AJj"/>
                         <outlet property="input" destination="h4M-u5-N5c" id="d8B-Ac-Rwn"/>
                         <outlet property="inputFraim" destination="wBF-s1-kKq" id="8rI-Bm-Jpn"/>
                         <outlet property="maxTime" destination="Xio-tP-rrC" id="7ia-h9-zRB"/>
@@ -3943,7 +3987,7 @@ AVER : 0:00:00</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SP9-eI-ofH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="1097"/>
+            <point key="canvasLocation" x="2221.875" y="1096.7789165446559"/>
         </scene>
         <!--Stopwatch View Controller-->
         <scene sceneID="W7Q-bF-WDi">
@@ -4263,14 +4307,13 @@ AVER : 0:00:00</string>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-B1-lLE">
                                 <rect key="frame" x="577.5" y="1015" width="145" height="55"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="9FH-Xi-VuT"/>
                                     <constraint firstAttribute="height" constant="55" id="b0C-nm-qvk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
                                 <state key="normal" title="smaller">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="goSmaller:" destination="T3F-X1-anD" eventType="touchUpInside" id="Zbv-Nb-BY2"/>
@@ -6136,7 +6179,6 @@ AVER : 0:00:00</string>
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="back:" destination="nPs-wx-lKE" eventType="touchUpInside" id="ihV-Fy-B8d"/>
                                             <action selector="cancle:" destination="nPs-wx-lKE" eventType="touchUpInside" id="gic-IC-xwC"/>
                                         </connections>
                                     </button>
