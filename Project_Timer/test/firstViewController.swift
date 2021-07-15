@@ -68,7 +68,7 @@ class firstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
-            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 4096, height: 2160)
+            self.view.window?.windowScene?.sizeRestrictions?.maximumSize = CGSize(width: 7680, height: 4320)
             self.view.window?.windowScene?.sizeRestrictions?.minimumSize = CGSize(width: 1300, height: 1100)
         }
         innerProgress.trackColor = UIColor.clear

@@ -3101,10 +3101,10 @@ AVER : 0:00:00</string>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4si-tL-tqq">
                                                                             <rect key="frame" x="40" y="2" width="155.5" height="20"/>
                                                                             <subviews>
-                                                                                <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-jA-Udo">
+                                                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-jA-Udo">
                                                                                     <rect key="frame" x="2.5" y="1.5" width="93" height="17"/>
                                                                                 </view>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-hu-jI6">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-hu-jI6">
                                                                                     <rect key="frame" x="5" y="3.5" width="88" height="13"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="3Jf-R0-L6E"/>
@@ -3112,7 +3112,7 @@ AVER : 0:00:00</string>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP40g" family="HGGGothicssi_Pro" pointSize="13"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-LL-sH8">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-LL-sH8">
                                                                                     <rect key="frame" x="103" y="3.5" width="47.5" height="13"/>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                                                     <color key="textColor" name="CCC1"/>
@@ -3775,7 +3775,7 @@ AVER : 0:00:00</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zx5-dj-oZ0">
-                                                        <rect key="frame" x="26.5" y="22" width="52" height="29"/>
+                                                        <rect key="frame" x="27" y="22" width="51.5" height="29"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ux4-34-yWP">
                                                                 <rect key="frame" x="3" y="3" width="23" height="23"/>
@@ -3786,7 +3786,7 @@ AVER : 0:00:00</string>
                                                                 <state key="selected" image="checkmark.square.fill" catalog="system"/>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddW-zF-Qh3">
-                                                                <rect key="frame" x="29" y="3.5" width="20" height="22"/>
+                                                                <rect key="frame" x="29" y="3.5" width="19.5" height="22"/>
                                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
